@@ -41,12 +41,12 @@ def thankyou():
 	return render_template("thankyou.html")
 @app.route("/api/attraction", methods=["GET"])
 def api_attraction(): #要取得的分頁，每頁 12 筆資料
-    #page = request.args.get("page","")
+    page = request.args.get("page","")
+    nextPage = int(page)+1
     input = request.args.get("input","")
     print(input)
-    # if(page == ""):
-    #     return jsonify({"error":True,
-    #                     "message": "請輸入頁碼"}),500   
+    if(page == ''):
+        page = 0 #minimum: 0  
     if(input == ""):
         input == "*"
     else:
@@ -82,6 +82,7 @@ def api_attraction(): #要取得的分頁，每頁 12 筆資料
             #print("MySQL connection is closed")
             print("DONE!")     
             return jsonify({
+                "nextPage":int(nextPage),
             	"data":[{
             		"id":int(id),
 		            "name":str(name),
