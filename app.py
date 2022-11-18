@@ -54,7 +54,7 @@ def api_attraction():
     if(keyword == ""):
         keyword == "*"
 
-    sql = "SELECT attractions_list.id, attractions_list.name, attractions_list.category, attractions_list.description, attractions_list.address, attractions_list.transport, attractions_list.mrt, attractions_list.lat, attractions_list.lng, images_list.link FROM attractions_list INNER JOIN images_list ON images_list.attractions_id=attractions_list.id WHERE category=%s;" #SQL指令 是否有對應的帳號、密碼
+    sql = "SELECT attractions_list.id, attractions_list.name, attractions_list.category, attractions_list.description, attractions_list.address, attractions_list.transport, attractions_list.mrt, attractions_list.lat, attractions_list.lng, merge_images_list.links FROM attractions_list INNER JOIN merge_images_list ON merge_images_list.attractions_id=attractions_list.id WHERE category=%s;" #SQL指令 
     val = (keyword, )
     try:
         # Get connection object from a pool
@@ -64,6 +64,7 @@ def api_attraction():
         cursor.execute(sql,val)
         myresult = cursor.fetchall()
         x=""
+        results = []
         for x in myresult:
             id = x[0]
             name = x[1]
@@ -75,9 +76,20 @@ def api_attraction():
             mrt = x[6]
             lat = x[7]
             lng = x[8]
-            link = x[9]    
-        rows = cursor.rowcount #得出結果列數
-        print(rows)
+            links = x[9].split(',')    
+            result = {
+                    "id":int(id),
+                    "name":str(name),
+                    "category":str(category),
+                    "description":str(description),
+                    "address":str(address),
+                    "transport":str(transport),
+                    "mrt":str(mrt),
+                    "lat":float(lat),
+                    "lng":float(lng),
+                    "images":links
+                    }
+            results.append(result)                   
     except Error as e:
             print("Error while connecting to MySQL using Connection pool ", e)
             return jsonify({"error":True, "message": "伺服器內部錯誤"}),500
@@ -90,8 +102,68 @@ def api_attraction():
 
     if(x==""):
         keyword2 = "%"+f"{keyword}"+"%"
-        sql = "SELECT attractions_list.id, attractions_list.name, attractions_list.category, attractions_list.description, attractions_list.address, attractions_list.transport, attractions_list.mrt, attractions_list.lat, attractions_list.lng, images_list.link FROM attractions_list INNER JOIN images_list ON images_list.attractions_id=attractions_list.id WHERE name LIKE %s;" #SQL指令 是否有對應的帳號、密碼
+        sql = "SELECT attractions_list.id, attractions_list.name, attractions_list.category, attractions_list.description, attractions_list.address, attractions_list.transport, attractions_list.mrt, attractions_list.lat, attractions_list.lng, merge_images_list.links FROM attractions_list INNER JOIN merge_images_list ON merge_images_list.attractions_id=attractions_list.id WHERE name LIKE %s;" #SQL指令 
         val = (keyword2, )
+        try:
+            # Get connection object from a pool
+            connection_object = connection_pool.get_connection() #連線物件 commit時 需要使用
+            cursor = connection_object.cursor()
+            #print("MySQL connection is opened")
+            cursor.execute(sql,val)
+            myresult = cursor.fetchall()
+            x=''
+            results = []
+            for x in myresult:
+                id = x[0]
+                name = x[1]
+                category = x[2]
+                description = x[3]
+                a = x[4].split(" ")[0]+x[4].split(" ")[1]
+                address = a+x[4].split(" ")[1]+x[4].split(" ")[2]
+                transport = x[5]
+                mrt = x[6]
+                lat = x[7]
+                lng = x[8]
+                links = x[9].split(',')
+                result = {
+                        "id":int(id),
+                        "name":str(name),
+                        "category":str(category),
+                        "description":str(description),
+                        "address":str(address),
+                        "transport":str(transport),
+                        "mrt":str(mrt),
+                        "lat":float(lat),
+                        "lng":float(lng),
+                        "images":links
+                        }
+                results.append(result)             
+            rows = cursor.rowcount #得出結果列數
+            print(rows)
+            if(page == int(rows//12)): #得出結果列數
+                nextPage == None
+            return jsonify({
+                    "nextPage":int(nextPage),
+                    "data": results
+                    }     ), 200            
+        except Error as e:
+            print("Error while connecting to MySQL using Connection pool ", e)
+            return jsonify({"error":True, "message": "伺服器內部錯誤"}), 500
+        finally:
+            # closing database connection.    
+            cursor.close()
+            connection_object.close()
+            #print("MySQL connection is closed")
+            print("DONE!")
+
+
+@app.route("/api/attraction/<attractionId>", methods=["GET"])
+def attractionId(attractionId=None):
+        Number = request.args.get("attractionId","")
+        Numbers = str(Number)
+        print(Numbers)
+        sql = "SELECT attractions_list.id, attractions_list.name, attractions_list.category, attractions_list.description, attractions_list.address, attractions_list.transport, attractions_list.mrt, attractions_list.lat, attractions_list.lng, merge_images_list.links FROM attractions_list INNER JOIN merge_images_list ON merge_images_list.attractions_id=attractions_list.id WHERE attractions_list.id = %s;" #SQL指令 
+        val = (Numbers, )
         try:
             # Get connection object from a pool
             connection_object = connection_pool.get_connection() #連線物件 commit時 需要使用
@@ -111,13 +183,10 @@ def api_attraction():
                 mrt = x[6]
                 lat = x[7]
                 lng = x[8]
-                link = x[9]  
+                links = x[9].split(',')  
             rows = cursor.rowcount #得出結果列數
             print(rows)
-            if(page == int(rows//12)): #得出結果列數
-                nextPage == None
-            return jsonify({
-                    "nextPage":int(nextPage),
+            result=jsonify({
                     "data":[{
                         "id":int(id),
                         "name":str(name),
@@ -128,7 +197,7 @@ def api_attraction():
                         "mrt":str(mrt),
                         "lat":float(lat),
                         "lng":float(lng),
-                        "images":[link]
+                        "images":links
                         }]
                     }     ), 200            
         except Error as e:
@@ -140,66 +209,7 @@ def api_attraction():
             connection_object.close()
             #print("MySQL connection is closed")
             print("DONE!")
-
-
-@app.route("/api/attraction/{attractionId}", methods=["GET"])
-def caculate():
-        Number = request.args.get("id","")
-        Number = str(Number)
-        print(Number)
-
-        if(Number==""):
-            Number == "*"
-            
-        sql = "SELECT attractions_list.id, attractions_list.name, attractions_list.category, attractions_list.description, attractions_list.address, attractions_list.transport, attractions_list.mrt, attractions_list.lat, attractions_list.lng, images_list.link FROM attractions_list INNER JOIN images_list ON images_list.attractions_id=attractions_list.id WHERE id=%s;" #SQL指令 是否有對應的帳號、密碼
-        val = (Number, )
-        try:
-            # Get connection object from a pool
-            connection_object = connection_pool.get_connection() #連線物件 commit時 需要使用
-            cursor = connection_object.cursor()
-            #print("MySQL connection is opened")
-            cursor.execute(sql,val)
-            myresult = cursor.fetchall()
-            x=""
-            for x in myresult:
-                id = x[0]
-                name = x[1]
-                category = x[2]
-                description = x[3]
-                a = x[4].split(" ")[0]+x[4].split(" ")[1]
-                address = a+x[4].split(" ")[1]+x[4].split(" ")[2]
-                transport = x[5]
-                mrt = x[6]
-                lat = x[7]
-                lng = x[8]
-                link = x[9]    
-            rows = cursor.rowcount #得出結果列數
-            print(rows)
-            return jsonify({                 
-                    "data":{
-                        "id":int(id),
-                        "name":str(name),
-                        "category":str(category),
-                        "description":str(description),
-                        "address":str(address),
-                        "transport":str(transport),
-                        "mrt":str(mrt),
-                        "lat":float(lat),
-                        "lng":float(lng),
-                        "images":[link]
-                        }
-                    }     ), 200            
-        except Error as e:
-            print("Error while connecting to MySQL using Connection pool ", e)
-            return jsonify({"error":True, "message": "伺服器內部錯誤"}), 500
-        finally:
-            # closing database connection.    
-            cursor.close()
-            connection_object.close()
-            #print("MySQL connection is closed")
-            print("DONE!")
-
-
+        return (result) 
 
     
     
