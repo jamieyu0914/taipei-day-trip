@@ -20,23 +20,4 @@
       </form>
     </div>
     <br />
-    <hr />
-    <br />
-    <div class="function">
-      <h4>以景點編號查詢</h4>
-      編號 <input type="int" name="attractionId" id="attractionId" /><br />
-      <button onclick="go()">查詢</button>
-      <br />
-    </div>
-  </body>
-  <script>
-    function go() {
-      const id = document.getElementById("attractionId");
-      const nums = id.value;
-      const attractionId = nums;
-      result = "http://127.0.0.1:3000/api/attraction/" + attractionId;
-      console.log(attractionId);
-      location.assign(result);
-    }
-  </script>
 </html>
