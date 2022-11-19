@@ -104,9 +104,9 @@ for i in range(0,nums):
             if (file_link.find('.jpg')>0 or file_link.find('.JPG')>0 or file_link.find('.png')>0 or file_link.find('.PNG')>0): #過濾資料中，不是 JPG 或 PNG 的檔案
                     #資料庫上傳景點圖片
 
-                 file_link_list= file_link_list+file_link+","
+                 file_link_list= file_link_list+file_link
     
-    file_link_list = file_link_list[:-1]
+    file_link_list = file_link_list
     sql = "INSERT INTO merge_images_list (attractions_id, links) VALUES (%s, %s)"
     val = (id, str(file_link_list))
     try:
