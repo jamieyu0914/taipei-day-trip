@@ -217,7 +217,7 @@ def attractionId(attractionId):
                 links = x[9].split(',')  
             rows = cursor.rowcount #得出結果列數
             print(rows)
-            result=jsonify({
+            result={
                     "data":[{
                         "id":int(id),
                         "name":str(name),
@@ -230,7 +230,7 @@ def attractionId(attractionId):
                         "lng":float(lng),
                         "images":links
                         }]
-                    }     ), 200            
+                    }              
         except Error as e:
             print("Error while connecting to MySQL using Connection pool ", e)
             return (jsonify({"error":True, "message": "伺服器內部錯誤"})),500
@@ -240,7 +240,7 @@ def attractionId(attractionId):
             connection_object.close()
             #print("MySQL connection is closed")
             print("DONE!")
-        return (result),200 
+        return (jsonify(result)),200 
 
 @app.route("/api/categories")
 def categories():
