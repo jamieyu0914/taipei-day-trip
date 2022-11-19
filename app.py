@@ -193,7 +193,7 @@ def attractionId(attractionId):
 
         Numbers = str(attractionId)
         print(Numbers)
-        sql = "SELECT attractions_list.id, attractions_list.name, attractions_list.category, attractions_list.description, attractions_list.address, attractions_list.transport, attractions_list.mrt, attractions_list.lat, attractions_list.lng, merge_images_list.links FROM attractions_list INNER JOIN merge_images_list ON merge_images_list.attractions_id=attractions_list.id WHERE attractions_list.id = %s;" #SQL指令 
+        sql = "SELECT attractions_list.id, attractions_list.name, attractions_list.category, attractions_list.description, attractions_list.address, attractions_list.transport, attractions_list.mrt, attractions_list.lat, attractions_list.lng, merge_images_list.links FROM attractions_list INNER JOIN merge_images_list ON merge_images_list.attractions_id=attractions_list.id WHERE attractions_list.id = %s limit 1;" #SQL指令 
         val = (Numbers, )
         try:
             # Get connection object from a pool
@@ -202,6 +202,10 @@ def attractionId(attractionId):
             #print("MySQL connection is opened")
             cursor.execute(sql,val)
             myresult = cursor.fetchall()
+            #print(myresult)
+            if (myresult == []):
+                return (jsonify({"error":True, "message": "此編號未存在資料"})),400
+
             x=''
             for x in myresult:
                 id = x[0]
@@ -215,10 +219,8 @@ def attractionId(attractionId):
                 lat = x[7]
                 lng = x[8]
                 links = x[9].split(',')  
-            rows = cursor.rowcount #得出結果列數
-            print(rows)
             result={
-                    "data":[{
+                    "data":{
                         "id":int(id),
                         "name":str(name),
                         "category":str(category),
@@ -229,7 +231,7 @@ def attractionId(attractionId):
                         "lat":float(lat),
                         "lng":float(lng),
                         "images":links
-                        }]
+                        }
                     }              
         except Error as e:
             print("Error while connecting to MySQL using Connection pool ", e)
@@ -246,7 +248,7 @@ def attractionId(attractionId):
 def categories():
 
        
-        sql = "SELECT category FROM attractions_list;" #SQL指令 
+        sql = "SELECT distinct category FROM attractions_list;" #SQL指令 
     
         try:
             # Get connection object from a pool
@@ -259,11 +261,7 @@ def categories():
             results =[]
             for x in myresult:
                 categories = x[0]
-                result = str(categories)
-                if (result in results):
-                    continue
-                else: 
-                    results.append(result)
+                results.append(categories)
                     
             rows = cursor.rowcount #得出結果列數
             print(rows)     
