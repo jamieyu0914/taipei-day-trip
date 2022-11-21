@@ -63,6 +63,7 @@ def api_attraction():
 
     sql = "SELECT attractions_list.id, attractions_list.name, attractions_list.category, attractions_list.description, attractions_list.address, attractions_list.transport, attractions_list.mrt, attractions_list.lat, attractions_list.lng, merge_images_list.links FROM attractions_list INNER JOIN merge_images_list ON merge_images_list.attractions_id=attractions_list.id WHERE category= %s OR name LIKE %s LIMIT %s,12;" #SQL指令 
     val = (str(keyword), str(keyword2), nums)
+
     try:
         # Get connection object from a pool
         connection_object = connection_pool.get_connection() #連線物件 commit時 需要使用
@@ -97,8 +98,14 @@ def api_attraction():
                     "images":links
                     }
             results.append(result)
-        rows = cursor.rowcount #得出結果列數
-        print('筆數='+str(rows))
+
+        #最後一頁判別
+        sql = "SELECT * , merge_images_list.links FROM attractions_list INNER JOIN merge_images_list ON merge_images_list.attractions_id=attractions_list.id WHERE category= %s OR name LIKE %s LIMIT %s,12;" #SQL指令 
+        val = (str(keyword), str(keyword2), nums+12) #查詢下一頁結果
+        cursor.execute(sql,val) 
+        result = cursor.fetchall()
+        if result == []:
+            nextPage = None   
             
     except Error as e:
         #print("Error while connecting to MySQL using Connection pool ", e)
