@@ -7,8 +7,6 @@ from flask import session
 from flask import jsonify
 from mysql.connector import Error
 from mysql.connector import pooling
-from mysql.connector import Error
-from mysql.connector import pooling
 import json
 
 
@@ -18,7 +16,7 @@ connection_pool = pooling.MySQLConnectionPool(pool_name="my_connection_pool",
                                                 host='localhost',
                                                 database='taipei_trip',
                                                 user='root',
-                                                password='m6ao3ao3')
+                                                password='******')
 
 app=Flask(__name__,
     static_folder="public",
