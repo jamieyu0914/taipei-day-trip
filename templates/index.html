@@ -2,22 +2,128 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" type="text/css" href="/layout.css" />
-    <title>測試頁面</title>
+    <title>My Website-台北市政府提供景點公開資料</title>
+    <link rel="stylesheet" type="text/css" href="layout.css" />
   </head>
-  <body>
-    <header>測試頁面</header>
+  <body
+    style="
+      margin-top: 0px;
+      margin-right: 0px;
+      margin-left: 0px;
+      margin-bottom: 0px;
+    "
+  >
+    <div class="desktop-menu">
+      <div class="menu">
+        <!--右上選單-->
+        <div class="desktop-menu-left">台北一日遊</div>
+        <div class="desktop-menu-right">
+          <div class="item">預定行程</div>
+          <div class="item">登入/註冊</div>
+        </div>
+        <div class="mobile-menu">
+          <!--漢堡圖設定-->
+          <div class="mobile-menu-icon">
+            <img
+              src="menu.png"
+              width="30px"
+              height="30px"
+              style="margin: 10px"
+            />
+          </div>
+        </div>
+      </div>
 
-    <div class="function">
-      <h4>選擇頁數、查詢景點分類、景點關鍵字</h4>
-      <form action="/api/attraction" method="GET">
-        頁數<input type="int" name="page" id="page" />
-        <br />
-        分類、關鍵字<input type="text" name="keyword" id="keyword" />
-        <button>查詢</button>
-      </form>
+      <div class="headline">
+        <!--搜尋欄-->
+        <div class="welcome">
+          <div class="slogan">
+            <text-title>輕鬆享受台北一日悠閒</text-title>
+            <text-subtitle>探索每個角落，體驗城市的深度旅遊行程</text-subtitle>
+            <form action="/api/attraction" method="GET">
+              <input type="text" name="keyword" id="keyword" />
+              <button><img src="icon_search.png" /></button>
+            </form>
+          </div>
+          <img src="welcome.png" />
+        </div>
+      </div>
+
+      <div class="list">
+        <!--中央列表 上半區-->
+        <div class="list-block-1">
+          <div class="promotion" id="name0">
+            <img
+              id="photo0"
+              width="80px"
+              height="50px"
+              style="margin-right: 10px"
+            />
+          </div>
+
+          <div class="promotion" id="name1" style="margin: 10px">
+            <img
+              id="photo1"
+              width="80px"
+              height="50px"
+              style="margin-right: 10px"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div class="list-2">
+        <!--中央列表 下半區-->
+        <div class="list-block-2">
+          <div class="title-item">
+            <div class="img">
+              <img class="image" id="photo2" id="photo2" />
+            </div>
+            <div class="title" id="name2"></div>
+          </div>
+
+          <div class="title-item">
+            <div class="img"><img class="image" id="photo3" /></div>
+            <div class="title" id="name3"></div>
+          </div>
+
+          <div class="title-item">
+            <div class="img"><img class="image" id="photo4" /></div>
+            <div class="title" id="name4"></div>
+          </div>
+
+          <div class="title-item">
+            <div class="img"><img class="image" id="photo5" /></div>
+            <div class="title" id="name5"></div>
+          </div>
+
+          <div class="title-item">
+            <div class="img"><img class="image" id="photo6" /></div>
+            <div class="title" id="name6"></div>
+          </div>
+
+          <div class="title-item">
+            <div class="img"><img class="image" id="photo7" /></div>
+            <div class="title" id="name7"></div>
+          </div>
+
+          <div class="title-item">
+            <div class="img"><img class="image" id="photo8" /></div>
+            <div class="title" id="name8"></div>
+          </div>
+
+          <div class="title-item">
+            <div class="img"><img class="image" id="photo9" /></div>
+            <div class="title" id="name9"></div>
+          </div>
+        </div>
+      </div>
     </div>
-    <br />
+  </body>
+  <footer>
+    <div class="loadmore" id="myload">
+      <button onclick="getmore();">Load More</button>
+    </div>
+  </footer>
 </html>

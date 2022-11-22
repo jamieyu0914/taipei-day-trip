@@ -1,15 +1,332 @@
-header {
+html {
+  font-size: 125%;
+}
+.menu {
+  display: flex;
   justify-content: center;
-  align-items: center;
-  height: 100px;
-  line-height: 100px;
-  color: #ffffff;
-  font-size: 2em;
-  font-weight: bold;
-  background-color: #223344;
+  justify-items: center;
+}
+.desktop-menu-left {
+  color: #448899;
+  flex: none; /*固定配置*/
+  margin: 10px;
+  text-align: center;
+  text-align: center;
+  position: absolute;
+  width: 150px;
+  height: 34px;
+  left: 0px;
+  top: 0px;
+}
+.desktop-menu-right {
+  color: #666666;
+  display: flex;
+  justify-content: flex-end; /*水平對齊靠右*/
+  flex: auto;
+}
+.item {
+  flex: none; /*固定配置*/
+  margin: 10px;
   text-align: center;
 }
+.mobile-menu {
+  justify-content: flex-end; /*水平對齊靠右*/
+  flex: auto;
+  display: none;
+}
+.mobile-menu-icon {
+  float: right;
+  display: flex;
+  align-items: center;
+}
+.headline {
+  /* Auto layout */
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 0px;
 
-.function {
+  position: relative;
+  width: 1920px;
+  height: 320px;
+
+  /* Light | Cyan Gradient (135deg) */
+  background: linear-gradient(135deg, #aaddee 0%, #66aabb 100%);
+}
+.welcome {
+  /* welcome */
+  width: 1920px;
+  height: 480px;
+  /* Inside auto layout */
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}
+.slogan {
+  /* slogan */
+
+  /* Auto layout */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 10px;
+  gap: 10px;
+
+  position: absolute;
+  width: 1200px;
+  height: 169px;
+  left: 360px;
+  top: 129px;
+
+  /* Secondary Color/Gray 10 */
+  color: #f8f8f8;
+
+  /* Text Shadow */
+  text-shadow: 0px 0px 30px #aabbcc;
+}
+.slogan .text-title {
+  /* 輕鬆享受台北一日悠閒 */
+
+  position: absolute;
+  width: 1180px;
+  height: 41px;
+  left: 0px;
+  top: 0px;
+
+  /* Header 1 - Bold 28(24) */
+  font-family: "Noto Sans TC";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 24px;
+  /* or 86% */
+  display: flex;
+  align-items: center;
+}
+.slogan .subtilte {
+  /* 探索每個角落，體驗城市的深度旅遊行程 */
+
+  position: absolute;
+  width: 1180px;
+  height: 22px;
+  left: 0px;
+  top: 56px;
+
+  /* Body - Bold 16(13.3) */
+  font-family: "Noto Sans TC";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 13px;
+  /* or 83% */
+  display: flex;
+  align-items: center;
+}
+.button {
+  position: absolute;
+  width: 60px;
+  height: 46px;
+  left: 0px;
+  top: 0px;
+
+  /* Primary Color/Cyan 70 */
+  background: #448899;
+}
+.button .img {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  left: 0px;
+  top: 0px;
+}
+.list {
+  display: flex;
+  justify-content: center; /*水平置中*/
+}
+.list-2 {
+  display: flex;
+  justify-content: center; /*水平置中*/
+}
+.list-block-1 {
+  display: flex;
+  justify-content: center; /*水平置中*/
+  align-items: center;
+  flex-wrap: wrap;
+  width: 1200px;
+}
+.list-block-2 {
+  display: flex;
+  justify-content: center; /*水平置中*/
+  align-items: center;
+  flex-wrap: wrap;
+  width: 1200px;
+}
+.promotion {
+  display: flex;
+  flex-wrap: wrap;
+  flex: auto;
+  width: 280px;
+  height: 50px;
+  margin: 10px;
+  display: flex;
+  align-items: center;
+  background-color: rgb(204, 224, 240);
+}
+.img {
+  display: flex;
+  flex-wrap: wrap;
+  flex: auto;
+  align-self: flex-start;
+  vertical-align: bottom;
+  padding-bottom: 56%;
+  width: 100%;
+  position: relative;
+}
+.title-item {
+  display: inline-block;
+  flex-wrap: wrap;
+  width: 280px;
+  margin: 10px;
+  justify-content: center; /*水平置中*/
+  align-items: center;
+  vertical-align: top;
+}
+.title {
+  justify-content: center;
+  align-items: center;
   text-align: center;
+  width: 100%;
+  max-height: 25px;
+  position: relative;
+  z-index: 999;
+  background-color: rgb(204, 224, 240);
+  padding-block-end: 30px;
+  padding-block-start: 30px;
+}
+
+.desktop-menu {
+  text-align: center;
+  display: block;
+}
+
+.image {
+  width: 100%;
+  height: 20vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.loadmore {
+  display: flex;
+  justify-content: center; /*水平置中*/
+  align-items: center;
+  position: relative;
+  z-index: 100;
+}
+
+button {
+  font-size: 20px;
+}
+
+@media (max-width: 1200px) {
+  /* 螢幕寬度小於 1200px, 套用這個區塊的 css*/
+  .menu {
+    flex-wrap: wrap;
+  }
+  .promotion {
+    width: 45%;
+  }
+
+  .list-block-1 {
+    width: 90%;
+  }
+
+  .list-block-2 {
+    width: 95%;
+  }
+
+  .img {
+    width: 100%;
+  }
+
+  .image {
+    width: 100%;
+    min-width: 30vw;
+    height: 30vw;
+    max-height: 50vh;
+  }
+
+  .title {
+    width: 100%;
+  }
+
+  .title-item {
+    width: 42.5vw;
+    height: 35.5vw;
+  }
+}
+
+@media (max-width: 600px) {
+  /*螢幕寬度小於 360px, 套用這個區塊的 css*/
+  .menu {
+    flex-wrap: wrap;
+  }
+  .desktop-menu-left {
+    display: grid;
+    align-content: center;
+  }
+  .desktop-menu-right {
+    display: none;
+  }
+  .mobile-menu {
+    display: block;
+  }
+  .headline {
+    /* [Mobile] Hero section */
+
+    /* Auto layout */
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    padding: 0px;
+
+    position: relative;
+    width: 360px;
+    height: 320px;
+
+    /* Light | Cyan Gradient (135deg) */
+    background: linear-gradient(135deg, #aaddee 0%, #66aabb 100%);
+  }
+  .promotion {
+    width: 90%;
+  }
+  .list-block-1 {
+    width: 90%;
+  }
+
+  .list-block-2 {
+    width: 95%;
+  }
+
+  .img {
+    width: 100%;
+  }
+
+  .image {
+    width: 90vw;
+    height: 55vw;
+  }
+
+  .title {
+    width: 90vw;
+  }
+
+  .title-item {
+    width: 90vw;
+    height: 45vh;
+    min-width: 70vw;
+    max-height: 70vw;
+  }
 }
