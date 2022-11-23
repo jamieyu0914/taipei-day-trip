@@ -6,6 +6,20 @@ html {
   justify-content: center;
   justify-items: center;
 }
+.title-up {
+  color: #ffffff;
+  justify-content: end; /*水平置中*/
+  align-items: end;
+  vertical-align: top;
+  text-align: left;
+  position: relative; /*設定為相對位置*/
+  z-index: 999; /*設定重叠的上下次序，值越大月在上方*/
+  bottom: 24px; /*緊貼底部*/
+  width: 280px;
+  /* Additional Color/Black */
+  background: #000000;
+  opacity: 0.6;
+}
 .desktop-menu-left {
   color: #448899;
   flex: none; /*固定配置*/
@@ -192,10 +206,24 @@ html {
   align-items: center;
   vertical-align: top;
 }
-.title {
+
+.title-left {
   justify-content: center;
   align-items: center;
-  text-align: center;
+  text-align: left;
+  width: 100%;
+  max-height: 25px;
+  position: relative;
+  z-index: 999;
+  background-color: rgb(204, 224, 240);
+  padding-block-end: 30px;
+  padding-block-start: 30px;
+}
+
+.title-right {
+  justify-content: center;
+  align-items: center;
+  text-align: right;
   width: 100%;
   max-height: 25px;
   position: relative;

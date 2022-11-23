@@ -50,72 +50,91 @@
         </div>
       </div>
 
-      <div class="list">
-        <!--中央列表 上半區-->
-        <div class="list-block-1">
-          <div class="promotion" id="name0">
-            <img
-              id="photo0"
-              width="80px"
-              height="50px"
-              style="margin-right: 10px"
-            />
-          </div>
-
-          <div class="promotion" id="name1" style="margin: 10px">
-            <img
-              id="photo1"
-              width="80px"
-              height="50px"
-              style="margin-right: 10px"
-            />
-          </div>
-        </div>
-      </div>
-
       <div class="list-2">
         <!--中央列表 下半區-->
         <div class="list-block-2">
           <div class="title-item">
-            <div class="img">
-              <img class="image" id="photo2" id="photo2" />
-            </div>
-            <div class="title" id="name2"></div>
+            <div class="img"><img class="image" id="photo0" /></div>
+            <div class="title-up" id="name0"></div>
+            <div class="title-left" id="mrt0"></div>
+            <div class="title-right" id="category0"></div>
+          </div>
+
+          <div class="title-item">
+            <div class="img"><img class="image" id="photo1" /></div>
+            <div class="title-up" id="name1"></div>
+            <div class="title-left" id="mrt1"></div>
+            <div class="title-right" id="category1"></div>
+          </div>
+
+          <div class="title-item">
+            <div class="img"><img class="image" id="photo2" /></div>
+            <div class="title-up" id="name2"></div>
+            <div class="title-left" id="mrt2"></div>
+            <div class="title-right" id="category2"></div>
           </div>
 
           <div class="title-item">
             <div class="img"><img class="image" id="photo3" /></div>
-            <div class="title" id="name3"></div>
+            <div class="title-up" id="name3"></div>
+            <div class="title-left" id="mrt3"></div>
+            <div class="title-right" id="category3"></div>
           </div>
 
           <div class="title-item">
             <div class="img"><img class="image" id="photo4" /></div>
-            <div class="title" id="name4"></div>
+            <div class="title-up" id="name4"></div>
+            <div class="title-left" id="mrt4"></div>
+            <div class="title-right" id="category4"></div>
           </div>
 
           <div class="title-item">
             <div class="img"><img class="image" id="photo5" /></div>
-            <div class="title" id="name5"></div>
+            <div class="title-up" id="name5"></div>
+            <div class="title-left" id="mrt5"></div>
+            <div class="title-right" id="category5"></div>
           </div>
 
           <div class="title-item">
             <div class="img"><img class="image" id="photo6" /></div>
-            <div class="title" id="name6"></div>
+            <div class="title-up" id="name6"></div>
+            <div class="title-left" id="mrt6"></div>
+            <div class="title-right" id="category6"></div>
           </div>
 
           <div class="title-item">
             <div class="img"><img class="image" id="photo7" /></div>
-            <div class="title" id="name7"></div>
+            <div class="title-up" id="name7"></div>
+            <div class="title-left" id="mrt7"></div>
+            <div class="title-right" id="category7"></div>
           </div>
 
           <div class="title-item">
             <div class="img"><img class="image" id="photo8" /></div>
-            <div class="title" id="name8"></div>
+            <div class="title-up" id="name8"></div>
+            <div class="title-left" id="mrt8"></div>
+            <div class="title-right" id="category8"></div>
           </div>
 
           <div class="title-item">
             <div class="img"><img class="image" id="photo9" /></div>
-            <div class="title" id="name9"></div>
+            <div class="title-up" id="name9"></div>
+            <div class="title-left" id="mrt9"></div>
+            <div class="title-right" id="category9"></div>
+          </div>
+
+          <div class="title-item">
+            <div class="img"><img class="image" id="photo10" /></div>
+            <div class="title-up" id="name10"></div>
+            <div class="title-left" id="mrt10"></div>
+            <div class="title-right" id="category10"></div>
+          </div>
+
+          <div class="title-item">
+            <div class="img"><img class="image" id="photo11" /></div>
+            <div class="title-up" id="name11"></div>
+            <div class="title-left" id="mrt11"></div>
+            <div class="title-right" id="category11"></div>
           </div>
         </div>
       </div>
@@ -126,4 +145,68 @@
       <button onclick="getmore();">Load More</button>
     </div>
   </footer>
+  <script>
+    // 利用 fetch 進行連線並取得資料{
+    const keyword = document.getElementById("keyword").value; //查詢關鍵字 的輸入值
+    fetch(`/api/attraction?keyword=${keyword}`)
+      .then(function (response) {
+        return response.json();
+      })
+      .then(function (data) {
+        let array = [];
+        for (i = 0; i < 12; i++) {
+          let posts = data["data"][i];
+          // console.log(posts);
+          let text = posts["name"];
+          let names = "name" + i;
+          let title_left = posts["mrt"];
+          let mrt = "mrt" + i;
+          let title_right = posts["category"];
+          let categories = "category" + i;
+
+          console.log(names);
+          addtitle(text, names, title_left, mrt, title_right, categories);
+          console.log(posts["name"]); //景點名稱
+
+          let file = posts["images"][0];
+          let link = file;
+          let tags = "photo" + i;
+          console.log(link);
+          console.log(tags);
+          addphoto(link, tags);
+        }
+        function addtitle(
+          text,
+          names,
+          title_left,
+          mrt,
+          title_right,
+          categories
+        ) {
+          var theviewtitle = document.getElementById(names);
+          var _text = document.createTextNode(text);
+          theviewtitle.appendChild(_text);
+        }
+
+        function addphoto(link, tags) {
+          var bigImg = document.getElementById(tags);
+          bigImg.src = link;
+          console.log(bigImg);
+
+          // var theviewphoto = document.getElementById(tags);
+          // theviewphoto.src = link;
+          // console.log(theviewphoto.src);
+        }
+
+        datalist = [
+          str(posts["name"]),
+          str(posts["mrt"]),
+          str(posts["category"]),
+          str(file),
+        ];
+        array.append(datalist);
+
+        // console.log(data);
+      });
+  </script>
 </html>
