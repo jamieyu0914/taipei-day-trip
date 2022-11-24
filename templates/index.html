@@ -19,200 +19,57 @@
         <!--右上選單-->
         <div class="desktop-menu-left">台北一日遊</div>
         <div class="desktop-menu-right">
-          <div class="item">預定行程</div>
-          <div class="item">登入/註冊</div>
-        </div>
-        <div class="mobile-menu">
-          <!--漢堡圖設定-->
-          <div class="mobile-menu-icon">
-            <img
-              src="menu.png"
-              width="30px"
-              height="30px"
-              style="margin: 10px"
-            />
-          </div>
+          <button class="item">預定行程</button>
+          <button class="item">登入/註冊</button>
         </div>
       </div>
 
       <div class="headline">
         <!--搜尋欄-->
-        <div class="welcome">
-          <div class="slogan">
-            <text-title>輕鬆享受台北一日悠閒</text-title>
-            <text-subtitle>探索每個角落，體驗城市的深度旅遊行程</text-subtitle>
+        <div class="slogan">
+          <text-title>輕鬆享受台北一日悠閒</text-title>
+          <text-subtitle>探索每個角落，體驗城市的深度旅遊行程</text-subtitle>
+          <div class="search">
             <form action="/api/attraction" method="GET">
-              <input type="text" name="keyword" id="keyword" />
-              <button><img src="icon_search.png" /></button>
+              <input
+                type="text"
+                name="keyword"
+                id="keyword"
+                style="height: 30px"
+              />
+              <button class="search-button"></button>
             </form>
           </div>
-          <img src="welcome.png" />
         </div>
       </div>
 
-      <div class="list-2">
+      <div class="list">
         <!--中央列表 下半區-->
-        <div class="list-block-2">
-          <div class="title-item">
-            <div class="img"><img class="image" id="photo0" /></div>
-            <div class="title-up" id="name0"></div>
-            <div class="title-left" id="mrt0"></div>
-            <div class="title-right" id="category0"></div>
-          </div>
-
-          <div class="title-item">
-            <div class="img"><img class="image" id="photo1" /></div>
-            <div class="title-up" id="name1"></div>
-            <div class="title-left" id="mrt1"></div>
-            <div class="title-right" id="category1"></div>
-          </div>
-
-          <div class="title-item">
-            <div class="img"><img class="image" id="photo2" /></div>
-            <div class="title-up" id="name2"></div>
-            <div class="title-left" id="mrt2"></div>
-            <div class="title-right" id="category2"></div>
-          </div>
-
-          <div class="title-item">
-            <div class="img"><img class="image" id="photo3" /></div>
-            <div class="title-up" id="name3"></div>
-            <div class="title-left" id="mrt3"></div>
-            <div class="title-right" id="category3"></div>
-          </div>
-
-          <div class="title-item">
-            <div class="img"><img class="image" id="photo4" /></div>
-            <div class="title-up" id="name4"></div>
-            <div class="title-left" id="mrt4"></div>
-            <div class="title-right" id="category4"></div>
-          </div>
-
-          <div class="title-item">
-            <div class="img"><img class="image" id="photo5" /></div>
-            <div class="title-up" id="name5"></div>
-            <div class="title-left" id="mrt5"></div>
-            <div class="title-right" id="category5"></div>
-          </div>
-
-          <div class="title-item">
-            <div class="img"><img class="image" id="photo6" /></div>
-            <div class="title-up" id="name6"></div>
-            <div class="title-left" id="mrt6"></div>
-            <div class="title-right" id="category6"></div>
-          </div>
-
-          <div class="title-item">
-            <div class="img"><img class="image" id="photo7" /></div>
-            <div class="title-up" id="name7"></div>
-            <div class="title-left" id="mrt7"></div>
-            <div class="title-right" id="category7"></div>
-          </div>
-
-          <div class="title-item">
-            <div class="img"><img class="image" id="photo8" /></div>
-            <div class="title-up" id="name8"></div>
-            <div class="title-left" id="mrt8"></div>
-            <div class="title-right" id="category8"></div>
-          </div>
-
-          <div class="title-item">
-            <div class="img"><img class="image" id="photo9" /></div>
-            <div class="title-up" id="name9"></div>
-            <div class="title-left" id="mrt9"></div>
-            <div class="title-right" id="category9"></div>
-          </div>
-
-          <div class="title-item">
-            <div class="img"><img class="image" id="photo10" /></div>
-            <div class="title-up" id="name10"></div>
-            <div class="title-left" id="mrt10"></div>
-            <div class="title-right" id="category10"></div>
-          </div>
-
-          <div class="title-item">
-            <div class="img"><img class="image" id="photo11" /></div>
-            <div class="title-up" id="name11"></div>
-            <div class="title-left" id="mrt11"></div>
-            <div class="title-right" id="category11"></div>
-          </div>
+        <div class="list-block">
+          <!-- <div class="card">
+            <div class="image_container">
+              <div
+                class="photo"
+                style="
+                  background-image: url('https://www.travel.taipei/d_upload_ttn/sceneadmin/image/A0/B0/C0/D14/E810/F21/48d66fbd-1ba3-4efd-837a-3767db5f52e0.jpg');
+              ></div>
+              <div class="photo_mask"></div>
+              <div class="mask_title">國立故宮</div>
+            </div>
+            <div class="card_inform">
+              <div class="mrt_inform">士林</div>
+              <div class="category_inform">藝文館所</div>
+            </div>
+          </div> -->
         </div>
       </div>
     </div>
   </body>
-  <footer>
-    <div class="loadmore" id="myload">
-      <button onclick="getmore();">Load More</button>
-    </div>
+  <div class="loadmore" id="myload">
+    <button onclick="getmore();">Load More</button>
+  </div>
+  <footer class="footer">
+    <footer class="text">COPYRIGHT © 2021 台北一日遊</footer>
   </footer>
-  <script>
-    // 利用 fetch 進行連線並取得資料{
-    const keyword = document.getElementById("keyword").value; //查詢關鍵字 的輸入值
-    fetch(`/api/attraction?keyword=${keyword}`)
-      .then(function (response) {
-        return response.json();
-      })
-      .then(function (data) {
-        let array = [];
-        for (i = 0; i < 12; i++) {
-          let posts = data["data"][i];
-          // console.log(posts);
-          let text = posts["name"];
-          let names = "name" + i;
-          let title_left = posts["mrt"];
-          let mrt = "mrt" + i;
-          let title_right = posts["category"];
-          let categories = "category" + i;
-
-          console.log(names);
-          addtitle(text, names, title_left, mrt, title_right, categories);
-          console.log(posts["name"]); //景點名稱
-
-          let file = posts["images"][0];
-          let link = file;
-          let tags = "photo" + i;
-          console.log(link);
-          console.log(tags);
-          addphoto(link, tags);
-        }
-        function addtitle(
-          text,
-          names,
-          title_left,
-          mrt,
-          title_right,
-          categories
-        ) {
-          var theviewtitle = document.getElementById(names);
-          var _text = document.createTextNode(text);
-          theviewtitle.appendChild(_text);
-          var theviewtitle_left = document.getElementById(mrt);
-          var _text_left = document.createTextNode(title_left);
-          theviewtitle_left.appendChild(_text_left);
-          var theviewtitle_right = document.getElementById(categories);
-          var _text_right = document.createTextNode(title_right);
-          theviewtitle_right.appendChild(_text_right);
-        }
-
-        function addphoto(link, tags) {
-          var bigImg = document.getElementById(tags);
-          bigImg.src = link;
-          console.log(bigImg);
-
-          // var theviewphoto = document.getElementById(tags);
-          // theviewphoto.src = link;
-          // console.log(theviewphoto.src);
-        }
-
-        datalist = [
-          str(posts["name"]),
-          str(posts["mrt"]),
-          str(posts["category"]),
-          str(file),
-        ];
-        array.append(datalist);
-
-        // console.log(data);
-      });
-  </script>
+  <script src="fetch.js" charset="utf-8"></script>
 </html>

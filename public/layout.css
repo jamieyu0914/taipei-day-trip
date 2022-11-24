@@ -6,22 +6,9 @@ html {
   justify-content: center;
   justify-items: center;
 }
-.title-up {
-  color: #ffffff;
-  justify-content: end; /*水平置中*/
-  align-items: end;
-  vertical-align: top;
-  text-align: left;
-  position: relative; /*設定為相對位置*/
-  z-index: 999; /*設定重叠的上下次序，值越大月在上方*/
-  bottom: 24px; /*緊貼底部*/
-  width: 280px;
-  /* Additional Color/Black */
-  background: #000000;
-  opacity: 0.6;
-}
 .desktop-menu-left {
   color: #448899;
+  font-weight: bold;
   flex: none; /*固定配置*/
   margin: 10px;
   text-align: center;
@@ -42,6 +29,23 @@ html {
   flex: none; /*固定配置*/
   margin: 10px;
   text-align: center;
+
+  /* BUTTON */
+
+  /* Body - Med 16(13.3) */
+  font-family: "Noto Sans TC";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  /* identical to box height, or 83% */
+
+  /* Secondary Color/Gray 70 */
+  color: #666666;
+
+  /* Inside auto layout */
+  flex: none;
+  order: 0;
+  flex-grow: 0;
 }
 .mobile-menu {
   justify-content: flex-end; /*水平對齊靠右*/
@@ -60,23 +64,21 @@ html {
   justify-content: center;
   align-items: flex-start;
   padding: 0px;
-
   position: relative;
-  width: 1920px;
   height: 320px;
 
-  /* Light | Cyan Gradient (135deg) */
-  background: linear-gradient(135deg, #aaddee 0%, #66aabb 100%);
+  background-image: url(welcome.png);
 }
 .welcome {
-  /* welcome */
-  width: 1920px;
-  height: 480px;
-  /* Inside auto layout */
-  flex: none;
-  order: 0;
-  flex-grow: 0;
+  display: flex;
 }
+.search {
+  left: 0px;
+  top: 0px;
+  background: #448899;
+  justify-content: space-between;
+}
+
 .slogan {
   /* slogan */
 
@@ -84,14 +86,9 @@ html {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  padding: 10px;
-  gap: 10px;
-
   position: absolute;
-  width: 1200px;
-  height: 169px;
   left: 360px;
-  top: 129px;
+  top: 120px;
 
   /* Secondary Color/Gray 10 */
   color: #f8f8f8;
@@ -158,66 +155,70 @@ html {
   display: flex;
   justify-content: center; /*水平置中*/
 }
-.list-2 {
-  display: flex;
-  justify-content: center; /*水平置中*/
-}
-.list-block-1 {
+.list-block {
   display: flex;
   justify-content: center; /*水平置中*/
   align-items: center;
   flex-wrap: wrap;
   width: 1200px;
 }
-.list-block-2 {
-  display: flex;
-  justify-content: center; /*水平置中*/
-  align-items: center;
-  flex-wrap: wrap;
-  width: 1200px;
-}
-.promotion {
-  display: flex;
-  flex-wrap: wrap;
-  flex: auto;
-  width: 280px;
-  height: 50px;
+.card {
+  display: inline-block;
+  width: 270px;
   margin: 10px;
-  display: flex;
-  align-items: center;
-  background-color: rgb(204, 224, 240);
+  height: 197px;
+  padding-bottom: 20px;
 }
-.img {
+.card_inform {
   display: flex;
-  flex-wrap: wrap;
-  flex: auto;
-  align-self: flex-start;
-  vertical-align: bottom;
-  padding-bottom: 56%;
+  justify-content: space-between;
+}
+.image_container {
+  position: relative;
+  height: 100%;
+}
+.photo_mask {
+  position: absolute;
+  left: 0px;
+  bottom: 0px;
+  background: black;
+  width: 100%;
+  height: 30px;
+  opacity: 0.6;
+}
+.photo {
   width: 100%;
   position: relative;
+  height: 100%;
+  background-size: contain;
 }
-.title-item {
-  display: inline-block;
-  flex-wrap: wrap;
-  width: 280px;
-  margin: 10px;
-  justify-content: center; /*水平置中*/
-  align-items: center;
-  vertical-align: top;
+.mask_title {
+  color: #ffffff;
+  font-size: 0.8em;
+  bottom: 0px;
+  position: absolute;
+  left: 0px;
+  padding: 1%;
 }
 
 .title-left {
-  justify-content: center;
+  /* 忠孝復興 */
+  position: absolute;
+  width: 125px;
+  height: 25px;
+  left: 0px;
+  top: 0px;
+  /* Body - Med 16(13.3) */
+  font-family: "Noto Sans TC";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 13px;
+  /* or 83% */
+  display: flex;
   align-items: center;
-  text-align: left;
-  width: 100%;
-  max-height: 25px;
-  position: relative;
-  z-index: 999;
-  background-color: rgb(204, 224, 240);
-  padding-block-end: 30px;
-  padding-block-start: 30px;
+  /* Secondary Color/Gray 50 */
+  color: #757575;
 }
 
 .title-right {
@@ -254,30 +255,46 @@ html {
   z-index: 100;
 }
 
-button {
-  font-size: 20px;
+button.search-button {
+  background-image: url(icon_search.png);
+  height: 30px;
+  width: 30px;
+  background-color: #489;
+  vertical-align: middle;
 }
 
+.footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  left: 0px;
+  background: #757575;
+  justify-content: center;
+  height: 104px;
+}
+.footer .text {
+  /* Body - Bold 16(13.3) */
+  font-family: "Noto Sans TC";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 13px;
+  color: #ffffff;
+}
 @media (max-width: 1200px) {
   /* 螢幕寬度小於 1200px, 套用這個區塊的 css*/
   .menu {
     flex-wrap: wrap;
   }
-  .promotion {
-    width: 45%;
-  }
 
-  .list-block-1 {
-    width: 90%;
-  }
-
-  .list-block-2 {
+  .list-block {
     width: 95%;
   }
 
-  .img {
+  /* .img {
     width: 100%;
-  }
+  } */
 
   .image {
     width: 100%;
@@ -289,11 +306,6 @@ button {
   .title {
     width: 100%;
   }
-
-  .title-item {
-    width: 42.5vw;
-    height: 35.5vw;
-  }
 }
 
 @media (max-width: 600px) {
@@ -302,11 +314,11 @@ button {
     flex-wrap: wrap;
   }
   .desktop-menu-left {
-    display: grid;
+    display: flex;
     align-content: center;
   }
   .desktop-menu-right {
-    display: none;
+    display: flex;
   }
   .mobile-menu {
     display: block;
@@ -317,24 +329,20 @@ button {
     /* Auto layout */
     display: flex;
     flex-direction: row;
-    align-items: flex-end;
+    align-items: center;
     padding: 0px;
 
     position: relative;
     width: 360px;
     height: 320px;
 
-    /* Light | Cyan Gradient (135deg) */
-    background: linear-gradient(135deg, #aaddee 0%, #66aabb 100%);
+    background-image: url(welcome-m.png);
   }
-  .promotion {
-    width: 90%;
-  }
-  .list-block-1 {
-    width: 90%;
+  .slogan {
+    position: unset;
   }
 
-  .list-block-2 {
+  .list-block {
     width: 95%;
   }
 
@@ -349,12 +357,5 @@ button {
 
   .title {
     width: 90vw;
-  }
-
-  .title-item {
-    width: 90vw;
-    height: 45vh;
-    min-width: 70vw;
-    max-height: 70vw;
   }
 }
