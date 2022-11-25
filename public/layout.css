@@ -77,6 +77,8 @@ html {
   top: 0px;
   background: #448899;
   justify-content: space-between;
+  display: flex;
+  align-items: center;
 }
 
 .slogan {
@@ -157,17 +159,18 @@ html {
 }
 .list-block {
   display: flex;
-  justify-content: center; /*水平置中*/
+  justify-content: left;
   align-items: center;
   flex-wrap: wrap;
   width: 1200px;
+  margin-bottom: 20px;
 }
 .card {
   display: inline-block;
   width: 270px;
   margin: 10px;
   height: 197px;
-  padding-bottom: 20px;
+  padding: 5px;
 }
 .card_inform {
   display: flex;
@@ -260,7 +263,6 @@ button.search-button {
   height: 30px;
   width: 30px;
   background-color: #489;
-  vertical-align: middle;
 }
 
 .footer {

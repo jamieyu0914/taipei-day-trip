@@ -24,21 +24,21 @@
         </div>
       </div>
 
-      <div class="headline">
+      <div class="headline" id="headline">
         <!--搜尋欄-->
         <div class="slogan">
           <text-title>輕鬆享受台北一日悠閒</text-title>
           <text-subtitle>探索每個角落，體驗城市的深度旅遊行程</text-subtitle>
           <div class="search">
-            <form action="/api/attraction" method="GET">
+            <form>
               <input
                 type="text"
                 name="keyword"
                 id="keyword"
                 style="height: 30px"
               />
-              <button class="search-button"></button>
             </form>
+            <button class="search-button" onclick="getsearchdata()"></button>
           </div>
         </div>
       </div>
@@ -65,9 +65,6 @@
       </div>
     </div>
   </body>
-  <div class="loadmore" id="myload">
-    <button onclick="getmore();">Load More</button>
-  </div>
   <footer class="footer">
     <footer class="text">COPYRIGHT © 2021 台北一日遊</footer>
   </footer>
