@@ -26,24 +26,34 @@
 
       <div class="headline" id="headline">
         <!--搜尋欄-->
-        <div class="slogan">
-          <text-title>輕鬆享受台北一日悠閒</text-title>
-          <text-subtitle>探索每個角落，體驗城市的深度旅遊行程</text-subtitle>
-          <div class="search">
-            <form>
-              <input
-                type="text"
-                name="keyword"
-                id="keyword"
-                style="height: 30px"
-              />
-            </form>
-            <button class="search-button" onclick="getsearchdata()"></button>
-          </div>
-        </div>
       </div>
 
       <div class="list">
+        <div class="slogan">
+          <text-title class="text-title">輕鬆享受台北一日悠閒</text-title>
+          <text-subtitle class="text-subtitle"
+            >探索每個角落，體驗城市的深度旅遊行程</text-subtitle
+          >
+          <div class="search">
+            <input
+              type="text"
+              name="keyword"
+              id="keyword"
+              placeholder="輸入景點名稱查詢"
+              onclick="categoryview()"
+              style="
+                height: 30px;
+                font-family: Noto Sans TC;
+                font-weight: 700;
+                border: 0px;
+                border-top-left-radius: 5px;
+                border-bottom-left-radius: 5px;
+              "
+            />
+            <div class="blocker" onclick="hideview()"></div>
+            <button class="search-button" onclick="getsearchdata()"></button>
+          </div>
+        </div>
         <!--中央列表 下半區-->
         <div class="list-block">
           <!-- <div class="card">

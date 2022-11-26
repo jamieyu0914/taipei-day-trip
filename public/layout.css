@@ -16,7 +16,7 @@ html {
   position: absolute;
   width: 150px;
   height: 34px;
-  left: 0px;
+  left: 100px;
   top: 0px;
 }
 .desktop-menu-right {
@@ -26,26 +26,19 @@ html {
   flex: auto;
 }
 .item {
-  flex: none; /*固定配置*/
   margin: 10px;
   text-align: center;
-
-  /* BUTTON */
-
-  /* Body - Med 16(13.3) */
   font-family: "Noto Sans TC";
   font-style: normal;
   font-weight: 500;
   font-size: 16px;
-  /* identical to box height, or 83% */
-
-  /* Secondary Color/Gray 70 */
   color: #666666;
-
-  /* Inside auto layout */
-  flex: none;
   order: 0;
   flex-grow: 0;
+  border: 0px;
+  background-color: #ffffff;
+  position: relative;
+  right: 100px;
 }
 .mobile-menu {
   justify-content: flex-end; /*水平對齊靠右*/
@@ -68,37 +61,33 @@ html {
   height: 320px;
 
   background-image: url(welcome.png);
+  background-position: center;
 }
 .welcome {
   display: flex;
 }
 .search {
   left: 0px;
-  top: 0px;
+  top: 100px;
   background: #448899;
   justify-content: space-between;
   display: flex;
   align-items: center;
+  border-radius: 5px;
+  position: absolute;
 }
 
 .slogan {
-  /* slogan */
-
-  /* Auto layout */
-  display: flex;
+  display: inline-flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: first baseline;
   position: absolute;
-  left: 360px;
-  top: 120px;
-
-  /* Secondary Color/Gray 10 */
+  left: 140px;
+  top: 140px;
   color: #f8f8f8;
-
-  /* Text Shadow */
   text-shadow: 0px 0px 30px #aabbcc;
 }
-.slogan .text-title {
+.text-title {
   /* 輕鬆享受台北一日悠閒 */
 
   position: absolute;
@@ -116,8 +105,15 @@ html {
   /* or 86% */
   display: flex;
   align-items: center;
+
+  /* Secondary Color/Gray 10 */
+  color: #f8f8f8;
+
+  /* Text Shadow */
+  text-shadow: 0px 0px 30px #aabbcc;
 }
-.slogan .subtilte {
+
+.text-subtitle {
   /* 探索每個角落，體驗城市的深度旅遊行程 */
 
   position: absolute;
@@ -135,6 +131,9 @@ html {
   /* or 83% */
   display: flex;
   align-items: center;
+
+  /* Secondary Color/Gray 10 */
+  color: #f8f8f8;
 }
 .button {
   position: absolute;
@@ -164,17 +163,20 @@ html {
   flex-wrap: wrap;
   width: 1200px;
   margin-bottom: 20px;
+  margin-top: 20px;
 }
 .card {
   display: inline-block;
   width: 270px;
   margin: 10px;
   height: 197px;
-  padding: 5px;
+  padding-bottom: 30px;
 }
 .card_inform {
   display: flex;
   justify-content: space-between;
+  border-radius: 5px;
+  border: 1px solid #e8e8e8;
 }
 .image_container {
   position: relative;
@@ -194,6 +196,8 @@ html {
   position: relative;
   height: 100%;
   background-size: contain;
+  border-radius: 5px;
+  border: 1px solid #e8e8e8;
 }
 .mask_title {
   color: #ffffff;
@@ -263,6 +267,63 @@ button.search-button {
   height: 30px;
   width: 30px;
   background-color: #489;
+  border-radius: 5px;
+  border: 0px;
+}
+
+.categoryview {
+  flex-wrap: wrap;
+  position: absolute;
+  width: 400px;
+  left: 0px;
+  top: 35px;
+  background: #ffffff;
+  box-shadow: 0px 0px 20px #aabbcc;
+  border-radius: 5px;
+  color: #000000;
+  display: none;
+  z-index: 999;
+}
+
+.categoryitem {
+  /* 單車遊蹤 */
+  width: 120px;
+  height: 40px;
+  font-family: "Noto Sans TC";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  color: #000000;
+  background-color: #ffffff;
+  border-radius: 5px;
+  border: 0px;
+  justify-content: flex-start;
+}
+
+.categoryitem_text {
+  display: flex;
+  flex: fit-content;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.categoryitem:hover {
+  background-color: #e8e8e8;
+}
+
+.blocker {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  content: " ";
+  background: rgba(0, 0, 0, 0);
+  display: none;
 }
 
 .footer {
@@ -291,12 +352,11 @@ button.search-button {
   }
 
   .list-block {
-    width: 95%;
+    display: inline-block;
+    justify-content: left;
+    align-items: center;
+    width: 90%;
   }
-
-  /* .img {
-    width: 100%;
-  } */
 
   .image {
     width: 100%;
@@ -341,7 +401,8 @@ button.search-button {
     background-image: url(welcome-m.png);
   }
   .slogan {
-    position: unset;
+    position: absolute;
+    left: 20px;
   }
 
   .list-block {
