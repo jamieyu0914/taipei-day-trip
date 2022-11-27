@@ -5,6 +5,11 @@ html {
   display: flex;
   justify-content: center;
   justify-items: center;
+  position: fixed;
+  z-index: 999;
+  margin-top: 0;
+  background-color: #ffffff;
+  width: 1920px;
 }
 .desktop-menu-left {
   color: #448899;
@@ -12,18 +17,26 @@ html {
   flex: none; /*固定配置*/
   margin: 10px;
   text-align: center;
-  text-align: center;
   position: absolute;
-  width: 150px;
-  height: 34px;
-  left: 100px;
+  left: 18vw;
   top: 0px;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 1200px;
+  margin-bottom: 20px;
 }
 .desktop-menu-right {
   color: #666666;
-  display: flex;
-  justify-content: flex-end; /*水平對齊靠右*/
   flex: auto;
+  display: flex;
+  justify-content: right;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 1200px;
+  padding-right: 300px;
+  z-index: 999;
 }
 .item {
   margin: 10px;
@@ -75,6 +88,7 @@ html {
   align-items: center;
   border-radius: 5px;
   position: absolute;
+  width: 460px;
 }
 
 .slogan {
@@ -82,7 +96,7 @@ html {
   flex-direction: column;
   align-items: first baseline;
   position: absolute;
-  left: 140px;
+  width: 1200px;
   top: 140px;
   color: #f8f8f8;
   text-shadow: 0px 0px 30px #aabbcc;
@@ -100,7 +114,7 @@ html {
   font-family: "Noto Sans TC";
   font-style: normal;
   font-weight: 700;
-  font-size: 28px;
+  font-size: 30px;
   line-height: 24px;
   /* or 86% */
   display: flex;
@@ -164,6 +178,8 @@ html {
   width: 1200px;
   margin-bottom: 20px;
   margin-top: 20px;
+  justify-content: left;
+  align-items: center;
 }
 .card {
   display: inline-block;
@@ -192,20 +208,47 @@ html {
   opacity: 0.6;
 }
 .photo {
-  width: 100%;
+  width: 268px;
   position: relative;
-  height: 100%;
+  height: 195px;
   background-size: contain;
   border-radius: 5px;
   border: 1px solid #e8e8e8;
 }
 .mask_title {
   color: #ffffff;
-  font-size: 0.8em;
-  bottom: 0px;
+  font-size: 16px;
+  bottom: 2px;
   position: absolute;
   left: 0px;
-  padding: 1%;
+  padding-left: 10px;
+  font-family: Noto Sans TC;
+}
+.keyword {
+  height: 30px;
+  width: 400px;
+  font-family: Noto Sans TC;
+  font-weight: 700;
+  border: 0px;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+.category_inform {
+  color: #000000;
+  font-size: 16px;
+  bottom: 2px;
+  left: 0px;
+  padding-right: 10px;
+  font-family: Noto Sans TC;
+}
+
+.mrt_inform {
+  color: #000000;
+  font-size: 16px;
+  bottom: 2px;
+  left: 0px;
+  padding-left: 10px;
+  font-family: Noto Sans TC;
 }
 
 .title-left {
@@ -262,13 +305,15 @@ html {
   z-index: 100;
 }
 
-button.search-button {
+.search-button {
   background-image: url(icon_search.png);
   height: 30px;
   width: 30px;
   background-color: #489;
   border-radius: 5px;
   border: 0px;
+  position: absolute;
+  left: 420px;
 }
 
 .categoryview {
@@ -358,6 +403,20 @@ button.search-button {
     width: 90%;
   }
 
+  .desktop-menu-left {
+    padding-left: 0px;
+  }
+
+  .desktop-menu-right {
+    justify-content: left;
+    padding-left: 70vw;
+  }
+
+  .slogan {
+    width: 90%;
+    left: 15vw;
+  }
+
   .image {
     width: 100%;
     min-width: 30vw;
@@ -374,13 +433,25 @@ button.search-button {
   /*螢幕寬度小於 360px, 套用這個區塊的 css*/
   .menu {
     flex-wrap: wrap;
+    background-color: #fff;
   }
   .desktop-menu-left {
-    display: flex;
-    align-content: center;
+    background-color: #fff;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    margin-top: 0px;
+    margin-left: -100px;
+    padding-left: 50px;
   }
   .desktop-menu-right {
     display: flex;
+    color: #448899;
+    font-weight: bold;
+    position: fixed;
+    left: 170px;
+    justify-content: left;
+    background-color: #fff;
+    padding-left: 0px;
   }
   .mobile-menu {
     display: block;
@@ -402,17 +473,36 @@ button.search-button {
   }
   .slogan {
     position: absolute;
+    top: 130px;
     left: 20px;
+  }
+
+  .search {
+    width: 285px;
+    height: 46px;
   }
 
   .list-block {
     width: 95%;
   }
 
+  .item {
+    right: 5px;
+    top: 2px;
+  }
+
   .img {
     width: 100%;
   }
+  .keyword {
+    width: 230px;
+    height: 46px;
+  }
 
+  .search-button {
+    position: absolute;
+    left: 245px;
+  }
   .image {
     width: 90vw;
     height: 55vw;
