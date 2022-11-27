@@ -166,6 +166,13 @@ function getmoredata() {
         let array = [];
         nextPage = data["nextPage"];
         console.log(nextPage);
+
+        if (nextPage == null) {
+          isLoading = "done";
+          console.log("THE END!");
+          return;
+        }
+
         for (i = 0; i < 12; i++) {
           let posts = data["data"][i];
           // console.log(posts);
@@ -220,13 +227,19 @@ function getmoredata() {
           newcard[0].appendChild(_card_div);
         }
         // console.log(data["data"]);
+      })
+      .then(() => {
+        if (isLoading == "done") {
+          console.log("done here!!!!!");
+          return;
+        } else {
+          setTimeout(() => {
+            isLoading = false;
+          }, 1000); // 1 second
+          console.log("Time" + isLoading);
+        }
       });
-  } else {
-    isLoading = true;
-    console.log("THE END!");
-    return;
   }
-  isLoading = false;
 }
 
 function getsearchdata() {
@@ -316,6 +329,7 @@ window.addEventListener("scroll", function once(e) {
   if ((top <= window.innerHeight) & (isLoading == false)) {
     here = 1;
     console.log("元素底端已進入畫面");
+    console.log("Time" + isLoading);
     getmoredata();
   } else {
     return;
