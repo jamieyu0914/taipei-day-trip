@@ -242,6 +242,11 @@ function getmoredata() {
   }
 }
 
+if (nextPage == null) {
+  isLoading == "done";
+  console.log("done here!!!!!");
+}
+
 function getsearchdata() {
   //清空舊資料
   let rest = document.querySelector(".list-block");
@@ -331,6 +336,7 @@ window.addEventListener("scroll", function once(e) {
     console.log("元素底端已進入畫面");
     console.log("Time" + isLoading);
     getmoredata();
+    console.log("Hello" + isLoading);
   } else {
     return;
   }
