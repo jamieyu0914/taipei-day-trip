@@ -167,12 +167,6 @@ function getmoredata() {
         nextPage = data["nextPage"];
         console.log(nextPage);
 
-        if (nextPage == null) {
-          isLoading = "done";
-          console.log("THE END!");
-          return;
-        }
-
         for (i = 0; i < 12; i++) {
           let posts = data["data"][i];
           // console.log(posts);
@@ -229,7 +223,8 @@ function getmoredata() {
         // console.log(data["data"]);
       })
       .then(() => {
-        if (isLoading == "done") {
+        if (nextPage == null) {
+          isLoading == "done";
           console.log("done here!!!!!");
           return;
         } else {

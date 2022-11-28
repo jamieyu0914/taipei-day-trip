@@ -490,34 +490,40 @@ html {
 }
 
 @media (max-width: 600px) {
-  .mytext {
-    margin: 0px;
+  .desktop-menu-left {
+    padding: 10px;
+    width: 150px;
   }
 
-  .desktop-menu-left {
-    padding-left: 16vw;
-    padding-top: 10px;
+  .mytext {
+    margin: 0px;
+    width: 150px;
+    padding: 0px;
   }
 
   .desktop-menu-right {
-    padding-right: 13.5vw;
-    padding-top: 7px;
+    padding: 10px;
+  }
+
+  .item {
+    margin: 0px;
   }
 
   .slogan {
     position: absolute;
-    top: 130px;
-    /* left: 20px; */
-    width: 0px;
-    left: 15vw;
+    width: 320px;
+    left: 10px;
+    padding-left: 0px;
   }
 
   .text-title {
-    max-width: fit-content;
+    width: 320px;
+    max-width: none;
   }
 
   .text-subtitle {
-    max-width: fit-content;
+    max-width: none;
+    width: 320px;
   }
   .search {
     width: 285px;
