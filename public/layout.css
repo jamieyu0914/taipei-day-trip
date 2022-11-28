@@ -433,6 +433,7 @@ html {
     padding-left: 81vw;
     left: 9vw;
     max-width: 1200px;
+    width: fit-content;
   }
 
   .text-title {
@@ -450,6 +451,7 @@ html {
     color: #f8f8f8;
     text-shadow: 0px 0px 30px #aabbcc;
     left: 10px;
+    max-width: fit-content;
   }
 
   .text-subtitle {
@@ -466,6 +468,7 @@ html {
     align-items: center;
     color: #f8f8f8;
     left: 10px;
+    max-width: fit-content;
   }
 
   .item {
@@ -492,12 +495,12 @@ html {
   }
 
   .desktop-menu-left {
-    padding-left: 13vw;
+    padding-left: 16vw;
     padding-top: 10px;
   }
 
   .desktop-menu-right {
-    padding-right: 10vw;
+    padding-right: 13.5vw;
     padding-top: 7px;
   }
 
@@ -506,7 +509,7 @@ html {
     top: 130px;
     /* left: 20px; */
     width: 0px;
-    left: 12vw;
+    left: 15vw;
   }
 
   .text-title {
