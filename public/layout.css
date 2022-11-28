@@ -1,31 +1,41 @@
 html {
   font-size: 125%;
 }
+.mymenu {
+  display: flex;
+  justify-content: center;
+  width: 100vw;
+  height: 54px;
+  z-index: 999;
+  background: white;
+  position: fixed;
+}
 .menu {
   display: flex;
   justify-content: center;
   justify-items: center;
   position: fixed;
-  z-index: 999;
-  margin-top: 0;
-  background-color: #ffffff;
-  width: 1920px;
+  width: 1200px;
+  margin: auto;
 }
 .desktop-menu-left {
-  color: #448899;
-  font-weight: bold;
-  flex: none; /*固定配置*/
-  margin: 10px;
-  text-align: center;
-  position: absolute;
-  left: 18vw;
-  top: 0px;
+  /* 台北一日遊 */
   display: flex;
-  justify-content: left;
+  justify-content: flex-start;
   align-items: center;
-  flex-wrap: wrap;
-  width: 1200px;
-  margin-bottom: 20px;
+  flex: auto;
+
+  /* Header 2 - Bold 30(34) */
+  font-family: "Noto Sans TC";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 34px;
+  /* identical to box height, or 113% */
+
+  /* Primary Color/Cyan 70 */
+  color: #448899;
+  padding-top: 5px;
 }
 .desktop-menu-right {
   color: #666666;
@@ -33,12 +43,14 @@ html {
   display: flex;
   justify-content: right;
   align-items: center;
-  flex-wrap: wrap;
-  width: 1200px;
-  padding-right: 300px;
   z-index: 999;
+  padding-top: 2px;
+}
+.mytext {
+  margin: 10px;
 }
 .item {
+  flex: none; /*固定配置*/
   margin: 10px;
   text-align: center;
   font-family: "Noto Sans TC";
@@ -46,22 +58,8 @@ html {
   font-weight: 500;
   font-size: 16px;
   color: #666666;
-  order: 0;
-  flex-grow: 0;
   border: 0px;
   background-color: #ffffff;
-  position: relative;
-  right: 100px;
-}
-.mobile-menu {
-  justify-content: flex-end; /*水平對齊靠右*/
-  flex: auto;
-  display: none;
-}
-.mobile-menu-icon {
-  float: right;
-  display: flex;
-  align-items: center;
 }
 .headline {
   /* Auto layout */
@@ -75,6 +73,7 @@ html {
 
   background-image: url(welcome.png);
   background-position: center;
+  top: 45px;
 }
 .welcome {
   display: flex;
@@ -89,6 +88,7 @@ html {
   border-radius: 5px;
   position: absolute;
   width: 460px;
+  left: 10px;
 }
 
 .slogan {
@@ -125,6 +125,7 @@ html {
 
   /* Text Shadow */
   text-shadow: 0px 0px 30px #aabbcc;
+  left: 10px;
 }
 
 .text-subtitle {
@@ -148,6 +149,7 @@ html {
 
   /* Secondary Color/Gray 10 */
   color: #f8f8f8;
+  left: 10px;
 }
 .button {
   position: absolute;
@@ -168,18 +170,24 @@ html {
 }
 .list {
   display: flex;
-  justify-content: center; /*水平置中*/
+  justify-content: center;
+  margin-top: 45px;
+}
+.mylist {
+  display: flex;
+  justify-content: center;
+  justify-items: center;
+  width: 1200px;
 }
 .list-block {
   display: flex;
-  justify-content: left;
-  align-items: center;
   flex-wrap: wrap;
   width: 1200px;
   margin-bottom: 20px;
   margin-top: 20px;
-  justify-content: left;
+  justify-content: flex-start;
   align-items: center;
+  column-gap: 13px;
 }
 .card {
   display: inline-block;
@@ -211,7 +219,7 @@ html {
   width: 268px;
   position: relative;
   height: 195px;
-  background-size: contain;
+  background-size: cover;
   border-radius: 5px;
   border: 1px solid #e8e8e8;
 }
@@ -284,7 +292,7 @@ html {
   padding-block-start: 30px;
 }
 
-.desktop-menu {
+.desktop-view {
   text-align: center;
   display: block;
 }
@@ -390,31 +398,80 @@ html {
   line-height: 13px;
   color: #ffffff;
 }
+
 @media (max-width: 1200px) {
   /* 螢幕寬度小於 1200px, 套用這個區塊的 css*/
-  .menu {
-    flex-wrap: wrap;
-  }
 
   .list-block {
-    display: inline-block;
-    justify-content: left;
+    display: flex;
+    justify-content: center;
     align-items: center;
     width: 90%;
   }
 
+  .menu {
+    width: 100vw;
+  }
+
   .desktop-menu-left {
-    padding-left: 0px;
+    padding-left: 9vw;
+    padding-top: 5px;
   }
 
   .desktop-menu-right {
-    justify-content: left;
-    padding-left: 70vw;
+    padding-right: 9vw;
+    padding-top: 2px;
   }
 
   .slogan {
-    width: 90%;
-    left: 15vw;
+    display: inline-flex;
+    flex-direction: column;
+    position: absolute;
+    top: 140px;
+    color: #f8f8f8;
+    text-shadow: 0px 0px 30px #aabbcc;
+    padding-left: 81vw;
+    left: 9vw;
+    max-width: 1200px;
+  }
+
+  .text-title {
+    position: absolute;
+    height: 41px;
+    left: 0px;
+    top: 0px;
+    font-family: "Noto Sans TC";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 24px;
+    display: flex;
+    align-items: center;
+    color: #f8f8f8;
+    text-shadow: 0px 0px 30px #aabbcc;
+    left: 10px;
+  }
+
+  .text-subtitle {
+    position: absolute;
+    height: 22px;
+    left: 0px;
+    top: 56px;
+    font-family: "Noto Sans TC";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 13px;
+    display: flex;
+    align-items: center;
+    color: #f8f8f8;
+    left: 10px;
+  }
+
+  .item {
+    flex: none; /*固定配置*/
+    margin: 10px;
+    text-align: center;
   }
 
   .image {
@@ -430,69 +487,55 @@ html {
 }
 
 @media (max-width: 600px) {
-  /*螢幕寬度小於 360px, 套用這個區塊的 css*/
-  .menu {
-    flex-wrap: wrap;
-    background-color: #fff;
+  .mytext {
+    margin: 0px;
   }
+
   .desktop-menu-left {
-    background-color: #fff;
-    padding-top: 8px;
-    padding-bottom: 8px;
-    margin-top: 0px;
-    margin-left: -100px;
-    padding-left: 50px;
+    padding-left: 13vw;
+    padding-top: 10px;
   }
+
   .desktop-menu-right {
-    display: flex;
-    color: #448899;
-    font-weight: bold;
-    position: fixed;
-    left: 170px;
-    justify-content: left;
-    background-color: #fff;
-    padding-left: 0px;
+    padding-right: 10vw;
+    padding-top: 7px;
   }
-  .mobile-menu {
-    display: block;
-  }
-  .headline {
-    /* [Mobile] Hero section */
 
-    /* Auto layout */
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    padding: 0px;
-
-    position: relative;
-    width: 360px;
-    height: 320px;
-
-    background-image: url(welcome-m.png);
-  }
   .slogan {
     position: absolute;
     top: 130px;
-    left: 20px;
+    /* left: 20px; */
+    width: 0px;
+    left: 12vw;
   }
 
+  .text-title {
+    max-width: fit-content;
+  }
+
+  .text-subtitle {
+    max-width: fit-content;
+  }
   .search {
     width: 285px;
     height: 46px;
   }
 
-  .list-block {
-    width: 95%;
+  .photo {
+    width: 321px;
+    position: relative;
+    height: 235px;
+    border-radius: 5px;
+    border: 1px solid #e8e8e8;
   }
 
-  .item {
-    right: 5px;
-    top: 2px;
-  }
-
-  .img {
-    width: 100%;
+  .card {
+    display: inline-block;
+    width: 321px;
+    margin: 10px;
+    height: 235px;
+    padding-bottom: 30px;
+    background-size: cover;
   }
   .keyword {
     width: 230px;
@@ -502,13 +545,5 @@ html {
   .search-button {
     position: absolute;
     left: 245px;
-  }
-  .image {
-    width: 90vw;
-    height: 55vw;
-  }
-
-  .title {
-    width: 90vw;
   }
 }
