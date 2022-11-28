@@ -169,6 +169,11 @@ function getmoredata() {
 
         for (i = 0; i < 12; i++) {
           let posts = data["data"][i];
+          if (posts == undefined) {
+            isLoading == "done";
+            console.log("done here!!!!!");
+            return;
+          }
           // console.log(posts);
           let title_name = posts["name"];
           let title_mrt = posts["mrt"];

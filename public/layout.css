@@ -402,11 +402,19 @@ html {
 @media (max-width: 1200px) {
   /* 螢幕寬度小於 1200px, 套用這個區塊的 css*/
 
-  .list-block {
+  .mylist {
+    width: 100vw;
     display: flex;
     justify-content: center;
+    justify-items: center;
+  }
+
+  .list-block {
+    display: flex;
     align-items: center;
     width: 90%;
+    justify-content: flex-start;
+    padding-left: 5vw;
   }
 
   .menu {
@@ -490,6 +498,17 @@ html {
 }
 
 @media (max-width: 600px) {
+  .list-block {
+    padding-right: 10vw;
+  }
+
+  .mylist {
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    justify-items: center;
+  }
+
   .desktop-menu-left {
     padding: 10px;
     width: 150px;
