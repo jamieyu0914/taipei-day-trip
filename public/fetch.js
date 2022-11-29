@@ -118,6 +118,9 @@ getdata();
 getcategory();
 
 function categoryview() {
+  const thetext = document.querySelector(".inputtext");
+  thetext.style.display = "none";
+
   const blocker = document.querySelector(".blocker");
   blocker.style.display = "flex";
 
@@ -140,7 +143,12 @@ function categoryview() {
       let _input = document.querySelector("#keyword");
       _input.setAttribute("value", inputblock);
 
-      view.style.display = "none";
+      const viewblock = document.querySelector(".categoryview");
+      viewblock.style.display = "none";
+
+      const view = document.querySelector("#keyword");
+      view.style.cssText = "padding-left:10px";
+      view.appendChild(view.style.cssText);
     });
   }
 }
