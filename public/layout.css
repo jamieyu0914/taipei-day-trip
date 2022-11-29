@@ -1,15 +1,456 @@
-header {
-  justify-content: center;
-  align-items: center;
-  height: 100px;
-  line-height: 100px;
-  color: #ffffff;
-  font-size: 2em;
-  font-weight: bold;
-  background-color: #223344;
+html {
+  font-size: 125%;
+}
+.desktop-view {
   text-align: center;
+  display: block;
+}
+.mymenu {
+  display: flex;
+  justify-content: center;
+  width: 100vw;
+  height: 54px;
+  z-index: 999;
+  background: white;
+  position: fixed;
+}
+.menu {
+  display: flex;
+  justify-content: space-between;
+  justify-items: center;
+  position: fixed;
+  width: 1200px;
+  margin: auto;
+}
+.desktop-menu-left {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex: auto;
+  font-family: "Noto Sans TC";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 34px;
+  color: #448899;
+  width: 600px;
+  height: 54px;
+}
+.mytext {
+  margin: 10px;
+}
+.desktop-menu-right {
+  width: 600px;
+  color: #666666;
+  flex: auto;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  z-index: 999;
+  height: 54px;
+}
+.item {
+  flex: none; /*固定配置*/
+  margin: 10px;
+  text-align: center;
+  font-family: "Noto Sans TC";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  color: #666666;
+  border: 0px;
+  background-color: #ffffff;
+}
+.headline {
+  /* Auto layout */
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 0px;
+  position: relative;
+  height: 320px;
+  background-image: url(welcome.png);
+  background-position: top;
+  background-size: cover;
+  top: 54px;
+}
+.list {
+  display: flex;
+  justify-content: center;
+  margin-top: 54px;
+}
+.slogan {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: first baseline;
+  position: absolute;
+  width: 1200px;
+  top: 140px;
+  color: #f8f8f8;
+  text-shadow: 0px 0px 30px #aabbcc;
+  margin-left: 10px;
+}
+.text-title {
+  position: absolute;
+  width: 1180px;
+  height: 41px;
+  left: 0px;
+  top: 0px;
+  font-family: "Noto Sans TC";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 24px;
+  display: flex;
+  align-items: center;
+  color: #f8f8f8;
+  text-shadow: 0px 0px 30px #aabbcc;
+  left: 10px;
+}
+.text-subtitle {
+  position: absolute;
+  width: 1180px;
+  height: 22px;
+  left: 0px;
+  top: 56px;
+  font-family: "Noto Sans TC";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 13px;
+  display: flex;
+  align-items: center;
+  color: #f8f8f8;
+  left: 10px;
+}
+.search {
+  top: 100px;
+  background: #448899;
+  justify-content: space-between;
+  display: flex;
+  align-items: center;
+  border-radius: 5px;
+  position: absolute;
+  width: 460px;
+  left: 10px;
+}
+.keyword {
+  width: 396px;
+  font-family: Noto Sans TC;
+  font-weight: 700;
+  border: 0px;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  height: 44px;
+}
+.inputtext {
+  position: absolute;
+  width: 370px;
+  height: 16px;
+  font-family: "Noto Sans TC";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 13px;
+  display: flex;
+  align-items: center;
+  color: #757575;
+  padding: 15px;
+}
+.blocker {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  content: " ";
+  background: rgba(0, 0, 0, 0);
+  display: none;
+}
+.search-button {
+  background-image: url(icon_search.png);
+  height: 30px;
+  width: 30px;
+  background-color: #489;
+  border-radius: 5px;
+  border: 0px;
+  position: absolute;
+  left: 420px;
+}
+.categoryview {
+  flex-wrap: wrap;
+  position: absolute;
+  width: 400px;
+  left: 0px;
+  top: 51px;
+  background: #ffffff;
+  box-shadow: 0px 0px 20px #aabbcc;
+  border-radius: 5px;
+  color: #000000;
+  display: none;
+  z-index: 999;
+}
+.categoryitem {
+  width: 120px;
+  height: 40px;
+  font-family: "Noto Sans TC";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  color: #000000;
+  background-color: #ffffff;
+  border-radius: 5px;
+  border: 0px;
+  justify-content: flex-start;
+}
+.categoryitem_text {
+  display: flex;
+  flex: fit-content;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.categoryitem:hover {
+  background-color: #e8e8e8;
+}
+.mylist {
+  display: flex;
+  justify-content: center;
+  justify-items: center;
+  width: 1200px;
+}
+.list-block {
+  display: flex;
+  flex-wrap: wrap;
+  width: 1200px;
+  margin-bottom: 30px;
+  margin-top: 30px;
+  justify-content: flex-start;
+  align-items: center;
+}
+.card {
+  display: inline-block;
+  width: 270px;
+  margin: 15px;
+}
+.image_container {
+  position: relative;
+  height: 100%;
+}
+.photo {
+  width: 268px;
+  position: relative;
+  height: 195px;
+  background-size: cover;
+  border-radius: 5px;
+  border: 1px solid #e8e8e8;
+}
+.photo_mask {
+  position: absolute;
+  left: 0px;
+  bottom: 0px;
+  background: black;
+  width: 100%;
+  height: 40px;
+  opacity: 0.6;
+}
+.mask_title {
+  color: #ffffff;
+  font-size: 16px;
+  bottom: 0px;
+  position: absolute;
+  left: 0px;
+  padding: 10px;
+  font-family: Noto Sans TC;
+  width: 250px;
+  height: 20px;
+  text-align: left;
+}
+.card_inform {
+  display: flex;
+  justify-content: space-evenly;
+  border-radius: 5px;
+  border: 1px solid #e8e8e8;
+  height: 43px;
+}
+.mrt_inform {
+  color: #000000;
+  font-size: 16px;
+  left: 0px;
+  padding: 10px;
+  font-family: Noto Sans TC;
+  width: 125px;
+  text-align: left;
+  height: 25px;
+}
+.category_inform {
+  color: #000000;
+  font-size: 16px;
+  left: 0px;
+  padding: 10px;
+  font-family: Noto Sans TC;
+  width: 125px;
+  text-align: right;
+  height: 25px;
 }
 
-.function {
-  text-align: center;
+.footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  left: 0px;
+  background: #757575;
+  justify-content: center;
+  height: 104px;
+}
+.footer .text {
+  /* Body - Bold 16(13.3) */
+  font-family: "Noto Sans TC";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 13px;
+  color: #ffffff;
+}
+
+@media (max-width: 1200px) {
+  /* 螢幕寬度小於 1200px, 套用這個區塊的 css*/
+  .menu {
+    width: 100vw;
+  }
+  .desktop-menu-left {
+    padding-left: 9vw;
+    padding-top: 5px;
+  }
+  .desktop-menu-right {
+    padding-right: 9vw;
+    padding-top: 2px;
+  }
+  .item {
+    flex: none; /*固定配置*/
+    margin: 10px;
+    text-align: center;
+  }
+  .slogan {
+    display: inline-flex;
+    flex-direction: column;
+    position: absolute;
+    top: 140px;
+    color: #f8f8f8;
+    text-shadow: 0px 0px 30px #aabbcc;
+    padding-left: 81vw;
+    left: 9vw;
+    max-width: 1200px;
+    width: fit-content;
+  }
+  .text-title {
+    position: absolute;
+    height: 41px;
+    left: 0px;
+    top: 0px;
+    font-family: "Noto Sans TC";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 24px;
+    display: flex;
+    align-items: center;
+    color: #f8f8f8;
+    text-shadow: 0px 0px 30px #aabbcc;
+    left: 10px;
+    max-width: fit-content;
+  }
+  .text-subtitle {
+    position: absolute;
+    height: 22px;
+    left: 0px;
+    top: 56px;
+    font-family: "Noto Sans TC";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 13px;
+    display: flex;
+    align-items: center;
+    color: #f8f8f8;
+    left: 10px;
+    max-width: fit-content;
+  }
+  .list-block {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+  }
+}
+
+@media (max-width: 600px) {
+  .desktop-menu-left {
+    padding: 0px;
+  }
+  .mytext {
+    margin: 0px;
+    width: 150px;
+    align-items: center;
+    padding: 10px;
+  }
+  .desktop-menu-right {
+    padding: 0px;
+  }
+  .item {
+    margin: 0px;
+    padding: 10px;
+  }
+  .slogan {
+    position: absolute;
+    width: 320px;
+    left: 10px;
+    padding-left: 0px;
+  }
+  .text-title {
+    width: 320px;
+    max-width: none;
+  }
+  .text-subtitle {
+    max-width: none;
+    width: 320px;
+  }
+  .search {
+    width: 285px;
+    height: 46px;
+  }
+  .keyword {
+    width: 230px;
+    height: 46px;
+  }
+  .inputtext {
+    width: 195px;
+  }
+  .search-button {
+    position: absolute;
+    left: 245px;
+  }
+  .card {
+    display: inline-block;
+    width: 321px;
+    margin: 10px;
+    height: 235px;
+    padding-bottom: 45px;
+    background-size: cover;
+  }
+  .card_inform {
+    justify-content: space-between;
+  }
+  .photo {
+    width: 321px;
+    position: relative;
+    height: 235px;
+    border-radius: 5px;
+    border: 1px solid #e8e8e8;
+  }
 }

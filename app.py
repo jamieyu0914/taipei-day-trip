@@ -16,7 +16,7 @@ connection_pool = pooling.MySQLConnectionPool(pool_name="my_connection_pool",
                                                 host='localhost',
                                                 database='taipei_trip',
                                                 user='root',
-                                                password='******')
+                                                password='m6ao3ao3')
 
 app=Flask(__name__,
     static_folder="public",
@@ -219,4 +219,4 @@ def categories():
 
             
 
-app.run(port=3000)
+app.run(port=3000, debug=True)

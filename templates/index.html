@@ -1,23 +1,78 @@
+<!-- 清除瀏覽器預設值 -->
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" type="text/css" href="/layout.css" />
-    <title>測試頁面</title>
+    <title>My Website-台北市政府提供景點公開資料</title>
+    <link rel="stylesheet" type="text/css" href="layout.css" />
   </head>
-  <body>
-    <header>測試頁面</header>
+  <body
+    style="
+      margin-top: 0px;
+      margin-right: 0px;
+      margin-left: 0px;
+      margin-bottom: 0px;
+    "
+  >
+    <div class="desktop-view">
+      <div class="mymenu">
+        <div class="menu">
+          <!--右上選單-->
+          <div class="desktop-menu-left">
+            <text class="mytext">台北一日遊</text>
+          </div>
+          <div class="desktop-menu-right">
+            <button class="item">預定行程</button>
+            <button class="item">登入/註冊</button>
+          </div>
+        </div>
+      </div>
 
-    <div class="function">
-      <h4>選擇頁數、查詢景點分類、景點關鍵字</h4>
-      <form action="/api/attraction" method="GET">
-        頁數<input type="int" name="page" id="page" />
-        <br />
-        分類、關鍵字<input type="text" name="keyword" id="keyword" />
-        <button>查詢</button>
-      </form>
+      <div class="headline" id="headline">
+        <!--搜尋欄-->
+      </div>
+
+      <div class="list">
+        <div class="slogan">
+          <text-title class="text-title">輕鬆享受台北一日悠閒</text-title>
+          <text-subtitle class="text-subtitle"
+            >探索每個角落，體驗城市的深度旅遊行程</text-subtitle
+          >
+          <div class="search">
+            <input type="text" name="keyword" class="keyword" id="keyword" />
+            <text class="inputtext" onclick="categoryview()"
+              >輸入景點名稱查詢</text
+            >
+            <div class="blocker" onclick="hideview()"></div>
+            <button class="search-button" onclick="getsearchdata()"></button>
+          </div>
+        </div>
+        <!--中央列表 下半區-->
+        <div class="mylist">
+          <div class="list-block">
+            <!-- <div class="card">
+            <div class="image_container">
+              <div
+                class="photo"
+                style="
+                  background-image: url('https://www.travel.taipei/d_upload_ttn/sceneadmin/image/A0/B0/C0/D14/E810/F21/48d66fbd-1ba3-4efd-837a-3767db5f52e0.jpg');
+              ></div>
+              <div class="photo_mask"></div>
+              <div class="mask_title">國立故宮</div>
+            </div>
+            <div class="card_inform">
+              <div class="mrt_inform">士林</div>
+              <div class="category_inform">藝文館所</div>
+            </div>
+          </div> -->
+          </div>
+        </div>
+      </div>
     </div>
-    <br />
+  </body>
+  <footer class="footer">
+    <footer class="text">COPYRIGHT © 2022 台北一日遊</footer>
+  </footer>
+  <script src="fetch.js" charset="utf-8"></script>
 </html>
