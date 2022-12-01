@@ -166,18 +166,13 @@ html {
   height: 22px;
   left: 20px;
   top: 15px;
-
-  /* Body - Bold 16(13.3) */
   font-family: "Noto Sans TC";
   font-style: normal;
   font-weight: 700;
   font-size: 16px;
   line-height: 13px;
-  /* or 83% */
   display: flex;
   align-items: center;
-
-  /* Secondary Color/Gray 70 */
   color: #666666;
 }
 .bookingdirections {
@@ -460,6 +455,14 @@ html {
   background: #757575;
   justify-content: center;
   height: 104px;
+}
+.footer .text {
+  font-family: "Noto Sans TC";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 13px;
+  color: #ffffff;
 }
 
 @media (max-width: 1200px) {
@@ -1074,36 +1077,5 @@ html {
   .transporttext {
     padding: 0px;
     min-height: 144px;
-    /* min-width: 144px; */
-  }
-  .search {
-    width: 285px;
-    height: 46px;
-  }
-
-  .photo {
-    width: 321px;
-    position: relative;
-    height: 235px;
-    border-radius: 5px;
-    border: 1px solid #e8e8e8;
-  }
-
-  .card {
-    display: inline-block;
-    width: 321px;
-    margin: 10px;
-    height: 235px;
-    padding-bottom: 30px;
-    background-size: cover;
-  }
-  .keyword {
-    width: 230px;
-    height: 46px;
-  }
-
-  .search-button {
-    position: absolute;
-    left: 245px;
   }
 }
