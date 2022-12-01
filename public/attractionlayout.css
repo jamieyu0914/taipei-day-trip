@@ -19,23 +19,19 @@ html {
   margin: auto;
 }
 .desktop-menu-left {
-  /* 台北一日遊 */
   display: flex;
   justify-content: flex-start;
   align-items: center;
   flex: auto;
-
-  /* Header 2 - Bold 30(34) */
   font-family: "Noto Sans TC";
   font-style: normal;
   font-weight: 700;
   font-size: 30px;
   line-height: 34px;
-  /* identical to box height, or 113% */
-
-  /* Primary Color/Cyan 70 */
   color: #448899;
-  padding-top: 5px;
+}
+.mytext {
+  margin: 10px;
 }
 .desktop-menu-right {
   color: #666666;
@@ -44,10 +40,86 @@ html {
   justify-content: right;
   align-items: center;
   z-index: 999;
-  padding-top: 2px;
 }
-.mytext {
+.item {
+  flex: none; /*固定配置*/
   margin: 10px;
+  text-align: center;
+  font-family: "Noto Sans TC";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  color: #666666;
+  border: 0px;
+  background-color: #ffffff;
+}
+.headline {
+  display: flex;
+  justify-content: center;
+  height: 534px;
+}
+.slogan {
+  display: flex;
+  position: absolute;
+  width: 1200px;
+  top: 54px;
+  color: #f8f8f8;
+  flex-direction: row;
+  padding-top: 37px;
+  height: fit-content;
+  padding-bottom: 37px;
+  height: 406px;
+}
+.left-content {
+  position: absolute;
+  width: 540px;
+  height: 406px;
+  font-family: "Noto Sans TC";
+  font-style: normal;
+  font-size: 30px;
+  line-height: 24px;
+  display: flex;
+  align-items: center;
+  color: #f8f8f8;
+  left: 15px;
+  border-radius: 5px;
+  background-image: url(img.png);
+  background-size: cover;
+}
+.imgbutton {
+  height: 36px;
+  width: 540px;
+}
+.imgleftarrowbutton {
+  position: absolute;
+  width: 36px;
+  height: 36px;
+  left: 10px;
+  background-image: url(btn_leftArrow.png);
+  border-radius: 20px;
+  border: 0px;
+}
+.imgrightarrowbutton {
+  position: absolute;
+  width: 36px;
+  height: 36px;
+  right: 10px;
+  background-image: url(btn_rightArrow.png);
+  border-radius: 20px;
+  border: 0px;
+}
+.right-content {
+  position: absolute;
+  width: 600px;
+  height: 406px;
+  font-family: "Noto Sans TC";
+  font-style: normal;
+  font-size: 16px;
+  line-height: 13px;
+  display: flex;
+  align-items: center;
+  color: #f8f8f8;
+  right: 15px;
 }
 .contenttitle {
   position: absolute;
@@ -291,317 +363,94 @@ html {
   order: 0;
   flex-grow: 0;
 }
-.item {
-  flex: none; /*固定配置*/
-  margin: 10px;
-  text-align: center;
-  font-family: "Noto Sans TC";
-  font-style: normal;
-  font-weight: 500;
-  font-size: 16px;
-  color: #666666;
-  border: 0px;
-  background-color: #ffffff;
-}
-.headline {
-  /* Auto layout */
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: flex-start;
-  padding: 0px;
-  position: relative;
-  height: 320px;
-  background-position: top;
-  background-size: cover;
-  top: 45px;
-}
-.welcome {
-  display: flex;
-}
-.search {
-  left: 0px;
-  top: 100px;
-  background: #448899;
-  justify-content: space-between;
-  display: flex;
-  align-items: center;
-  border-radius: 5px;
-  position: absolute;
-  width: 460px;
-  left: 10px;
-}
-
-.slogan {
-  display: flex;
-  position: absolute;
-  width: 1200px;
-  top: 37px;
-  color: #f8f8f8;
-  text-shadow: 0px 0px 30px #aabbcc;
-  flex-direction: row;
-}
-.left-content {
-  position: absolute;
-  width: 540px;
-  height: 460px;
-  font-family: "Noto Sans TC";
-  font-style: normal;
-  font-weight: 700;
-  font-size: 30px;
-  line-height: 24px;
-  display: flex;
-  align-items: center;
-  color: #f8f8f8;
-  text-shadow: 0px 0px 30px #aabbcc;
-  left: 15px;
-  background-color: #757575;
-}
-
-.right-content {
-  position: absolute;
-  width: 600px;
-  height: 460px;
-  font-family: "Noto Sans TC";
-  font-style: normal;
-  font-weight: 700;
-  font-size: 16px;
-  line-height: 13px;
-  display: flex;
-  align-items: center;
-  color: #f8f8f8;
-  right: 15px;
-  background-color: #757575;
-}
-.button {
-  position: absolute;
-  width: 60px;
-  height: 46px;
-  left: 0px;
-  top: 0px;
-
-  /* Primary Color/Cyan 70 */
-  background: #448899;
-}
-.button .img {
-  position: absolute;
-  width: 30px;
-  height: 30px;
-  left: 0px;
-  top: 0px;
+.hrline {
+  max-width: 1200px;
+  margin: 0px auto;
+  height: 0px;
+  border: 1px solid #e8e8e8;
 }
 .list {
   display: flex;
   justify-content: center;
-  margin-top: 45px;
+  height: 442px;
 }
 .mylist {
-  display: flex;
   justify-content: center;
   justify-items: center;
   width: 1200px;
-  height: 1000px; /* 留白用 */
+  height: 442px; /* 留白用 */
 }
-.list-block {
-  display: flex;
-  flex-wrap: wrap;
-  width: 1200px;
-  margin-bottom: 20px;
-  margin-top: 20px;
-  justify-content: flex-start;
-  align-items: center;
-  column-gap: 13px;
-}
-.card {
-  display: inline-block;
-  width: 270px;
-  margin: 10px;
-  height: 197px;
-  padding-bottom: 30px;
-}
-.card_inform {
-  display: flex;
-  justify-content: space-between;
-  border-radius: 5px;
-  border: 1px solid #e8e8e8;
-}
-.image_container {
-  position: relative;
-  height: 100%;
-}
-.photo_mask {
-  position: absolute;
-  left: 0px;
-  bottom: 0px;
-  background: black;
-  width: 100%;
-  height: 30px;
-  opacity: 0.6;
-}
-.photo {
-  width: 268px;
-  position: relative;
-  height: 195px;
-  background-size: cover;
-  border-radius: 5px;
-  border: 1px solid #e8e8e8;
-}
-.mask_title {
-  color: #ffffff;
-  font-size: 16px;
-  bottom: 2px;
-  position: absolute;
-  left: 0px;
-  padding-left: 10px;
-  font-family: Noto Sans TC;
-}
-.keyword {
-  height: 30px;
-  width: 400px;
-  font-family: Noto Sans TC;
-  font-weight: 700;
-  border: 0px;
-  border-top-left-radius: 5px;
-  border-bottom-left-radius: 5px;
-}
-.category_inform {
-  color: #000000;
-  font-size: 16px;
-  bottom: 2px;
-  left: 0px;
-  padding-right: 10px;
-  font-family: Noto Sans TC;
-}
-
-.mrt_inform {
-  color: #000000;
-  font-size: 16px;
-  bottom: 2px;
-  left: 0px;
-  padding-left: 10px;
-  font-family: Noto Sans TC;
-}
-
-.title-left {
-  /* 忠孝復興 */
-  position: absolute;
-  width: 125px;
-  height: 25px;
-  left: 0px;
-  top: 0px;
-  /* Body - Med 16(13.3) */
+.descriptiontext {
+  width: 1180px;
+  height: 96px;
   font-family: "Noto Sans TC";
   font-style: normal;
-  font-weight: 500;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 23px;
+  color: #666666;
+  padding: 10px;
+  margin-top: 40px;
+  text-align: left;
+}
+.addresstitle {
+  width: 1180px;
+  height: 32px;
+  font-family: "Noto Sans TC";
+  font-style: normal;
+  font-weight: 700;
   font-size: 16px;
   line-height: 13px;
-  /* or 83% */
+  color: #666666;
+  padding: 10px;
+  text-align: left;
   display: flex;
   align-items: center;
-  /* Secondary Color/Gray 50 */
-  color: #757575;
+  padding-bottom: 0px;
 }
-
-.title-right {
-  justify-content: center;
-  align-items: center;
-  text-align: right;
-  width: 100%;
-  max-height: 25px;
-  position: relative;
-  z-index: 999;
-  background-color: rgb(204, 224, 240);
-  padding-block-end: 30px;
-  padding-block-start: 30px;
-}
-
-.desktop-view {
-  text-align: center;
-  display: block;
-}
-
-.image {
-  width: 100%;
-  height: 20vh;
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-
-.loadmore {
-  display: flex;
-  justify-content: center; /*水平置中*/
-  align-items: center;
-  position: relative;
-  z-index: 100;
-}
-
-.search-button {
-  background-image: url(icon_search.png);
-  height: 30px;
-  width: 30px;
-  background-color: #489;
-  border-radius: 5px;
-  border: 0px;
-  position: absolute;
-  left: 420px;
-}
-
-.categoryview {
-  flex-wrap: wrap;
-  position: absolute;
-  width: 400px;
-  left: 0px;
-  top: 35px;
-  background: #ffffff;
-  box-shadow: 0px 0px 20px #aabbcc;
-  border-radius: 5px;
-  color: #000000;
-  display: none;
-  z-index: 999;
-}
-
-.categoryitem {
-  /* 單車遊蹤 */
-  width: 120px;
-  height: 40px;
+.addresstext {
+  width: 1180px;
   font-family: "Noto Sans TC";
   font-style: normal;
-  font-weight: 500;
-  font-size: 14px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 23px;
+  color: #666666;
+  padding: 10px;
+  text-align: left;
   display: flex;
   align-items: center;
-  color: #000000;
-  background-color: #ffffff;
-  border-radius: 5px;
-  border: 0px;
-  justify-content: flex-start;
+  padding-top: 0px;
 }
-
-.categoryitem_text {
+.transporttitle {
+  width: 1180px;
+  height: 32px;
+  font-family: "Noto Sans TC";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 13px;
+  color: #666666;
+  padding: 10px;
+  text-align: left;
   display: flex;
-  flex: fit-content;
-  padding-left: 15px;
-  padding-right: 15px;
-  padding-top: 10px;
-  padding-bottom: 10px;
+  align-items: center;
+  padding-bottom: 0px;
 }
-
-.categoryitem:hover {
-  background-color: #e8e8e8;
+.transporttext {
+  width: 1180px;
+  font-family: "Noto Sans TC";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 23px;
+  color: #666666;
+  padding: 10px;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  padding-top: 0px;
 }
-
-.blocker {
-  position: fixed;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  content: " ";
-  background: rgba(0, 0, 0, 0);
-  display: none;
-}
-
 .footer {
   display: flex;
   flex-direction: column;
@@ -612,76 +461,113 @@ html {
   justify-content: center;
   height: 104px;
 }
-.footer .text {
-  /* Body - Bold 16(13.3) */
-  font-family: "Noto Sans TC";
-  font-style: normal;
-  font-weight: 700;
-  font-size: 16px;
-  line-height: 13px;
-  color: #ffffff;
-}
 
 @media (max-width: 1200px) {
   /* 螢幕寬度小於 1200px, 套用這個區塊的 css*/
 
-  .list-block {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 90%;
-  }
-
   .menu {
     width: 100vw;
   }
-
   .desktop-menu-left {
     padding-left: 9vw;
     padding-top: 5px;
   }
-
   .desktop-menu-right {
     padding-right: 9vw;
     padding-top: 2px;
   }
-
-  .slogan {
-    display: inline-flex;
-    flex-direction: column;
-    position: absolute;
-    top: 140px;
-    color: #f8f8f8;
-    text-shadow: 0px 0px 30px #aabbcc;
-    padding-left: 81vw;
-    left: 9vw;
-    max-width: 1200px;
-    width: fit-content;
+  .item {
+    flex: none; /*固定配置*/
+    margin: 10px;
+    text-align: center;
   }
-
+  .headline {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 486px;
+    padding-bottom: 37px;
+  }
+  .slogan {
+    display: flex;
+    justify-content: space-evenly;
+    width: 100vw;
+    height: 360px;
+  }
   .left-content {
+    position: unset;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex: auto;
+    max-width: 600px;
+    align-items: center;
+    max-width: 40.6vw;
+    height: 360px;
+    background-position: center;
+  }
+  .imgbutton {
+    position: relative;
+    height: 36px;
+    max-width: 600px;
+  }
+  .right-content {
+    position: relative;
+    display: flex;
+    justify-content: flex-start;
+    flex: auto;
+    align-items: center;
+    max-width: 40.6vw;
+    height: 360px;
+  }
+  .contenttitle {
     position: absolute;
-    height: 41px;
+    width: auto;
+    height: 33px;
     left: 0px;
     top: 0px;
     font-family: "Noto Sans TC";
     font-style: normal;
     font-weight: 700;
-    font-size: 30px;
+    font-size: 24px;
     line-height: 24px;
     display: flex;
     align-items: center;
-    color: #f8f8f8;
-    text-shadow: 0px 0px 30px #aabbcc;
-    left: 10px;
-    max-width: fit-content;
+    color: #666666;
   }
-
-  .right-content-content {
+  .categoryandmrt {
     position: absolute;
+    width: auto;
     height: 22px;
     left: 0px;
-    top: 56px;
+    top: 37px;
+    font-family: "Noto Sans TC";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 13px;
+    display: flex;
+    align-items: center;
+    color: #666666;
+  }
+  .bookingblock {
+    position: unset;
+    max-width: 40.6vw;
+    max-height: 290px;
+    left: 0px;
+    top: 90px;
+    background: #e8e8e8;
+    border-radius: 5px;
+    margin-top: 70px;
+  }
+  .bookingtitle {
+    position: unset;
+    width: auto;
+    height: 22px;
+    left: 20px;
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-bottom: 5px;
     font-family: "Noto Sans TC";
     font-style: normal;
     font-weight: 700;
@@ -689,26 +575,262 @@ html {
     line-height: 13px;
     display: flex;
     align-items: center;
-    color: #f8f8f8;
-    left: 10px;
-    max-width: fit-content;
+    color: #666666;
   }
-
-  .item {
-    flex: none; /*固定配置*/
-    margin: 10px;
+  .bookingdirections {
+    position: unset;
+    width: auto;
+    height: 24px;
+    left: 20px;
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-bottom: 10px;
+    font-family: "Noto Sans TC";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20px;
+    display: flex;
+    align-items: center;
+    color: #666666;
+  }
+  .divdate {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
+  .bookingdate {
+    position: unset;
+    width: 80px;
+    height: 17px;
+    left: 20px;
+    margin-left: 10px;
+    font-family: "Noto Sans TC";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 13px;
+    display: flex;
+    align-items: center;
+    color: #666666;
+  }
+  .bookingcalendar {
+    position: unset;
+    width: auto;
+    height: 35px;
+    top: 91px;
+    background: #ffffff;
+  }
+  .divtime {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
+  .bookingtime {
+    position: unset;
+    width: auto;
+    height: 22px;
+    left: 20px;
+    margin-left: 10px;
+    font-family: "Noto Sans TC";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 13px;
+    display: flex;
+    align-items: center;
+    color: #666666;
+  }
+  .firsthalfdaybutton {
+    position: unset;
+    width: 22px;
+    height: 22px;
+    margin-left: 0px;
+    top: 141px;
+    background: #ffffff;
+    border-radius: 20px;
+    border: 0px;
+    z-index: 995;
+  }
+  .firsthalfdaybuttonselected {
+    position: unset;
+    width: 18px;
+    height: 18px;
+    top: 143px;
+    background: #448899;
+    border-radius: 20px;
+    border: 0px;
+    z-index: 998;
+    margin-left: -20px;
+  }
+  .firsthalfdaytext {
+    position: unset;
+    width: auto;
+    height: 14px;
+    margin-left: 3px;
+    top: 145px;
+    font-family: "Noto Sans TC";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 13px;
+    display: flex;
+    align-items: center;
+    color: #666666;
+  }
+  .secondhalfdaybutton {
+    position: unset;
+    width: 22px;
+    height: 22px;
+    margin-left: 5px;
+    top: 141px;
+    background: #ffffff;
+    border-radius: 20px;
+    border: 0px;
+    z-index: 995;
+  }
+  .secondhalfdaybuttonselected {
+    position: unset;
+    width: 18px;
+    height: 18px;
+    top: 143px;
+    background: #448899;
+    border-radius: 20px;
+    border: 0px;
+    margin-left: -20px;
+    z-index: 998;
+  }
+  .secondhalfdaytext {
+    position: unset;
+    width: auto;
+    height: 14px;
+    margin-left: 3px;
+    top: 145px;
+    font-family: "Noto Sans TC";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 13px;
+    display: flex;
+    align-items: center;
+    color: #666666;
+  }
+  .divcost {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
+  .bookingcost {
+    position: unset;
+    width: auto;
+    height: 22px;
+    margin-left: 10px;
+    top: 178px;
+    font-family: "Noto Sans TC";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 13px;
+    display: flex;
+    align-items: center;
+    color: #666666;
+  }
+  .costtext {
+    position: unset;
+    width: auto;
+    height: 14px;
+    left: 106px;
+    top: 182px;
+    font-family: "Noto Sans TC";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 13px;
+    display: flex;
+    align-items: center;
+    color: #666666;
+  }
+  .divstartbooking {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: -10px;
+    margin-bottom: 10px;
+  }
+  .startbookingbutton {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    position: unset;
+    width: auto;
+    height: 36px;
+    margin-left: 15px;
+    margin-top: 25px;
+    top: 225px;
+    background: #448899;
+    border-radius: 5px;
+    border: 0px;
+  }
+  .startbookingtext {
+    width: auto;
+    height: 16px;
+    font-family: "Noto Sans TC";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 19px;
+    line-height: 16px;
+    display: flex;
+    align-items: center;
     text-align: center;
+    color: #ffffff;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+    justify-content: center;
   }
-
-  .image {
-    width: 100%;
-    min-width: 30vw;
-    height: 30vw;
-    max-height: 50vh;
+  .hrline {
+    width: 81vw;
+    margin-top: 15px;
   }
-
-  .title {
-    width: 100%;
+  .list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .mylist {
+    flex-direction: column;
+    position: absolute;
+    width: 81vw;
+    height: 100vh;
+    align-content: center;
+    display: flex;
+    padding-bottom: 70px;
+  }
+  .descriptiontext {
+    width: auto;
+    height: auto;
+  }
+  .addresstitle {
+    width: auto;
+    height: auto;
+  }
+  .addresstext {
+    width: auto;
+    height: auto;
+  }
+  .transporttitle {
+    width: auto;
+    height: auto;
+  }
+  .transporttext {
+    width: auto;
+    height: auto;
   }
 }
 
@@ -717,36 +839,242 @@ html {
     padding: 10px;
     width: 150px;
   }
-
   .mytext {
     margin: 0px;
     width: 150px;
     padding: 0px;
   }
-
   .desktop-menu-right {
     padding: 10px;
   }
-
   .item {
     margin: 0px;
   }
-
+  .headline {
+    padding-bottom: 382px;
+  }
   .slogan {
-    position: absolute;
-    width: 320px;
-    left: 10px;
-    padding-left: 0px;
+    position: unset;
+    width: 100vw;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0px;
   }
-
   .left-content {
-    width: 320px;
-    max-width: none;
+    width: 466px;
+    margin-top: 404px;
+    height: 350px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    left: 0px;
+    background-size: cover;
+    max-width: max-content;
   }
-
+  .imgbutton {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100vw;
+  }
+  .imgleftarrowbutton {
+    position: unset;
+    left: 0px;
+    padding: 0px;
+    margin-left: 10px;
+  }
+  .imgrightarrowbutton {
+    position: unset;
+    right: 0px;
+    padding: 0px;
+    margin-right: 10px;
+  }
   .right-content {
-    max-width: none;
-    width: 320px;
+    width: 340px;
+    height: 390px;
+    right: 0px;
+    display: unset;
+    justify-content: center;
+    flex: unset;
+    position: unset;
+    max-width: unset;
+    padding-top: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  .contenttitle {
+    position: unset;
+    position: unset;
+    width: 340px;
+    height: 33px;
+    left: 0px;
+    top: 0px;
+  }
+  .categoryandmrt {
+    position: unset;
+    width: 340px;
+    height: 22px;
+    left: 0px;
+    padding-top: 15px;
+  }
+  .bookingblock {
+    width: 340px;
+    height: auto;
+    max-width: unset;
+    max-height: fit-content;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .bookingtitle {
+    width: 300px;
+    height: 22px;
+    margin: 0px;
+    padding-top: 15px;
+    padding-left: 20px;
+    padding-right: 20px;
+    left: 0px;
+    position: static;
+  }
+  .bookingdirections {
+    width: 300px;
+    height: 48px;
+    margin: 0px;
+    padding-top: 15px;
+    padding-left: 20px;
+    padding-right: 20px;
+    left: 0px;
+    position: static;
+    align-items: normal;
+    line-height: 23px;
+  }
+  .divdate {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    padding-top: 15px;
+    padding-left: 20px;
+    padding-right: 41px;
+  }
+  .bookingdate {
+    width: 81px;
+    height: 17px;
+    padding-right: 5px;
+    margin: 0px;
+  }
+  .bookingcalendar {
+    width: 193px;
+    height: 35px;
+    padding: 0px;
+    border: 0px;
+  }
+  .bookingtime {
+    width: 81px;
+    height: 22px;
+    padding-right: 10px;
+    padding-left: 20px;
+    margin: 0px;
+  }
+  .firsthalfdaybutton {
+    padding-right: 4px;
+  }
+  .firsthalfdaytext {
+    padding-right: 18px;
+  }
+  .secondhalfdaybutton {
+    margin: 0px;
+    padding-right: 4px;
+  }
+  .secondhalfdaytext {
+    padding-right: 63px;
+  }
+  .divcost {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 0px;
+    margin-bottom: 25px;
+  }
+  .bookingcost {
+    position: unset;
+    width: 81px;
+    height: 22px;
+    margin-left: 20px;
+    top: 178px;
+    font-family: "Noto Sans TC";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 13px;
+    display: flex;
+    align-items: center;
+    color: #666666;
+    margin-right: 5px;
+  }
+  .costtext {
+    width: 108px;
+    height: 14px;
+    letter-spacing: -1px;
+  }
+  .divstartbooking {
+    margin-bottom: 15px;
+    margin-left: 20px;
+    margin-top: 0px;
+  }
+  .startbookingbutton {
+    margin-left: 0px;
+    margin-top: 0px;
+  }
+  .startbookingtext {
+    width: 114px;
+    height: 16px;
+  }
+  .hrline {
+    width: 338px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    justify-items: center;
+  }
+  .list {
+    height: auto;
+  }
+  .mylist {
+    height: auto;
+    position: unset;
+    width: 330px;
+    margin-left: 20px;
+    margin-right: 11px;
+  }
+  .descriptiontext {
+    margin-top: 50px;
+    padding: 0px;
+    line-height: 23.17px;
+  }
+  .addresstitle {
+    padding: 0px;
+    margin-top: 20px;
+    height: 32px;
+  }
+  .addresstext {
+    padding: 0px;
+    height: 24px;
+  }
+  .transporttitle {
+    height: 32px;
+    padding: 0px;
+    margin-top: 20px;
+  }
+  .transporttext {
+    padding: 0px;
+    min-height: 144px;
+    /* min-width: 144px; */
   }
   .search {
     width: 285px;
