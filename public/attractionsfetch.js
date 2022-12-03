@@ -159,7 +159,7 @@ function secondday_cancel() {
 }
 
 function imageleft() {
-  //圖片向左切換
+  //圖片箭頭按鈕向左切換
   let _the_imagepoint = document.querySelector("#my" + fileindex);
   _the_imagepoint.style.cssText = "background: #ffffff;";
 
@@ -179,7 +179,7 @@ function imageleft() {
 }
 
 function imageright() {
-  //圖片向右切換
+  //圖片箭頭按鈕向右切換
   let _the_imagepoint = document.querySelector("#my" + fileindex);
   _the_imagepoint.style.cssText = "background: #ffffff;";
 
