@@ -381,13 +381,14 @@ html {
 .list {
   display: flex;
   justify-content: center;
-  height: 442px;
+  height: auto;
+  padding-bottom: 120px;
 }
 .mylist {
   justify-content: center;
   justify-items: center;
   width: 1200px;
-  height: 442px; /* 留白用 */
+  height: auto; /* 留白用 */
 }
 .descriptiontext {
   width: 1180px;
@@ -821,15 +822,21 @@ html {
     display: flex;
     justify-content: center;
     align-items: center;
+    height: auto;
+    margin-top: 0px;
   }
   .mylist {
     flex-direction: column;
-    position: absolute;
-    width: 81vw;
-    height: 100vh;
     align-content: center;
     display: flex;
     padding-bottom: 70px;
+    top: 570px;
+    height: auto;
+    height: auto;
+    position: unset;
+    width: 960px;
+    margin-left: 20px;
+    margin-right: 11px;
   }
   .descriptiontext {
     width: auto;
@@ -1071,6 +1078,7 @@ html {
   }
   .list {
     height: auto;
+    margin-top: 0px;
   }
   .mylist {
     height: auto;
