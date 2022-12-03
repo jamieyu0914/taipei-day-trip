@@ -83,7 +83,6 @@ html {
   color: #f8f8f8;
   left: 15px;
   border-radius: 5px;
-  background-image: url(img.png);
   background-size: cover;
 }
 .imgbutton {
@@ -107,6 +106,19 @@ html {
   background-image: url(btn_rightArrow.png);
   border-radius: 20px;
   border: 0px;
+}
+.imgpointlist {
+  margin-top: 190px;
+  display: flex;
+  justify-content: center;
+}
+.imgpointbutton {
+  height: 12px;
+  width: 12px;
+  margin-left: 6px;
+  margin-right: 6px;
+  border: 0px;
+  border-radius: 20px;
 }
 .right-content {
   position: absolute;
@@ -247,6 +259,7 @@ html {
   background: #448899;
   border-radius: 20px;
   border: 0px;
+  display: none;
 }
 .firsthalfdaytext {
   position: absolute;
@@ -282,6 +295,7 @@ html {
   background: #448899;
   border-radius: 20px;
   border: 0px;
+  display: none;
 }
 .secondhalfdaytext {
   position: absolute;
@@ -377,7 +391,6 @@ html {
 }
 .descriptiontext {
   width: 1180px;
-  height: 96px;
   font-family: "Noto Sans TC";
   font-style: normal;
   font-weight: 400;
@@ -513,6 +526,9 @@ html {
     position: relative;
     height: 36px;
     max-width: 600px;
+  }
+  .imgpointlist {
+    margin-top: 170px;
   }
   .right-content {
     position: relative;
@@ -880,7 +896,6 @@ html {
   .imgbutton {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
     width: 100vw;
   }
   .imgleftarrowbutton {
@@ -890,10 +905,19 @@ html {
     margin-left: 10px;
   }
   .imgrightarrowbutton {
-    position: unset;
     right: 0px;
     padding: 0px;
     margin-right: 10px;
+  }
+  .imgpointlist {
+    margin-top: 174px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 374px;
+    padding: 0px;
+    min-width: 268px;
+    width: 74vw;
   }
   .right-content {
     width: 340px;
@@ -1077,5 +1101,6 @@ html {
   .transporttext {
     padding: 0px;
     min-height: 144px;
+    align-items: normal;
   }
 }

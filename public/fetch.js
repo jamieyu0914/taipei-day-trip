@@ -21,6 +21,7 @@ function getdata() {
         // console.log(nextPage);
         let posts = data["data"][i];
         // console.log(posts);
+        let title_id = posts["id"];
         let title_name = posts["name"];
         let title_mrt = posts["mrt"];
         let title_category = posts["category"];
@@ -38,12 +39,13 @@ function getdata() {
         _image_container_div.classList.add("image_container");
 
         let _photo_div = document.createElement("div");
+        _photo_div.id = title_id;
         _photo_div.classList.add("photo");
         _photo_div.style.cssText = "background-image: url(" + file + ")";
-
         let _photo_mask = document.createElement("div");
         _photo_mask.classList.add("photo_mask");
         let _mask_title = document.createElement("div");
+        _mask_title.id = title_id;
         _mask_title.classList.add("mask_title");
         let _newcard_title_text = document.createTextNode(title_name);
         _mask_title.appendChild(_newcard_title_text);
@@ -148,7 +150,6 @@ function categoryview() {
 
       const view = document.querySelector("#keyword");
       view.style.cssText = "padding-left:10px";
-      view.appendChild(view.style.cssText);
     });
   }
 }
@@ -183,6 +184,7 @@ function getmoredata() {
             return;
           }
           // console.log(posts);
+          let title_id = posts["id"];
           let title_name = posts["name"];
           let title_mrt = posts["mrt"];
           let title_category = posts["category"];
@@ -200,12 +202,13 @@ function getmoredata() {
           _image_container_div.classList.add("image_container");
 
           let _photo_div = document.createElement("div");
+          _photo_div.id = title_id;
           _photo_div.classList.add("photo");
           _photo_div.style.cssText = "background-image: url(" + file + ")";
-
           let _photo_mask = document.createElement("div");
           _photo_mask.classList.add("photo_mask");
           let _mask_title = document.createElement("div");
+          _mask_title.id = title_id;
           _mask_title.classList.add("mask_title");
           let _newcard_title_text = document.createTextNode(title_name);
           _mask_title.appendChild(_newcard_title_text);
@@ -276,7 +279,13 @@ function getsearchdata() {
         // console.log("---------");
         // console.log(nextPage);
         let posts = data["data"][i];
+        if (posts == undefined) {
+          isLoading == "done";
+          console.log("done here!!!!!");
+          return;
+        }
         // console.log(posts);
+        let title_id = posts["id"];
         let title_name = posts["name"];
         let title_mrt = posts["mrt"];
         let title_category = posts["category"];
@@ -294,12 +303,14 @@ function getsearchdata() {
         _image_container_div.classList.add("image_container");
 
         let _photo_div = document.createElement("div");
+        _photo_div.id = title_id;
         _photo_div.classList.add("photo");
         _photo_div.style.cssText = "background-image: url(" + file + ")";
 
         let _photo_mask = document.createElement("div");
         _photo_mask.classList.add("photo_mask");
         let _mask_title = document.createElement("div");
+        _mask_title.id = title_id;
         _mask_title.classList.add("mask_title");
         let _newcard_title_text = document.createTextNode(title_name);
         _mask_title.appendChild(_newcard_title_text);
@@ -332,10 +343,25 @@ function getsearchdata() {
   isLoading = false;
 }
 
+var card = document.getElementsByClassName("card");
+window.addEventListener(
+  "click",
+  function once(e) {
+    if (e.target.className == "photo") {
+      console.log("點擊 景點編號" + e.target.id);
+      let attractionId = e.target.id;
+      document.location.href = `/attraction/${attractionId}`;
+    } else if (e.target.className == "mask_title") {
+      console.log("點擊 景點編號" + e.target.id);
+      let attractionId = e.target.id;
+      document.location.href = `/attraction/${attractionId}`;
+    }
+  },
+  false
+);
+
 const div = document.querySelector(".footer");
-
 let here = 0;
-
 // 使用 getBoundingClientRect
 window.addEventListener("scroll", function once(e) {
   const { top } = div.getBoundingClientRect();
