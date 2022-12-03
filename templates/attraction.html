@@ -1,15 +1,10 @@
-<!-- 清除瀏覽器預設值 -->
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>My Website-台北市政府提供景點公開資料</title>
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="/attractionlayout.css"
-    />
+    <link rel="stylesheet" type="text/css" href="/attractionlayout.css" />
   </head>
   <body
     style="
@@ -34,56 +29,77 @@
       </div>
 
       <div class="headline" id="headline">
-        <!--搜尋欄-->
+        <!--內容欄-->
         <div class="slogan">
-            <div class="left-content">左邊</div>
-            <div class="right-content">
-                <text class="contenttitle">平安鐘</text>
-                <text class="categoryandmrt">公共藝術 at 忠孝復興</text>
-                <div class="bookingblock">
-                    <text class="bookingtitle">訂購導覽行程</text>
-                    <text class="bookingdirections">以此景點為中心的一日行程，帶您探索城市角落故事</text>
-                    <text class="bookingdate">選擇日期：</text>
-                        <input type="date" id="date" name="trip-date" class="bookingcalendar">
-                    <text class="bookingtime">選擇時間：</text>
-                    <button class="firsthalfdaybutton"></button>
-                    <button class="firsthalfdaybuttonselected"></button>
-                    <text class="firsthalfdaytext">上半天</text>
-                    <button class="secondhalfdaybutton"></button>
-                    <button class="secondhalfdaybuttonselected"></button>
-                    <text class="secondhalfdaytext">下半天</text>
-                    <text class="bookingcost">導覽費用：</text>
-                    <text class="costtext">新台幣 2000 元</text>
-                    <button class="startbookingbutton">
-                        <text class="startbookingtext">開始預約行程</text>
-                    </button>
-                </div>
+          <div class="left-content">
+            <div class="imgbutton">
+              <button class="imgleftarrowbutton" onclick="imageleft()"></button>
+              <button
+                class="imgrightarrowbutton"
+                onclick="imageright()"
+              ></button>
+              <div class="imgpointlist"></div>
             </div>
+          </div>
+          <div class="right-content">
+            <text class="contenttitle"></text>
+            <text class="categoryandmrt"></text>
+            <div class="bookingblock">
+              <text class="bookingtitle">訂購導覽行程</text>
+              <text class="bookingdirections"
+                >以此景點為中心的一日行程，帶您探索城市角落故事</text
+              >
+              <div class="divdate">
+                <text class="bookingdate">選擇日期：</text>
+                <input
+                  type="date"
+                  id="date"
+                  name="trip-date"
+                  class="bookingcalendar"
+                />
+              </div>
+              <div class="divtime">
+                <text class="bookingtime">選擇時間：</text>
+                <button
+                  class="firsthalfdaybutton"
+                  onclick="firstday()"
+                ></button>
+                <button
+                  class="firsthalfdaybuttonselected"
+                  onclick="firstday_cancel()"
+                ></button>
+                <text class="firsthalfdaytext">上半天</text>
+                <button
+                  class="secondhalfdaybutton"
+                  onclick="secondday()"
+                ></button>
+                <button
+                  class="secondhalfdaybuttonselected"
+                  onclick="secondday_cancel()"
+                ></button>
+                <text class="secondhalfdaytext">下半天</text>
+              </div>
+              <div class="divcost">
+                <text class="bookingcost">導覽費用：</text>
+                <text class="costtext"></text>
+              </div>
+              <div class="divstartbooking">
+                <button class="startbookingbutton">
+                  <text class="startbookingtext">開始預約行程</text>
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-
+      <div class="hrline"></div>
       <div class="list">
-       
-      </div>
-        <!--中央列表 下半區-->
         <div class="mylist">
-          <div class="list-block">
-            <!-- <div class="card">
-            <div class="image_container">
-              <div
-                class="photo"
-                style="
-                  background-image: url('https://www.travel.taipei/d_upload_ttn/sceneadmin/image/A0/B0/C0/D14/E810/F21/48d66fbd-1ba3-4efd-837a-3767db5f52e0.jpg');
-              ></div>
-              <div class="photo_mask"></div>
-              <div class="mask_title">國立故宮</div>
-            </div>
-            <div class="card_inform">
-              <div class="mrt_inform">士林</div>
-              <div class="category_inform">藝文館所</div>
-            </div>
-          </div> -->
-          </div>
+          <div class="descriptiontext"></div>
+          <div class="addresstitle">景點地址：</div>
+          <div class="addresstext"></div>
+          <div class="transporttitle">交通方式：</div>
+          <div class="transporttext"></div>
         </div>
       </div>
     </div>
@@ -91,4 +107,5 @@
   <footer class="footer">
     <footer class="text">COPYRIGHT © 2022 台北一日遊</footer>
   </footer>
+  <script src="/attractionsfetch.js" charset="utf-8"></script>
 </html>
