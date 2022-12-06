@@ -343,6 +343,52 @@ function getsearchdata() {
   isLoading = false;
 }
 
+function signinblock() {
+  const signinblock = document.querySelector(".signinblock");
+  signinblock.style.display = "block";
+
+  const blocker = document.querySelector(".blocker");
+  blocker.style.cssText =
+    "background-color: #000000; display: flex; opacity: 0.25; z-index: 998;";
+}
+
+function signinemailtext() {
+  const signinemailtext = document.querySelector(".signinemailtext");
+  signinemailtext.style.display = "none";
+}
+
+function signinpasswordtext() {
+  const signinpasswordtext = document.querySelector(".signinpasswordtext");
+  signinpasswordtext.style.display = "none";
+}
+
+function signupblock() {
+  const signinblock = document.querySelector(".signinblock");
+  signinblock.style.display = "none";
+
+  const signupblock = document.querySelector(".signupblock");
+  signupblock.style.display = "block";
+
+  const blocker = document.querySelector(".blocker");
+  blocker.style.cssText =
+    "background-color: #000000; display: flex; opacity: 0.25; z-index: 998;";
+}
+
+function signupnametext() {
+  const signupnametext = document.querySelector(".signupnametext");
+  signupnametext.style.display = "none";
+}
+
+function signupemailtext() {
+  const signupemailtext = document.querySelector(".signupemailtext");
+  signupemailtext.style.display = "none";
+}
+
+function signuppasswordtext() {
+  const signuppasswordtext = document.querySelector(".signuppasswordtext");
+  signuppasswordtext.style.display = "none";
+}
+
 var card = document.getElementsByClassName("card");
 window.addEventListener(
   "click",

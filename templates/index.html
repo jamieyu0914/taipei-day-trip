@@ -24,13 +24,90 @@
           </div>
           <div class="desktop-menu-right">
             <button class="item">預定行程</button>
-            <button class="item">登入/註冊</button>
+            <button class="item" onclick="signinblock()">登入/註冊</button>
           </div>
         </div>
       </div>
 
       <div class="headline" id="headline">
         <!--搜尋欄-->
+        <div class="signinblock">
+          <div class="signinblockhead"></div>
+          <div class="signinblockcontent">
+            <div class="signinblocktitle">登入會員帳號</div>
+            <div class="signinblockinput">
+              <input
+                type="text"
+                name="signinemail"
+                class="signinemail"
+                id="signinemail"
+              />
+              <div class="signinemailtext" onclick="signinemailtext()">
+                <text>輸入電子郵件</text>
+              </div>
+              <input
+                type="text"
+                name="signinpassword"
+                class="signinpassword"
+                id="signinpassword"
+              />
+              <div class="signinpasswordtext" onclick="signinpasswordtext()">
+                <text>輸入密碼</text>
+              </div>
+              <button class="signinaccountbutton">
+                <div class="signinaccountbuttontext">
+                  <text>登入帳戶</text>
+                </div>
+              </button>
+              <div class="clicktosignup">
+                <text onclick="signupblock()">還沒有帳戶？點此註冊</text>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="signupblock">
+          <div class="signupblockhead"></div>
+          <div class="signupblockcontent">
+            <div class="signupblocktitle">註冊會員帳號</div>
+            <div class="signupblockinput">
+              <input
+                type="text"
+                name="signupname"
+                class="signupname"
+                id="signupname"
+              />
+              <div class="signupnametext" onclick="signupnametext()">
+                <text>輸入姓名</text>
+              </div>
+              <input
+                type="text"
+                name="signupemail"
+                class="signupemail"
+                id="signupemail"
+              />
+              <div class="signupemailtext" onclick="signupemailtext()">
+                <text>輸入電子郵件</text>
+              </div>
+              <input
+                type="text"
+                name="signuppassword"
+                class="signuppassword"
+                id="signuppassword"
+              />
+              <div class="signuppasswordtext" onclick="signuppasswordtext()">
+                <text>輸入密碼</text>
+              </div>
+              <button class="signupaccountbutton">
+                <div class="signupaccountbuttontext">
+                  <text>註冊帳戶</text>
+                </div>
+              </button>
+              <div class="clicktosignin">
+                <text onclick="signupblock()">已經有帳戶了？點此登入</text>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
 
       <div class="list">

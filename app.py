@@ -8,6 +8,8 @@ from flask import jsonify
 from mysql.connector import Error
 from mysql.connector import pooling
 import json
+import jwt
+
 
 
 connection_pool = pooling.MySQLConnectionPool(pool_name="my_connection_pool",
@@ -120,7 +122,6 @@ def api_attraction():
             "data": results
             }     ), 200  
 
-
 @app.route("/api/attraction/<attractionId>")
 def attractionId(attractionId):
 
@@ -213,7 +214,66 @@ def categories():
             print("DONE!")
         return (jsonify({"data":results})),200 
 
+@app.route("/api/user", methods=["POST"])
+def signup():
 
+    #註冊一個新一個新的會員
+
+    name = request.form["name"]
+    username = request.form["username"]
+    password = request.form["password"]
+    if(name =="" or username == "" or password == ""): #驗證失敗
+        return redirect('/error?message=請輸入帳號、密碼') #導向/error 
+    sql = "SELECT username FROM member_list WHERE username=%s" #SQL指令 檢查是否有重複的帳號 (username)
+    val = (username,)
+    try:
+        # Get connection object from a pool
+        connection_object = connection_pool.get_connection() #連線物件 commit時 需要使用
+        cursor = connection_object.cursor()
+        print("MySQL connection is opened")
+        cursor.execute(sql, val)
+        myresult = cursor.fetchall()
+        x=""
+        for x in myresult:
+            print(x)
+    except Error as e:
+        print("Error while connecting to MySQL using Connection pool ", e)
+    finally:
+        # closing database connection.    
+        cursor.close()
+        connection_object.close()
+    print("MySQL connection is closed")       
+    if (x != ""):#註冊失敗
+        return redirect('/error?message=帳號已經被註冊') #導向/error
+    else:#註冊成功
+        session["name"]=name
+        login = "已註冊"
+        session["login"]=login   
+        sql = "INSERT INTO member_list (name, username, password) VALUES (%s, %s, %s)" #SQL指令 新增資料
+        val = (name, username, password)
+        try:
+            # Get connection object from a pool
+            connection_object = connection_pool.get_connection() #連線物件 commit時 需要使用
+            cursor = connection_object.cursor()
+            print("MySQL connection is opened")
+            cursor.execute(sql, val)
+            connection_object.commit()
+        except Error as e:
+            print("Error while connecting to MySQL using Connection pool ", e)
+        finally:
+            # closing database connection.    
+            cursor.close()
+            connection_object.close()
+            print("MySQL connection is closed")            
+            print("新帳號註冊") 
+        return redirect("/") #導向首頁
+
+
+
+
+encoded_jwt = jwt.encode({"some": "payload"}, "secret", algorithm="HS256")
+print(encoded_jwt)
+jwt.decode(encoded_jwt, "secret", algorithms=["HS256"])    
     
     
 
