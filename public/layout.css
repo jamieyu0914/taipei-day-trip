@@ -429,6 +429,7 @@ html {
   margin-top: 54px;
 }
 .slogan {
+  /*調整 */
   display: inline-flex;
   flex-direction: column;
   align-items: first baseline;
