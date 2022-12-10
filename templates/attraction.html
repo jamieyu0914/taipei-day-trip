@@ -19,17 +19,116 @@
         <div class="menu">
           <!--右上選單-->
           <div class="desktop-menu-left">
-            <text class="mytext">台北一日遊</text>
+            <text class="mytext" onclick="gohome()">台北一日遊</text>
           </div>
           <div class="desktop-menu-right">
-            <button class="item">預定行程</button>
-            <button class="item">登入/註冊</button>
+            <button class="item"><text>預定行程</text></button>
+            <button class="item" id="loginitem">
+              <text class="loginitemtext">登入/註冊</text>
+            </button>
           </div>
         </div>
       </div>
 
       <div class="headline" id="headline">
+        <div class="blocker" onclick="hideview()"></div>
         <!--內容欄-->
+        <div class="signinblock">
+          <div class="signinblockhead"></div>
+          <div class="signinblockcontent">
+            <div class="signinblocktitle">
+              登入會員帳號
+              <button
+                class="signinblock_close"
+                onclick="signinblock_close()"
+              ></button>
+            </div>
+            <div class="signinblockinput">
+              <input
+                type="text"
+                name="signinemail"
+                class="signinemail"
+                id="signinemail"
+                onfocus="signinemailtext()"
+              />
+              <div class="signinemailtext" onclick="signinemailtext()">
+                <text>輸入電子郵件</text>
+              </div>
+              <input
+                type="text"
+                name="signinpassword"
+                class="signinpassword"
+                id="signinpassword"
+                onfocus="signinpasswordtext()"
+              />
+              <div class="signinpasswordtext" onclick="signinpasswordtext()">
+                <text>輸入密碼</text>
+              </div>
+              <button class="signinaccountbutton" onclick="signinput()">
+                <div class="signinaccountbuttontext">
+                  <text>登入帳戶</text>
+                </div>
+              </button>
+              <div class="theresult"></div>
+              <div class="clicktosignup">
+                <text onclick="signupblock()">還沒有帳戶？點此註冊</text>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="signupblock">
+          <div class="signupblockhead"></div>
+          <div class="signupblockcontent">
+            <div class="signupblocktitle">
+              註冊會員帳號
+              <button
+                class="signupblock_close"
+                onclick="signupblock_close()"
+              ></button>
+            </div>
+            <div class="signupblockinput">
+              <input
+                type="text"
+                name="signupname"
+                class="signupname"
+                id="signupname"
+                onfocus="signupnametext()"
+              />
+              <div class="signupnametext" onclick="signupnametext()">
+                <text>輸入姓名</text>
+              </div>
+              <input
+                type="text"
+                name="signupemail"
+                class="signupemail"
+                id="signupemail"
+                onfocus="signupemailtext()"
+              />
+              <div class="signupemailtext" onclick="signupemailtext()">
+                <text>輸入電子郵件</text>
+              </div>
+              <input
+                type="text"
+                name="signuppassword"
+                class="signuppassword"
+                id="signuppassword"
+                onfocus="signuppasswordtext()"
+              />
+              <div class="signuppasswordtext" onclick="signuppasswordtext()">
+                <text>輸入密碼</text>
+              </div>
+              <button class="signupaccountbutton" onclick="signup()">
+                <div class="signupaccountbuttontext">
+                  <text>註冊新帳戶</text>
+                </div>
+              </button>
+              <div class="newresult"></div>
+              <div class="clicktosignin">
+                <text onclick="signinblock()">已經有帳戶了？點此登入</text>
+              </div>
+            </div>
+          </div>
+        </div>
         <div class="slogan">
           <div class="left-content">
             <div class="imgbutton">
@@ -92,6 +191,7 @@
           </div>
         </div>
       </div>
+
       <div class="hrline"></div>
       <div class="list">
         <div class="mylist">
@@ -107,5 +207,6 @@
   <footer class="footer">
     <footer class="text">COPYRIGHT © 2022 台北一日遊</footer>
   </footer>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
   <script src="/attractionsfetch.js" charset="utf-8"></script>
 </html>

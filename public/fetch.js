@@ -2,6 +2,66 @@ var isLoading = false;
 
 var nextPage;
 
+var cookie = document.cookie;
+
+if (cookie != "") {
+  token = cookie.split("=")[1];
+} else {
+  token = "";
+}
+
+if (token != "") {
+  console.log("HELLO HERE");
+
+  function parseJwt(token) {
+    //decode JWT
+    var base64Url = token.split(".")[1];
+    var base64 = base64Url.replace(/-/g, "+").replace(/_/g, "/");
+    var jsonPayload = decodeURIComponent(
+      window
+        .atob(base64)
+        .split("")
+        .map(function (c) {
+          return "%" + ("00" + c.charCodeAt(0).toString(16)).slice(-2);
+        })
+        .join("")
+    );
+    // console.log(JSON.parse(jsonPayload));
+    return JSON.parse(jsonPayload);
+  }
+
+  parseJwt(token);
+
+  $.ajax({
+    type: "GET",
+    url: "/api/user/auth",
+    data: {
+      data: parseJwt(token),
+    },
+    dataType: "json",
+    headers: {
+      "Content-type": "application/json",
+    },
+    success: function (data) {
+      if (data["login"] == true) {
+        console.log("已登入");
+        const loginitemtext = document.querySelector(".loginitemtext");
+        loginitemtext.innerHTML = "登出系統";
+        const loginitem = document.querySelector("#loginitem");
+        loginitem.onclick = function () {
+          logout();
+          document.location.reload();
+        };
+      }
+    },
+  });
+} else {
+  const loginitem = document.querySelector("#loginitem");
+  loginitem.onclick = function () {
+    signinblock();
+  };
+}
+
 function getdata() {
   //讀取資料
   isLoading = true;
@@ -343,7 +403,14 @@ function getsearchdata() {
   isLoading = false;
 }
 
+function gohome() {
+  document.location.href = "/";
+}
+
 function signinblock() {
+  const signupblock = document.querySelector(".signupblock");
+  signupblock.style.display = "none";
+
   const signinblock = document.querySelector(".signinblock");
   signinblock.style.display = "block";
 
@@ -360,6 +427,14 @@ function signinemailtext() {
 function signinpasswordtext() {
   const signinpasswordtext = document.querySelector(".signinpasswordtext");
   signinpasswordtext.style.display = "none";
+}
+
+function signinblock_close() {
+  const signinblock = document.querySelector(".signinblock");
+  signinblock.style.display = "none";
+
+  const blocker = document.querySelector(".blocker");
+  blocker.style.display = "none";
 }
 
 function signupblock() {
@@ -387,6 +462,177 @@ function signupemailtext() {
 function signuppasswordtext() {
   const signuppasswordtext = document.querySelector(".signuppasswordtext");
   signuppasswordtext.style.display = "none";
+}
+
+function signupblock_close() {
+  const signupblock = document.querySelector(".signupblock");
+  signupblock.style.display = "none";
+
+  const blocker = document.querySelector(".blocker");
+  blocker.style.display = "none";
+}
+
+var message;
+
+function signup() {
+  const signupname = document.getElementById("signupname").value;
+  const signupemail = document.getElementById("signupemail").value;
+  const signuppassword = document.getElementById("signuppassword").value;
+  const data = {
+    name: signupname,
+    email: signupemail,
+    password: signuppassword,
+  };
+  fetch(`/api/user`, {
+    method: "POST",
+    body: JSON.stringify(data),
+    headers: {
+      "Content-type": "application/json",
+    },
+  }).then(function (response) {
+    response.json().then(function (data) {
+      console.log(data);
+      message = data["message"];
+      if (data["ok"] == true) {
+        console.log(data["ok"]);
+        signupstate_ok(data);
+      } else {
+        console.log(data["error"]);
+        signupstate_error(data);
+      }
+    });
+  });
+
+  function signupstate_ok(data) {
+    let signupblock = document.querySelector(".signupblock");
+    signupblock.style.cssText = "height:370px; display:block;";
+    let newresult = document.querySelector(".newresult");
+    newresult.innerHTML = "";
+    let content = document.createTextNode("註冊成功，請登入系統");
+    newresult.style.cssText = "color:green";
+    let clicktosignin = document.querySelector(".clicktosignin");
+    clicktosignin.style.cssText = "top:256px";
+    newresult.appendChild(content);
+    document.location.reload();
+  } // 註冊會員 結果欄位 成功
+
+  function signupstate_error(data) {
+    let signupblock = document.querySelector(".signupblock");
+    signupblock.style.cssText = "height:370px; display:block;";
+    let newresult = document.querySelector(".newresult");
+    newresult.innerHTML = "";
+    let content = document.createTextNode(message);
+    newresult.style.cssText = "color:red";
+    let clicktosignin = document.querySelector(".clicktosignin");
+    clicktosignin.style.cssText = "top:256px";
+    newresult.appendChild(content);
+  } // 註冊會員 結果欄位 失敗
+}
+
+function signinput() {
+  const signinemail = document.getElementById("signinemail").value;
+  const signinpassword = document.getElementById("signinpassword").value;
+  const data = {
+    email: signinemail,
+    password: signinpassword,
+  };
+  fetch(`/api/user/auth`, {
+    method: "PUT",
+    body: JSON.stringify(data),
+    headers: {
+      "Content-type": "application/json",
+    },
+  }).then(function (response) {
+    response.json().then(function (data) {
+      console.log(data);
+      message = data["message"];
+      if (data["ok"] == true) {
+        console.log(data["ok"]);
+        signinstate_ok(data);
+        // let cookie = document.cookie;
+        // console.log(cookie);
+      } else if (data["error"] == true) {
+        console.log(data["error"]);
+        signinstate_error(data);
+      }
+    });
+  });
+
+  function signinstate_ok(data) {
+    let signinblock = document.querySelector(".signinblock");
+    signinblock.style.cssText = "height:310px; display:block;";
+    let theresult = document.querySelector(".theresult");
+    theresult.innerHTML = "";
+    let content = document.createTextNode("登入成功");
+    theresult.style.cssText = "color:green";
+    let clicktosignup = document.querySelector(".clicktosignup");
+    clicktosignup.style.cssText = "top:196px";
+    theresult.appendChild(content);
+    document.location.reload();
+  } // 登入會員 結果欄位 成功
+
+  function signinstate_error(data) {
+    let signinblock = document.querySelector(".signinblock");
+    signinblock.style.cssText = "height:310px; display:block;";
+    let theresult = document.querySelector(".theresult");
+    theresult.innerHTML = "";
+    let content = document.createTextNode(message);
+    theresult.style.cssText = "color:red";
+    let clicktosignup = document.querySelector(".clicktosignup");
+    clicktosignup.style.cssText = "top:196px";
+    theresult.appendChild(content);
+  } // 登入會員 結果欄位 失敗
+}
+
+function logout() {
+  let cookiedata = parseJwt(token);
+
+  const data = {
+    id: cookiedata["id"],
+    name: cookiedata["name"],
+    email: cookiedata["email"],
+  };
+  fetch(`/api/user/auth`, {
+    method: "DELETE",
+    body: JSON.stringify(data),
+    headers: {
+      "Content-type": "application/json",
+    },
+  }).then(function (response) {
+    response.json().then(function (data) {
+      console.log(data);
+      message = data["message"];
+      if (data["ok"] == true) {
+        console.log(data["ok"]);
+        signoutstate_ok(data);
+        // let cookie = document.cookie;
+        // console.log(cookie);
+      } else if (data["error"] == true) {
+        console.log(data["error"]);
+        signoutstate_error(data);
+      }
+    });
+  });
+
+  function signoutstate_ok(data) {
+    console.log("已登出");
+    const loginitemtext = document.querySelector(".loginitemtext");
+    loginitemtext.innerHTML = "登入/註冊";
+    const loginitem = document.querySelector("#loginitem");
+    loginitem.onclick = function () {
+      signinblock();
+    };
+  } // 登出會員 成功
+
+  function signoutstate_error(data) {
+    console.log("未登出");
+    const loginitemtext = document.querySelector(".loginitemtext");
+    loginitemtext.innerHTML = "登出系統";
+    const loginitem = document.querySelector("#loginitem");
+    loginitem.onclick = function () {
+      logout();
+    };
+  } // 登出會員 失敗
 }
 
 var card = document.getElementsByClassName("card");

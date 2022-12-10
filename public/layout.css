@@ -110,6 +110,17 @@ html {
   color: #666666;
   margin-top: 15px;
   margin-bottom: 15px;
+  position: relative;
+}
+.signinblock_close {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  right: 0px;
+  bottom: 7px;
+  background-image: url(icon_close.png);
+  background-color: #ffffff;
+  border: 0px;
 }
 .signinblockinput {
   width: 310px;
@@ -174,6 +185,7 @@ html {
   border-radius: 5px;
   margin-top: 10px;
   border: 0px;
+  padding: 0px;
 }
 .signinaccountbuttontext {
   position: absolute;
@@ -193,7 +205,7 @@ html {
   position: absolute;
   width: 310px;
   height: 22px;
-  top: 175px;
+  top: 165px;
   font-family: "Noto Sans TC";
   font-style: normal;
   font-weight: 500;
@@ -204,6 +216,8 @@ html {
   justify-content: center;
   text-align: center;
   color: #666666;
+  padding-bottom: 15px;
+  padding-top: 10px;
 }
 .signupblock {
   width: 340px;
@@ -240,6 +254,17 @@ html {
   color: #666666;
   margin-top: 15px;
   margin-bottom: 15px;
+  position: relative;
+}
+.signupblock_close {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  right: 0px;
+  bottom: 7px;
+  background-image: url(icon_close.png);
+  background-color: #ffffff;
+  border: 0px;
 }
 .signupblockinput {
   width: 310px;
@@ -360,6 +385,42 @@ html {
   text-align: center;
   color: #666666;
   padding-bottom: 15px;
+  padding-top: 10px;
+}
+.newresult {
+  position: absolute;
+  width: 310px;
+  height: 22px;
+  top: 224px;
+  font-family: "Noto Sans TC";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 13px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #666666;
+  padding-bottom: 10px;
+  padding-top: 10px;
+}
+.theresult {
+  position: absolute;
+  width: 310px;
+  height: 22px;
+  top: 165px;
+  font-family: "Noto Sans TC";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 13px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #666666;
+  padding-bottom: 10px;
   padding-top: 10px;
 }
 .list {
