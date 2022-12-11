@@ -58,6 +58,364 @@ html {
   justify-content: center;
   height: 534px;
 }
+.blocker {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  content: " ";
+  background: rgba(0, 0, 0, 0);
+  display: none;
+}
+.signinblock {
+  width: 340px;
+  height: 275px;
+  background-color: #ffffff;
+  z-index: 999;
+  margin-top: 26px;
+  box-shadow: 0px 4px 60px #aaaaaa;
+  border-radius: 6px;
+  display: none;
+}
+.signinblockhead {
+  width: 340px;
+  height: 10px;
+  z-index: 1000;
+  background: linear-gradient(270deg, #337788 0%, #66aabb 100%);
+  border-radius: 6px 6px 0 0;
+}
+.signinblockcontent {
+  display: flex;
+  align-items: center;
+  width: 340px;
+  height: 265px;
+  flex-direction: column;
+}
+.signinblocktitle {
+  width: 310px;
+  height: 27px;
+  font-family: "Noto Sans TC";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 24px;
+  color: #666666;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  position: relative;
+}
+.signinblock_close {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  right: 0px;
+  bottom: 7px;
+  background-image: url(icon_close.png);
+  background-color: #ffffff;
+  border: 0px;
+}
+.signinblockinput {
+  width: 310px;
+  height: 196px;
+  position: relative;
+}
+.signinemail {
+  width: 308px;
+  height: 47px;
+  padding: 0px;
+  background: #ffffff;
+  border: 1px solid #cccccc;
+  border-radius: 5px;
+}
+.signinemailtext {
+  width: 280px;
+  height: 17px;
+  font-family: "Noto Sans TC";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 13px;
+  color: #757575;
+  padding: 15px;
+  z-index: 1000;
+  top: 2px;
+  position: absolute;
+  text-align: left;
+}
+.signinpassword {
+  width: 308px;
+  height: 47px;
+  padding: 0px;
+  background: #ffffff;
+  border: 1px solid #cccccc;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+.signinpasswordtext {
+  width: 280px;
+  height: 17px;
+  font-family: "Noto Sans TC";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 13px;
+  color: #757575;
+  padding: 15px;
+  z-index: 1000;
+  top: 62px;
+  position: absolute;
+  text-align: left;
+}
+.signinaccountbutton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  width: 310px;
+  height: 47px;
+  background: #448899;
+  border-radius: 5px;
+  margin-top: 10px;
+  border: 0px;
+  padding: 0px;
+}
+.signinaccountbuttontext {
+  position: absolute;
+  width: 270px;
+  height: 27px;
+  font-family: "Noto Sans TC";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 19px;
+  line-height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+}
+.clicktosignup {
+  position: absolute;
+  width: 310px;
+  height: 22px;
+  top: 165px;
+  font-family: "Noto Sans TC";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 13px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #666666;
+  padding-bottom: 15px;
+  padding-top: 10px;
+}
+.signupblock {
+  width: 340px;
+  height: 332px;
+  background-color: #ffffff;
+  z-index: 999;
+  margin-top: 26px;
+  box-shadow: 0px 4px 60px #aaaaaa;
+  border-radius: 6px;
+  display: none;
+}
+.signupblockhead {
+  width: 340px;
+  height: 10px;
+  z-index: 1000;
+  background: linear-gradient(270deg, #337788 0%, #66aabb 100%);
+  border-radius: 6px 6px 0 0;
+}
+.signupblockcontent {
+  display: flex;
+  align-items: center;
+  width: 340px;
+  height: 322px;
+  flex-direction: column;
+}
+.signupblocktitle {
+  width: 310px;
+  height: 27px;
+  font-family: "Noto Sans TC";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 24px;
+  color: #666666;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  position: relative;
+}
+.signupblock_close {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  right: 0px;
+  bottom: 7px;
+  background-image: url(icon_close.png);
+  background-color: #ffffff;
+  border: 0px;
+}
+.signupblockinput {
+  width: 310px;
+  height: 250px;
+  position: relative;
+}
+.signupname {
+  width: 308px;
+  height: 47px;
+  padding: 0px;
+  background: #ffffff;
+  border: 1px solid #cccccc;
+  border-radius: 5px;
+}
+.signupnametext {
+  width: 280px;
+  height: 17px;
+  font-family: "Noto Sans TC";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 13px;
+  color: #757575;
+  padding: 15px;
+  z-index: 1000;
+  top: 2px;
+  position: absolute;
+  text-align: left;
+}
+.signupemail {
+  width: 308px;
+  height: 47px;
+  padding: 0px;
+  background: #ffffff;
+  border: 1px solid #cccccc;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+.signupemailtext {
+  width: 280px;
+  height: 17px;
+  font-family: "Noto Sans TC";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 13px;
+  color: #757575;
+  padding: 15px;
+  z-index: 1000;
+  top: 62px;
+  position: absolute;
+  text-align: left;
+}
+.signuppassword {
+  width: 308px;
+  height: 47px;
+  padding: 0px;
+  background: #ffffff;
+  border: 1px solid #cccccc;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+.signuppasswordtext {
+  width: 280px;
+  height: 17px;
+  font-family: "Noto Sans TC";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 13px;
+  color: #757575;
+  padding: 15px;
+  z-index: 1000;
+  top: 122px;
+  position: absolute;
+  text-align: left;
+}
+.signupaccountbutton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  width: 310px;
+  height: 47px;
+  background: #448899;
+  border-radius: 5px;
+  margin-top: 10px;
+  border: 0px;
+  padding: 0px;
+}
+.signupaccountbuttontext {
+  position: absolute;
+  width: 270px;
+  height: 27px;
+  font-family: "Noto Sans TC";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 19px;
+  line-height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+}
+.clicktosignin {
+  position: absolute;
+  width: 310px;
+  height: 22px;
+  top: 224px;
+  font-family: "Noto Sans TC";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 13px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #666666;
+  padding-bottom: 15px;
+  padding-top: 10px;
+}
+.newresult {
+  position: absolute;
+  width: 310px;
+  height: 22px;
+  top: 224px;
+  font-family: "Noto Sans TC";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 13px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #666666;
+  padding-bottom: 10px;
+  padding-top: 10px;
+}
+.theresult {
+  position: absolute;
+  width: 310px;
+  height: 22px;
+  top: 165px;
+  font-family: "Noto Sans TC";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 13px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #666666;
+  padding-bottom: 10px;
+  padding-top: 10px;
+}
 .slogan {
   display: flex;
   position: absolute;
@@ -880,7 +1238,6 @@ html {
     padding-bottom: 382px;
   }
   .slogan {
-    position: unset;
     width: 100vw;
     height: auto;
     display: flex;
@@ -888,6 +1245,7 @@ html {
     align-items: center;
     justify-content: center;
     padding: 0px;
+    top: -340px;
   }
   .left-content {
     width: 466px;
