@@ -54,7 +54,6 @@ if (token != "") {
         const loginitem = document.querySelector("#loginitem");
         loginitem.onclick = function () {
           logout();
-          document.location.reload();
         };
       }
     },
@@ -349,6 +348,7 @@ function logout() {
       message = data["message"];
       if (data["ok"] == true) {
         console.log(data["ok"]);
+        document.location.reload();
         signoutstate_ok(data);
         // let cookie = document.cookie;
         // console.log(cookie);
