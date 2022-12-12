@@ -121,12 +121,14 @@ html {
   position: relative;
 }
 .signinemail {
-  width: 308px;
+  width: 288px;
   height: 47px;
   padding: 0px;
   background: #ffffff;
   border: 1px solid #cccccc;
   border-radius: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 .signinemailtext {
   width: 280px;
@@ -144,13 +146,15 @@ html {
   text-align: left;
 }
 .signinpassword {
-  width: 308px;
+  width: 288px;
   height: 47px;
   padding: 0px;
   background: #ffffff;
   border: 1px solid #cccccc;
   border-radius: 5px;
   margin-top: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 .signinpasswordtext {
   width: 280px;
@@ -265,12 +269,14 @@ html {
   position: relative;
 }
 .signupname {
-  width: 308px;
+  width: 288px;
   height: 47px;
   padding: 0px;
   background: #ffffff;
   border: 1px solid #cccccc;
   border-radius: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 .signupnametext {
   width: 280px;
@@ -288,13 +294,15 @@ html {
   text-align: left;
 }
 .signupemail {
-  width: 308px;
+  width: 288px;
   height: 47px;
   padding: 0px;
   background: #ffffff;
   border: 1px solid #cccccc;
   border-radius: 5px;
   margin-top: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 .signupemailtext {
   width: 280px;
@@ -312,13 +320,15 @@ html {
   text-align: left;
 }
 .signuppassword {
-  width: 308px;
+  width: 288px;
   height: 47px;
   padding: 0px;
   background: #ffffff;
   border: 1px solid #cccccc;
   border-radius: 5px;
   margin-top: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 .signuppasswordtext {
   width: 280px;
