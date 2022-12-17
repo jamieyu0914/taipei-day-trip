@@ -4,7 +4,7 @@ var nextPage;
 
 var cookie = document.cookie;
 
-if (cookie != "") {
+if (cookie != "token=") {
   token = cookie.split("=")[1];
 } else {
   token = "";
@@ -512,7 +512,7 @@ function signup() {
     let clicktosignin = document.querySelector(".clicktosignin");
     clicktosignin.style.cssText = "top:256px";
     newresult.appendChild(content);
-    document.location.reload();
+    document.location.href = "/";
   } // 註冊會員 結果欄位 成功
 
   function signupstate_error(data) {
@@ -567,7 +567,7 @@ function signinput() {
     let clicktosignup = document.querySelector(".clicktosignup");
     clicktosignup.style.cssText = "top:196px";
     theresult.appendChild(content);
-    document.location.reload();
+    document.location.href = "/";
   } // 登入會員 結果欄位 成功
 
   function signinstate_error(data) {
@@ -603,7 +603,7 @@ function logout() {
       message = data["message"];
       if (data["ok"] == true) {
         console.log(data["ok"]);
-        document.location.reload();
+        document.location.href = "/";
         signoutstate_ok(data);
         // let cookie = document.cookie;
         // console.log(cookie);
@@ -633,6 +633,17 @@ function logout() {
       logout();
     };
   } // 登出會員 失敗
+}
+
+function gobooking() {
+  //判斷是否為登入狀態
+  if (cookie != "token=") {
+    token = cookie.split("=")[1];
+    document.location.href = `/booking`;
+  } else {
+    token = "";
+    signinblock();
+  }
 }
 
 var card = document.getElementsByClassName("card");

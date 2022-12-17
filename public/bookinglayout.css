@@ -1,26 +1,23 @@
 html {
   font-size: 125%;
 }
-.desktop-view {
-  text-align: center;
-  display: block;
-}
 .mymenu {
   display: flex;
   justify-content: center;
   width: 100vw;
   height: 54px;
-  z-index: 998;
+  z-index: 999;
   background: white;
   position: fixed;
 }
 .menu {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   justify-items: center;
   position: fixed;
   width: 1200px;
   margin: auto;
+  border-bottom: solid #e8e8e8;
 }
 .desktop-menu-left {
   display: flex;
@@ -33,21 +30,17 @@ html {
   font-size: 30px;
   line-height: 34px;
   color: #448899;
-  width: 600px;
-  height: 54px;
 }
 .mytext {
   margin: 10px;
 }
 .desktop-menu-right {
-  width: 600px;
   color: #666666;
   flex: auto;
   display: flex;
-  justify-content: flex-end;
+  justify-content: right;
   align-items: center;
   z-index: 999;
-  height: 54px;
 }
 .item {
   flex: none; /*固定配置*/
@@ -62,18 +55,45 @@ html {
   background-color: #ffffff;
 }
 .headline {
-  /* Auto layout */
   display: flex;
-  flex-direction: row;
   justify-content: center;
-  align-items: flex-start;
-  padding: 0px;
+  height: 391px;
+}
+.headlinetext {
+  width: 1000px;
+  height: 16px;
+  margin-top: 100px;
+  font-family: "Noto Sans TC";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 19px;
+  line-height: 16px;
+  display: flex;
+  align-items: center;
+  color: #666666;
   position: relative;
-  height: 320px;
-  background-image: url(welcome.png);
-  background-position: top;
-  background-size: cover;
-  top: 54px;
+}
+.nonetext {
+  position: absolute;
+  top: 51px;
+  font-family: "Noto Sans TC";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 13px;
+  display: flex;
+  align-items: center;
+  color: #666666;
+}
+.blocker {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  content: " ";
+  background: rgba(0, 0, 0, 0);
+  display: none;
 }
 .signinblock {
   width: 340px;
@@ -433,82 +453,54 @@ html {
   padding-bottom: 10px;
   padding-top: 10px;
 }
-.list {
-  display: flex;
-  justify-content: center;
-  margin-top: 54px;
-}
 .slogan {
-  /*調整 */
-  display: inline-flex;
-  flex-direction: column;
-  align-items: first baseline;
+  display: flex;
   position: absolute;
-  width: 1200px;
-  top: 140px;
+  width: 1000px;
+  top: 54px;
   color: #f8f8f8;
-  text-shadow: 0px 0px 30px #aabbcc;
-  margin-left: 10px;
+  flex-direction: row;
+  padding-top: 37px;
+  height: fit-content;
+  padding-bottom: 37px;
+  height: 406px;
 }
-.text-title {
+.left-content {
   position: absolute;
-  width: 1180px;
-  height: 41px;
-  left: 0px;
-  top: 0px;
+  width: 246px;
+  height: 200px;
   font-family: "Noto Sans TC";
   font-style: normal;
-  font-weight: 700;
   font-size: 30px;
   line-height: 24px;
   display: flex;
   align-items: center;
   color: #f8f8f8;
-  text-shadow: 0px 0px 30px #aabbcc;
-  left: 10px;
+  top: 100px;
+  background-size: cover;
+  background-color: #000000;
+  border-left: 10px solid #ffffff;
+  border-right: 10px solid #ffffff;
 }
-.text-subtitle {
+.right-content {
   position: absolute;
-  width: 1180px;
-  height: 22px;
-  left: 0px;
-  top: 56px;
+  width: 600px;
+  height: 200px;
   font-family: "Noto Sans TC";
   font-style: normal;
-  font-weight: 700;
   font-size: 16px;
   line-height: 13px;
   display: flex;
   align-items: center;
   color: #f8f8f8;
-  left: 10px;
-}
-.search {
+  left: 288px;
   top: 100px;
-  background: #448899;
-  justify-content: space-between;
-  display: flex;
-  align-items: center;
-  border-radius: 5px;
-  position: absolute;
-  width: 460px;
-  left: 10px;
 }
-.keyword {
-  width: 386px;
-  font-family: Noto Sans TC;
-  font-weight: 700;
-  border: 0px;
-  border-top-left-radius: 5px;
-  border-bottom-left-radius: 5px;
-  height: 44px;
-  padding-left: 10px;
-  padding-right: 10px;
-}
-.inputtext {
+.contenttitle {
   position: absolute;
-  width: 370px;
-  height: 16px;
+  height: 14px;
+  left: 0px;
+  top: 5px;
   font-family: "Noto Sans TC";
   font-style: normal;
   font-weight: 700;
@@ -516,149 +508,340 @@ html {
   line-height: 13px;
   display: flex;
   align-items: center;
-  color: #757575;
-  padding: 15px;
+  color: #448899;
 }
-.blocker {
-  position: fixed;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  content: " ";
-  background: rgba(0, 0, 0, 0);
-  display: none;
-}
-.search-button {
-  background-image: url(icon_search.png);
-  height: 30px;
-  width: 30px;
-  background-color: #489;
-  border-radius: 5px;
-  border: 0px;
+.contentdate {
   position: absolute;
-  left: 420px;
-}
-.categoryview {
-  flex-wrap: wrap;
-  position: absolute;
-  width: 400px;
+  height: 14px;
   left: 0px;
-  top: 51px;
-  background: #ffffff;
-  box-shadow: 0px 0px 20px #aabbcc;
-  border-radius: 5px;
-  color: #000000;
-  display: none;
-  z-index: 999;
+  top: 49px;
+  font-family: "Noto Sans TC";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 13.3px;
+  display: flex;
+  align-items: center;
+  color: #666666;
 }
-.categoryitem {
-  width: 120px;
-  height: 40px;
+.contentdatetext {
   font-family: "Noto Sans TC";
   font-style: normal;
   font-weight: 500;
-  font-size: 14px;
+  font-size: 16px;
+  line-height: 13px;
   display: flex;
   align-items: center;
-  color: #000000;
-  background-color: #ffffff;
-  border-radius: 5px;
-  border: 0px;
-  justify-content: flex-start;
+  color: #666666;
 }
-.categoryitem_text {
+.contenttime {
+  position: absolute;
+  height: 14px;
+  left: 0px;
+  top: 83px;
+  font-family: "Noto Sans TC";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 13.3px;
   display: flex;
-  flex: fit-content;
-  padding-left: 15px;
-  padding-right: 15px;
-  padding-top: 10px;
-  padding-bottom: 10px;
+  align-items: center;
+  color: #666666;
 }
-.categoryitem:hover {
-  background-color: #e8e8e8;
+.contenttimetext {
+  font-family: "Noto Sans TC";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 13px;
+  display: flex;
+  align-items: center;
+  color: #666666;
 }
-.mylist {
+.contentcost {
+  position: absolute;
+  height: 14px;
+  left: 0px;
+  top: 117px;
+  font-family: "Noto Sans TC";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 13.3px;
+  display: flex;
+  align-items: center;
+  color: #666666;
+}
+.contentcosttext {
+  font-family: "Noto Sans TC";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 13px;
+  display: flex;
+  align-items: center;
+  color: #666666;
+}
+.contentaddress {
+  position: absolute;
+  height: 14px;
+  left: 0px;
+  top: 151px;
+  font-family: "Noto Sans TC";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 13.3px;
+  display: flex;
+  align-items: center;
+  color: #666666;
+}
+.contentaddresstext {
+  font-family: "Noto Sans TC";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 13px;
+  display: flex;
+  align-items: center;
+  color: #666666;
+}
+.delete-content {
+  position: absolute;
+  right: 10px;
+}
+.deletebutton {
+  background-image: url(icon_delete.png);
+  background-color: #ffffff;
+  width: 30px;
+  height: 30px;
+  border: 0px;
+}
+.hrline {
+  max-width: 1200px;
+  margin: 0px auto;
+  height: 0px;
+  border: 1px solid #e8e8e8;
+}
+.list {
   display: flex;
   justify-content: center;
+  height: auto;
+}
+.mylist {
+  justify-content: center;
   justify-items: center;
-  width: 1200px;
+  width: 1000px;
+  height: auto; /* 留白用 */
 }
-.list-block {
+.listtitletext {
+  font-family: "Noto Sans TC";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 19px;
+  line-height: 16px;
   display: flex;
-  flex-wrap: wrap;
-  width: 1200px;
-  margin-bottom: 30px;
-  margin-top: 30px;
-  justify-content: flex-start;
   align-items: center;
+  color: #666666;
+  padding-top: 44px;
+  padding-bottom: 24px;
 }
-.card {
-  display: inline-block;
-  width: 270px;
-  margin: 15px;
-}
-.image_container {
-  position: relative;
-  height: 100%;
-}
-.photo {
-  width: 268px;
-  position: relative;
-  height: 195px;
-  background-size: cover;
-  border-radius: 5px;
-  border: 1px solid #e8e8e8;
-}
-.photo_mask {
-  position: absolute;
-  left: 0px;
-  bottom: 0px;
-  background: black;
-  width: 100%;
-  height: 40px;
-  opacity: 0.6;
-}
-.mask_title {
-  color: #ffffff;
+.contectname {
+  font-family: "Noto Sans TC";
+  font-style: normal;
+  font-weight: 500;
   font-size: 16px;
-  bottom: 0px;
-  position: absolute;
-  left: 0px;
-  padding: 10px;
-  font-family: Noto Sans TC;
-  width: 250px;
-  height: 20px;
-  text-align: left;
-}
-.card_inform {
+  line-height: 13px;
   display: flex;
-  justify-content: space-evenly;
-  border-radius: 5px;
+  align-items: center;
+  color: #666666;
+  margin-bottom: 15px;
+}
+.contectnametext {
+  padding-top: 7px;
+  padding-bottom: 7px;
+}
+.contectnameinput {
+  width: 180px;
+  height: 18px;
+  padding: 10px;
+  background: #ffffff;
   border: 1px solid #e8e8e8;
-  height: 43px;
+  border-radius: 5px;
 }
-.mrt_inform {
-  color: #000000;
+.contectemail {
+  font-family: "Noto Sans TC";
+  font-style: normal;
+  font-weight: 500;
   font-size: 16px;
-  left: 0px;
-  padding: 10px;
-  font-family: Noto Sans TC;
-  width: 125px;
-  text-align: left;
-  height: 25px;
+  line-height: 13px;
+  display: flex;
+  align-items: center;
+  color: #666666;
+  margin-bottom: 15px;
 }
-.category_inform {
-  color: #000000;
-  font-size: 16px;
-  left: 0px;
+.contectemailtext {
+  padding-top: 7px;
+  padding-bottom: 7px;
+}
+.contectemailinput {
+  width: 180px;
+  height: 18px;
   padding: 10px;
-  font-family: Noto Sans TC;
-  width: 125px;
+  background: #ffffff;
+  border: 1px solid #e8e8e8;
+  border-radius: 5px;
+}
+.contectphone {
+  font-family: "Noto Sans TC";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 13px;
+  display: flex;
+  align-items: center;
+  color: #666666;
+  margin-bottom: 20px;
+}
+.contectphonetext {
+  padding-top: 7px;
+  padding-bottom: 7px;
+}
+.contectphoneinput {
+  width: 180px;
+  height: 18px;
+  padding: 10px;
+  background: #ffffff;
+  border: 1px solid #e8e8e8;
+  border-radius: 5px;
+}
+.attentiontext {
+  font-family: "Noto Sans TC";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 13px;
+  display: flex;
+  align-items: center;
+  color: #666666;
+  margin-top: 5px;
+  margin-bottom: 45px;
+}
+.mytotallist {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  width: 990px;
+  height: auto;
+}
+.cardnumber {
+  font-family: "Noto Sans TC";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 13px;
+  display: flex;
+  align-items: center;
+  color: #666666;
+  margin-bottom: 15px;
+}
+.cardnumbertext {
+  padding-top: 7px;
+  padding-bottom: 7px;
+}
+.cardnumberinput {
+  width: 180px;
+  height: 18px;
+  padding: 10px;
+  background: #ffffff;
+  border: 1px solid #e8e8e8;
+  border-radius: 5px;
+}
+.cardtime {
+  font-family: "Noto Sans TC";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 13px;
+  display: flex;
+  align-items: center;
+  color: #666666;
+  margin-bottom: 15px;
+}
+.cardtimetext {
+  padding-top: 7px;
+  padding-bottom: 7px;
+}
+.cardtimeinput {
+  width: 180px;
+  height: 18px;
+  padding: 10px;
+  background: #ffffff;
+  border: 1px solid #e8e8e8;
+  border-radius: 5px;
+}
+.cardpassword {
+  font-family: "Noto Sans TC";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 13px;
+  display: flex;
+  align-items: center;
+  color: #666666;
+  margin-bottom: 40px;
+}
+.cardpassword {
+  padding-top: 7px;
+  padding-bottom: 7px;
+}
+.cardpasswordinput {
+  width: 180px;
+  height: 18px;
+  padding: 10px;
+  background: #ffffff;
+  border: 1px solid #e8e8e8;
+  border-radius: 5px;
+}
+.totaltext {
+  font-family: "Noto Sans TC";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 13px;
+  display: flex;
+  align-items: center;
   text-align: right;
-  height: 25px;
+  color: #666666;
+  margin-top: 40px;
+  margin-bottom: 25px;
 }
-
+.startbookingbutton {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 10px 20px;
+  width: 173px;
+  height: 36px;
+  background: #448899;
+  border-radius: 5px;
+  border: 0px;
+  margin-bottom: 62px;
+}
+.startbookingtext {
+  font-family: "Noto Sans TC";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 19px;
+  line-height: 16px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #ffffff;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}
 .footer {
   display: flex;
   flex-direction: column;
@@ -670,7 +853,6 @@ html {
   height: 104px;
 }
 .footer .text {
-  /* Body - Bold 16(13.3) */
   font-family: "Noto Sans TC";
   font-style: normal;
   font-weight: 700;
@@ -681,6 +863,7 @@ html {
 
 @media (max-width: 1200px) {
   /* 螢幕寬度小於 1200px, 套用這個區塊的 css*/
+
   .menu {
     width: 100vw;
   }
@@ -697,121 +880,218 @@ html {
     margin: 10px;
     text-align: center;
   }
-  .slogan {
-    display: inline-flex;
-    flex-direction: column;
-    position: absolute;
-    top: 140px;
-    color: #f8f8f8;
-    text-shadow: 0px 0px 30px #aabbcc;
-    padding-left: 81vw;
-    left: 9vw;
-    max-width: 1200px;
-    width: fit-content;
-  }
-  .text-title {
-    position: absolute;
-    height: 41px;
-    left: 0px;
-    top: 0px;
-    font-family: "Noto Sans TC";
-    font-style: normal;
-    font-weight: 700;
-    font-size: 30px;
-    line-height: 24px;
-    display: flex;
-    align-items: center;
-    color: #f8f8f8;
-    text-shadow: 0px 0px 30px #aabbcc;
-    left: 10px;
-    max-width: fit-content;
-  }
-  .text-subtitle {
-    position: absolute;
-    height: 22px;
-    left: 0px;
-    top: 56px;
-    font-family: "Noto Sans TC";
-    font-style: normal;
-    font-weight: 700;
-    font-size: 16px;
-    line-height: 13px;
-    display: flex;
-    align-items: center;
-    color: #f8f8f8;
-    left: 10px;
-    max-width: fit-content;
-  }
-  .list-block {
+  .headline {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 90%;
+    height: 360px;
+    padding-bottom: 37px;
+  }
+  .headlinetext {
+    position: relative;
+    margin-bottom: 250px;
+    margin-left: 95px;
+  }
+  .slogan {
+    display: flex;
+    justify-content: flex-start;
+    width: 90vw;
+    height: 260px;
+    margin-left: 95px;
+    top: 120px;
+  }
+  .left-content {
+    position: unset;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex: auto;
+    align-items: center;
+    height: 200px;
+    background-position: center;
+    max-width: 246px;
+  }
+  .right-content {
+    position: relative;
+    display: flex;
+    justify-content: flex-start;
+    flex: auto;
+    align-items: center;
+    max-width: 35vw;
+    left: 12px;
+    top: 0px;
+  }
+  .deletebutton {
+    margin-right: 2vw;
+  }
+  .contenttitle {
+    margin-top: 5px;
+    line-height: 20px;
+  }
+  .contentaddresstitle {
+    min-width: 50px;
+  }
+  .contentaddresstext {
+    line-height: 20px;
+  }
+  .hrline {
+    width: 81vw;
+    margin-top: 15px;
+  }
+  .list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+    margin-top: 0px;
+  }
+  .mylist {
+    flex-direction: column;
+    align-content: center;
+    display: flex;
+    top: 570px;
+    height: auto;
+    height: auto;
+    position: unset;
+    width: 960px;
+    margin-left: 95px;
+    margin-right: 10px;
+  }
+  .attentiontext {
+    line-height: 23.17px;
+  }
+  .mytotallist {
+    margin-right: 80px;
   }
 }
 
 @media (max-width: 600px) {
   .desktop-menu-left {
-    padding: 0px;
+    padding: 10px;
+    width: 150px;
   }
   .mytext {
     margin: 0px;
     width: 150px;
-    align-items: center;
-    padding: 10px;
+    padding: 0px;
   }
   .desktop-menu-right {
-    padding: 0px;
+    padding: 10px;
   }
   .item {
     margin: 0px;
-    padding: 10px;
+  }
+  .headline {
+    padding-bottom: 382px;
+    height: 305px;
+  }
+  .headlinetext {
+    position: relative;
+    margin-bottom: 189px;
+    margin-left: 10px;
   }
   .slogan {
-    position: absolute;
-    width: 320px;
-    left: 10px;
-    padding-left: 0px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0px;
+    top: -340px;
+    margin: 0px;
   }
-  .text-title {
-    width: 320px;
-    max-width: none;
-  }
-  .text-subtitle {
-    max-width: none;
-    width: 320px;
-  }
-  .search {
-    width: 285px;
-    height: 46px;
-  }
-  .keyword {
-    width: 216px;
-    height: 46px;
-  }
-  .inputtext {
-    width: 195px;
-  }
-  .search-button {
-    position: absolute;
-    left: 245px;
-  }
-  .card {
-    display: inline-block;
-    width: 321px;
-    margin: 10px;
-    height: 235px;
-    padding-bottom: 45px;
+  .left-content {
+    min-width: 90vw;
+    margin-top: 490px;
+    height: 419px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background-size: cover;
+    padding: 10px;
+    height: 256px;
+    margin-bottom: 10px;
   }
-  .card_inform {
-    justify-content: space-between;
+  .right-content {
+    width: 340px;
+    right: 0px;
+    display: unset;
+    justify-content: center;
+    flex: unset;
+    position: unset;
+    max-width: unset;
+    padding-top: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
   }
-  .photo {
-    width: 321px;
-    position: relative;
-    height: 235px;
-    border-radius: 5px;
-    border: 1px solid #e8e8e8;
+  .deletebutton {
+    margin-top: 1000px;
+    margin-right: -20px;
+  }
+  .contenttitle {
+    position: unset;
+    position: unset;
+    width: 340px;
+    height: 33px;
+    left: 0px;
+    top: 0px;
+  }
+  .contentdate {
+    position: unset;
+    width: 340px;
+    height: 22px;
+    left: 0px;
+    padding-top: 15px;
+  }
+  .contenttime {
+    position: unset;
+    width: 340px;
+    height: 22px;
+    left: 0px;
+    padding-top: 15px;
+  }
+  .contentcost {
+    position: unset;
+    width: 340px;
+    height: 22px;
+    left: 0px;
+    padding-top: 15px;
+  }
+  .contentaddress {
+    position: unset;
+    width: 340px;
+    height: 22px;
+    left: 0px;
+    padding-top: 15px;
+  }
+  .hrline {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    justify-items: center;
+    width: 94vw;
+  }
+  .list {
+    height: auto;
+    margin-top: 0px;
+  }
+  .mylist {
+    height: auto;
+    position: unset;
+    width: 340px;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+  .attentiontext {
+    margin-bottom: 25px;
+  }
+  .cardpassword {
+    margin-bottom: 25px;
+  }
+  .mytotallist {
+    margin-right: 10px;
+  }
+  .startbookingbutton {
+    margin-bottom: 72px;
   }
 }
