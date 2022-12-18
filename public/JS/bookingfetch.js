@@ -31,6 +31,7 @@ if (token != "") {
   }
 
   parseJwt(token);
+  // console.log(parseJwt(token));
 
   getData("/api/user/auth");
   function getData(url) {
@@ -43,6 +44,7 @@ if (token != "") {
         // console.log(login_response["data"]);
         user = login_response["data"];
         if (login_response["data"] != null) {
+          getbookingData("/api/booking");
           console.log("已登入");
           const loginitemtext = document.querySelector(".loginitemtext");
           loginitemtext.innerHTML = "登出系統";
@@ -56,6 +58,7 @@ if (token != "") {
     xhr.send(null);
   }
 } else {
+  getbookingData("/api/booking");
   console.log("未登入");
   const loginitem = document.querySelector("#loginitem");
   loginitem.onclick = function () {
@@ -123,7 +126,6 @@ function gobooking() {
   document.location.href = `/booking`;
 }
 
-getbookingData("/api/booking");
 function getbookingData(url) {
   const xhr = new XMLHttpRequest();
   xhr.open("GET", url, true);
