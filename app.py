@@ -627,15 +627,18 @@ def bookingpost():
                 "message": "建立失敗，重複的行程"
                 })),400
     else:#預定成功
-        sql = "INSERT INTO booking_list (member_id, attraction_id, booking_date, booking_time, price) VALUES (%s, %s, %s, %s, %s);" #SQL指令 新增資料
-        val = (str(userid), str(attractionId), str(date), str(time), str(price))
+        sql = "SELECT * FROM booking_list WHERE member_id=%s ;" #SQL指令 檢查使用者訂單資料
+        val = (str(userid),)
         try:
             # Get connection object from a pool
             connection_object = connection_pool.get_connection() #連線物件 commit時 需要使用
             cursor = connection_object.cursor()
             print("MySQL connection is opened")
             cursor.execute(sql, val)
-            connection_object.commit()
+            myresult = cursor.fetchall()
+            x=""
+            for x in myresult:
+                print(x)
         except Error as e:
             print("Error while connecting to MySQL using Connection pool ", e)
             return (jsonify({
@@ -646,9 +649,52 @@ def bookingpost():
             # closing database connection.    
             cursor.close()
             connection_object.close()
-            print("MySQL connection is closed")            
-            print("建立新的預定行程")
-    
+        print("MySQL connection is closed")            
+        print("檢查先前的的預定行程")
+        if (x ==""):#未有紀錄
+            sql = "INSERT INTO booking_list (member_id, attraction_id, booking_date, booking_time, price) VALUES (%s, %s, %s, %s, %s);" #SQL指令 新增資料
+            val = (str(userid), str(attractionId), str(date), str(time), str(price))
+            try:
+                # Get connection object from a pool
+                connection_object = connection_pool.get_connection() #連線物件 commit時 需要使用
+                cursor = connection_object.cursor()
+                print("MySQL connection is opened")
+                cursor.execute(sql, val)
+                connection_object.commit()
+            except Error as e:
+                print("Error while connecting to MySQL using Connection pool ", e)
+                return (jsonify({
+                    "error": True,
+                    "message": "伺服器內部錯誤"
+                    })),500
+            finally:
+                # closing database connection.    
+                cursor.close()
+                connection_object.close()
+                print("MySQL connection is closed")            
+                print("建立新的預定行程")
+        else:#先前有紀錄，覆蓋訂單    
+            sql = "UPDATE booking_list SET attraction_id=%s, booking_date=%s, booking_time=%s, price=%s WHERE member_id=%s;" #SQL指令 更新資料
+            val = (str(attractionId), str(date), str(time), str(price), str(userid))
+            try:
+                # Get connection object from a pool
+                connection_object = connection_pool.get_connection() #連線物件 commit時 需要使用
+                cursor = connection_object.cursor()
+                print("MySQL connection is opened")
+                cursor.execute(sql, val)
+                connection_object.commit()
+            except Error as e:
+                print("Error while connecting to MySQL using Connection pool ", e)
+                return (jsonify({
+                    "error": True,
+                    "message": "伺服器內部錯誤"
+                    })),500
+            finally:
+                # closing database connection.    
+                cursor.close()
+                connection_object.close()
+                print("MySQL connection is closed")            
+                print("更新新的預定行程")
     return (jsonify({"ok": True})),200    
 
 @app.route("/api/booking", methods=["DELETE"])
