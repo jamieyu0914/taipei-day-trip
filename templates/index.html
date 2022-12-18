@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>My Website-台北市政府提供景點公開資料</title>
-    <link rel="stylesheet" type="text/css" href="layout.css" />
+    <link rel="stylesheet" type="text/css" href="/CSS/layout.css" />
   </head>
   <body
     style="
@@ -22,7 +22,9 @@
             <text class="mytext" onclick="gohome()">台北一日遊</text>
           </div>
           <div class="desktop-menu-right">
-            <button class="item"><text>預定行程</text></button>
+            <button class="item" onclick="gobooking()">
+              <text>預定行程</text>
+            </button>
             <button class="item" id="loginitem">
               <text class="loginitemtext">登入/註冊</text>
             </button>
@@ -177,6 +179,5 @@
   <footer class="footer">
     <footer class="text">COPYRIGHT © 2022 台北一日遊</footer>
   </footer>
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-  <script src="fetch.js" charset="utf-8"></script>
+  <script src="/JS/fetch.js" charset="utf-8"></script>
 </html>

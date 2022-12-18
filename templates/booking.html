@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Website-台北市政府提供景點公開資料</title>
+    <link rel="stylesheet" type="text/css" href="/CSS/bookinglayout.css" />
+  </head>
+  <body
+    style="
+      margin-top: 0px;
+      margin-right: 0px;
+      margin-left: 0px;
+      margin-bottom: 0px;
+    "
+  >
+    <div class="desktop-view">
+      <div class="mymenu">
+        <div class="menu">
+          <!--右上選單-->
+          <div class="desktop-menu-left">
+            <text class="mytext" onclick="gohome()">台北一日遊</text>
+          </div>
+          <div class="desktop-menu-right">
+            <button class="item" onclick="gobooking()">
+              <text>預定行程</text>
+            </button>
+            <button class="item" id="loginitem">
+              <text class="loginitemtext">登入/註冊</text>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="headline" id="headline">
+        <div class="headlinetext">
+          <text class="hello">您好，</text>
+          <text class="username"></text>
+          <text class="detail">，待預訂的行程如下：</text>
+        </div>
+        <div class="blocker" onclick="hideview()"></div>
+        <!--內容欄-->
+        <div class="signinblock">
+          <div class="signinblockhead"></div>
+          <div class="signinblockcontent">
+            <div class="signinblocktitle">
+              登入會員帳號
+              <button
+                class="signinblock_close"
+                onclick="signinblock_close()"
+              ></button>
+            </div>
+            <div class="signinblockinput">
+              <input
+                type="text"
+                name="signinemail"
+                class="signinemail"
+                id="signinemail"
+                onfocus="signinemailtext()"
+              />
+              <div class="signinemailtext" onclick="signinemailtext()">
+                <text>輸入電子郵件</text>
+              </div>
+              <input
+                type="password"
+                name="signinpassword"
+                class="signinpassword"
+                id="signinpassword"
+                onfocus="signinpasswordtext()"
+              />
+              <div class="signinpasswordtext" onclick="signinpasswordtext()">
+                <text>輸入密碼</text>
+              </div>
+              <button class="signinaccountbutton" onclick="signinput()">
+                <div class="signinaccountbuttontext">
+                  <text>登入帳戶</text>
+                </div>
+              </button>
+              <div class="theresult"></div>
+              <div class="clicktosignup">
+                <text onclick="signupblock()">還沒有帳戶？點此註冊</text>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="signupblock">
+          <div class="signupblockhead"></div>
+          <div class="signupblockcontent">
+            <div class="signupblocktitle">
+              註冊會員帳號
+              <button
+                class="signupblock_close"
+                onclick="signupblock_close()"
+              ></button>
+            </div>
+            <div class="signupblockinput">
+              <input
+                type="text"
+                name="signupname"
+                class="signupname"
+                id="signupname"
+                onfocus="signupnametext()"
+              />
+              <div class="signupnametext" onclick="signupnametext()">
+                <text>輸入姓名</text>
+              </div>
+              <input
+                type="text"
+                name="signupemail"
+                class="signupemail"
+                id="signupemail"
+                onfocus="signupemailtext()"
+              />
+              <div class="signupemailtext" onclick="signupemailtext()">
+                <text>輸入電子郵件</text>
+              </div>
+              <label for="signuppassword"></label>
+              <input
+                type="password"
+                name="signuppassword"
+                class="signuppassword"
+                id="signuppassword"
+                onfocus="signuppasswordtext()"
+              />
+              <div class="signuppasswordtext" onclick="signuppasswordtext()">
+                <text>輸入密碼</text>
+              </div>
+              <button class="signupaccountbutton" onclick="signup()">
+                <div class="signupaccountbuttontext">
+                  <text>註冊新帳戶</text>
+                </div>
+              </button>
+              <div class="newresult"></div>
+              <div class="clicktosignin">
+                <text onclick="signinblock()">已經有帳戶了？點此登入</text>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="slogan">
+          <div class="left-content"></div>
+          <div class="right-content">
+            <text class="contenttitle"></text>
+            <text class="contentdate"
+              ><text class="contentdatetitle">日期：</text>
+              <text class="contentdatetext"></text>
+            </text>
+            <text class="contenttime"
+              ><text class="contenttimetitle">時間：</text>
+              <text class="contenttimetext"></text>
+            </text>
+            <text class="contentcost"
+              ><text class="contentcosttitle">費用：</text>
+              <text class="contentcosttext"></text>
+            </text>
+            <text class="contentaddress"
+              ><text class="contentaddresstitle">地點：</text>
+              <text class="contentaddresstext"></text>
+            </text>
+          </div>
+          <div class="delete-content">
+            <button class="deletebutton" onclick="deletebooking()"></button>
+          </div>
+        </div>
+      </div>
+
+      <div class="hrline"></div>
+      <div class="listblock">
+        <div class="list">
+          <div class="mylist">
+            <div class="listtitletext">您的聯絡資訊</div>
+            <div class="contectname">
+              <text class="contectnametext">聯絡姓名:</text>
+              <input
+                type="text"
+                name="contectname"
+                class="contectnameinput"
+                id="contectnameinput"
+              />
+            </div>
+            <div class="contectemail">
+              <text class="contectemailtext">聯絡信箱:</text>
+              <input
+                type="text"
+                name="contectemail"
+                class="contectemailinput"
+                id="contectemailinput"
+              />
+            </div>
+            <div class="contectphone">
+              <text class="contectphoneinputtext">手機號碼:</text>
+              <input
+                type="text"
+                name="contectphone"
+                class="contectphoneinput"
+                id="contectphoneinput"
+              />
+            </div>
+            <div class="attentiontext">
+              請保持手機暢通，準時到達，導覽人員將用手機與您聯繫，務必留下正確的聯絡方式。
+            </div>
+          </div>
+        </div>
+        <div class="hrline"></div>
+        <div class="list">
+          <div class="mylist">
+            <div class="listtitletext">信用卡付款資訊</div>
+            <div class="cardnumber">
+              <text class="cardnumbertext">卡片號碼：</text>
+              <input
+                type="password"
+                name="cardnumber"
+                class="cardnumberinput"
+                id="cardnumberinput"
+                placeholder="**** **** **** ****"
+                onfocus="cardnumberinputtext()"
+              />
+            </div>
+            <div class="cardtime">
+              <text class="cardtimetext">過期時間：</text>
+              <input
+                type="month"
+                name="cardtime"
+                class="cardtimeinput"
+                id="cardtimeinput"
+                placeholder="MM / YY"
+                onfocus="cardtimeinputtext()"
+              />
+            </div>
+            <div class="cardpassword">
+              <text class="cardpasswordtext">驗證密碼：</text>
+              <input
+                type="text"
+                name="cardpassword"
+                class="cardpasswordinput"
+                id="cardpasswordinput"
+                placeholder="CVV"
+                onfocus="cardpasswordinputtext()"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="hrline"></div>
+        <div class="list">
+          <div class="mytotallist">
+            <div class="totaltext"></div>
+            <button class="startbookingbutton" onclick="startbooking()">
+              <text class="startbookingtext">確認訂購並付款</text>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <footer class="footer">
+    <footer class="text">COPYRIGHT © 2022 台北一日遊</footer>
+  </footer>
+  <script src="/JS/bookingfetch.js" charset="utf-8"></script>
+</html>

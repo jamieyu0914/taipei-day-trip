@@ -70,7 +70,7 @@ html {
   padding: 0px;
   position: relative;
   height: 320px;
-  background-image: url(welcome.png);
+  background-image: url(/PNG/welcome.png);
   background-position: top;
   background-size: cover;
   top: 54px;
@@ -118,7 +118,7 @@ html {
   height: 16px;
   right: 0px;
   bottom: 7px;
-  background-image: url(icon_close.png);
+  background-image: url(/PNG/icon_close.png);
   background-color: #ffffff;
   border: 0px;
 }
@@ -128,12 +128,14 @@ html {
   position: relative;
 }
 .signinemail {
-  width: 308px;
+  width: 288px;
   height: 47px;
   padding: 0px;
   background: #ffffff;
   border: 1px solid #cccccc;
   border-radius: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 .signinemailtext {
   width: 280px;
@@ -151,13 +153,15 @@ html {
   text-align: left;
 }
 .signinpassword {
-  width: 308px;
+  width: 288px;
   height: 47px;
   padding: 0px;
   background: #ffffff;
   border: 1px solid #cccccc;
   border-radius: 5px;
   margin-top: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 .signinpasswordtext {
   width: 280px;
@@ -262,7 +266,7 @@ html {
   height: 16px;
   right: 0px;
   bottom: 7px;
-  background-image: url(icon_close.png);
+  background-image: url(/PNG/icon_close.png);
   background-color: #ffffff;
   border: 0px;
 }
@@ -272,12 +276,14 @@ html {
   position: relative;
 }
 .signupname {
-  width: 308px;
+  width: 288px;
   height: 47px;
   padding: 0px;
   background: #ffffff;
   border: 1px solid #cccccc;
   border-radius: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 .signupnametext {
   width: 280px;
@@ -295,13 +301,15 @@ html {
   text-align: left;
 }
 .signupemail {
-  width: 308px;
+  width: 288px;
   height: 47px;
   padding: 0px;
   background: #ffffff;
   border: 1px solid #cccccc;
   border-radius: 5px;
   margin-top: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 .signupemailtext {
   width: 280px;
@@ -319,13 +327,15 @@ html {
   text-align: left;
 }
 .signuppassword {
-  width: 308px;
+  width: 288px;
   height: 47px;
   padding: 0px;
   background: #ffffff;
   border: 1px solid #cccccc;
   border-radius: 5px;
   margin-top: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 .signuppasswordtext {
   width: 280px;
@@ -485,13 +495,15 @@ html {
   left: 10px;
 }
 .keyword {
-  width: 396px;
+  width: 386px;
   font-family: Noto Sans TC;
   font-weight: 700;
   border: 0px;
   border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;
   height: 44px;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 .inputtext {
   position: absolute;
@@ -518,7 +530,7 @@ html {
   display: none;
 }
 .search-button {
-  background-image: url(icon_search.png);
+  background-image: url(/PNG/icon_search.png);
   height: 30px;
   width: 30px;
   background-color: #489;
@@ -774,7 +786,7 @@ html {
     height: 46px;
   }
   .keyword {
-    width: 230px;
+    width: 216px;
     height: 46px;
   }
   .inputtext {

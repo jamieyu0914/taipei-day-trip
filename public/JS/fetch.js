@@ -3,8 +3,8 @@ var isLoading = false;
 var nextPage;
 
 var cookie = document.cookie;
-
-if (cookie != "") {
+//判斷是否為登入狀態
+if ((cookie != "") & (cookie != "token=")) {
   token = cookie.split("=")[1];
 } else {
   token = "";
@@ -32,29 +32,30 @@ if (token != "") {
 
   parseJwt(token);
 
-  $.ajax({
-    type: "GET",
-    url: "/api/user/auth",
-    data: {
-      data: parseJwt(token),
-    },
-    dataType: "json",
-    headers: {
-      "Content-type": "application/json",
-    },
-    success: function (data) {
-      if (data["login"] == true) {
-        console.log("已登入");
-        const loginitemtext = document.querySelector(".loginitemtext");
-        loginitemtext.innerHTML = "登出系統";
-        const loginitem = document.querySelector("#loginitem");
-        loginitem.onclick = function () {
-          logout();
-        };
+  getData("/api/user/auth");
+  function getData(url) {
+    const xhr = new XMLHttpRequest();
+    xhr.open("GET", url, true);
+    xhr.onload = function () {
+      if (xhr.status === 200) {
+        // console.log(JSON.parse(this.response));
+        login_response = JSON.parse(this.response);
+        console.log(login_response["data"]);
+        if (login_response["data"] != null) {
+          console.log("已登入");
+          const loginitemtext = document.querySelector(".loginitemtext");
+          loginitemtext.innerHTML = "登出系統";
+          const loginitem = document.querySelector("#loginitem");
+          loginitem.onclick = function () {
+            logout();
+          };
+        }
       }
-    },
-  });
+    };
+    xhr.send(null);
+  }
 } else {
+  console.log("未登入");
   const loginitem = document.querySelector("#loginitem");
   loginitem.onclick = function () {
     signinblock();
@@ -216,6 +217,8 @@ function categoryview() {
 function hideview() {
   const view = document.querySelector(".categoryview");
   view.style.display = "none";
+  const _view = document.querySelector(".signinblock");
+  _view.style.display = "none";
   const blocker = document.querySelector(".blocker");
   blocker.style.display = "none";
 }
@@ -512,7 +515,7 @@ function signup() {
     let clicktosignin = document.querySelector(".clicktosignin");
     clicktosignin.style.cssText = "top:256px";
     newresult.appendChild(content);
-    document.location.reload();
+    document.location.href = "/";
   } // 註冊會員 結果欄位 成功
 
   function signupstate_error(data) {
@@ -567,7 +570,7 @@ function signinput() {
     let clicktosignup = document.querySelector(".clicktosignup");
     clicktosignup.style.cssText = "top:196px";
     theresult.appendChild(content);
-    document.location.reload();
+    document.location.href = "/";
   } // 登入會員 結果欄位 成功
 
   function signinstate_error(data) {
@@ -603,7 +606,7 @@ function logout() {
       message = data["message"];
       if (data["ok"] == true) {
         console.log(data["ok"]);
-        document.location.reload();
+        document.location.href = "/";
         signoutstate_ok(data);
         // let cookie = document.cookie;
         // console.log(cookie);
@@ -633,6 +636,17 @@ function logout() {
       logout();
     };
   } // 登出會員 失敗
+}
+
+function gobooking() {
+  //判斷是否為登入狀態
+  if ((cookie == "") | (cookie == "token=")) {
+    token = "";
+    signinblock();
+  } else {
+    token = cookie.split("=")[1];
+    document.location.href = `/booking`;
+  }
 }
 
 var card = document.getElementsByClassName("card");

@@ -8,7 +8,22 @@ var fileindex = 0;
 
 var cookie = document.cookie;
 
-if (cookie != "") {
+var user;
+
+var selectedday;
+
+var attractionId;
+
+var selectedday_time;
+
+var selectedday_cost;
+
+var selectedday_date;
+
+var link;
+
+//判斷是否為登入狀態
+if ((cookie != "") & (cookie != "token=")) {
   token = cookie.split("=")[1];
 } else {
   token = "";
@@ -36,29 +51,30 @@ if (token != "") {
 
   parseJwt(token);
 
-  $.ajax({
-    type: "GET",
-    url: "/api/user/auth",
-    data: {
-      data: parseJwt(token),
-    },
-    dataType: "json",
-    headers: {
-      "Content-type": "application/json",
-    },
-    success: function (data) {
-      if (data["login"] == true) {
-        console.log("已登入");
-        const loginitemtext = document.querySelector(".loginitemtext");
-        loginitemtext.innerHTML = "登出系統";
-        const loginitem = document.querySelector("#loginitem");
-        loginitem.onclick = function () {
-          logout();
-        };
+  getData("/api/user/auth");
+  function getData(url) {
+    const xhr = new XMLHttpRequest();
+    xhr.open("GET", url, true);
+    xhr.onload = function () {
+      if (xhr.status === 200) {
+        // console.log(JSON.parse(this.response));
+        login_response = JSON.parse(this.response);
+        console.log(login_response["data"]);
+        if (login_response["data"] != null) {
+          console.log("已登入");
+          const loginitemtext = document.querySelector(".loginitemtext");
+          loginitemtext.innerHTML = "登出系統";
+          const loginitem = document.querySelector("#loginitem");
+          loginitem.onclick = function () {
+            logout();
+          };
+        }
       }
-    },
-  });
+    };
+    xhr.send(null);
+  }
 } else {
+  console.log("未登入");
   const loginitem = document.querySelector("#loginitem");
   loginitem.onclick = function () {
     signinblock();
@@ -90,7 +106,7 @@ function getdata() {
       file = posts["images"];
       console.log(file.length);
       thelenth = file.length - 1;
-      let link = file[0];
+      link = file[0];
 
       //獲得資料
       let _contenttitle = document.querySelector(".contenttitle");
@@ -149,6 +165,24 @@ getdata();
 
 function gohome() {
   document.location.href = "/";
+}
+
+function gobooking() {
+  //判斷是否為登入狀態
+  if ((cookie == "") | (cookie == "token=")) {
+    token = "";
+    signinblock();
+  } else {
+    token = cookie.split("=")[1];
+    document.location.href = `/booking`;
+  }
+}
+
+function hideview() {
+  const view = document.querySelector(".signinblock");
+  view.style.display = "none";
+  const blocker = document.querySelector(".blocker");
+  blocker.style.display = "none";
 }
 
 function signinblock() {
@@ -257,7 +291,7 @@ function signup() {
     let clicktosignin = document.querySelector(".clicktosignin");
     clicktosignin.style.cssText = "top:256px";
     newresult.appendChild(content);
-    document.location.reload();
+    document.location.href = `/attraction/${attractionId}`;
   } // 註冊會員 結果欄位 成功
 
   function signupstate_error(data) {
@@ -312,7 +346,7 @@ function signinput() {
     let clicktosignup = document.querySelector(".clicktosignup");
     clicktosignup.style.cssText = "top:196px";
     theresult.appendChild(content);
-    document.location.reload();
+    document.location.href = `/attraction/${attractionId}`;
   } // 登入會員 結果欄位 成功
 
   function signinstate_error(data) {
@@ -348,7 +382,7 @@ function logout() {
       message = data["message"];
       if (data["ok"] == true) {
         console.log(data["ok"]);
-        document.location.reload();
+        document.location.href = `/attraction/${attractionId}`;
         signoutstate_ok(data);
         // let cookie = document.cookie;
         // console.log(cookie);
@@ -408,6 +442,8 @@ function clickedpoint() {
       _now_imagepoint.style.cssText =
         "background: #000000; border: 1px solid #ffffff;";
       //   console.log("Hi");
+
+      link = file[fileindex];
     }
   });
 }
@@ -419,6 +455,17 @@ function firstday() {
   let _costtext_text = document.createTextNode("新台幣 2000 元");
   _costtext.appendChild(_costtext_text);
   _firstday.style.display = "flex";
+
+  const selectedday_date = document.getElementById("date").value;
+  console.log(selectedday_date);
+
+  selectedday_time = "";
+  selectedday_time = "morning";
+  console.log(selectedday_time);
+
+  selectedday_cost = "";
+  selectedday_cost = "2000";
+  console.log(selectedday_cost);
 
   const _secondday = document.querySelector(".secondhalfdaybuttonselected");
   _secondday.style.display = "none";
@@ -438,6 +485,17 @@ function secondday() {
   let _costtext_text = document.createTextNode("新台幣 2500 元");
   _costtext.appendChild(_costtext_text);
   _secondday.style.display = "flex";
+
+  const selectedday_date = document.getElementById("date").value;
+  console.log(selectedday_date);
+
+  selectedday_time = "";
+  selectedday_time = "afernoon";
+  console.log(selectedday_time);
+
+  selectedday_cost = "";
+  selectedday_cost = "2500";
+  console.log(selectedday_cost);
 
   const _firstday = document.querySelector(".firsthalfdaybuttonselected");
   _firstday.style.display = "none";
@@ -468,6 +526,8 @@ function imageleft() {
   _now_imagepoint.style.cssText.innerHTML = "";
   _now_imagepoint.style.cssText =
     "background: #000000; border: 1px solid #ffffff;";
+
+  link = file[fileindex];
 }
 
 function imageright() {
@@ -487,4 +547,43 @@ function imageright() {
   let _now_imagepoint = document.querySelector("#my" + fileindex);
   _now_imagepoint.style.cssText =
     "background: #000000; border: 1px solid #ffffff;";
+
+  link = file[fileindex];
+}
+
+function startbooking() {
+  //判斷是否為登入狀態
+  if ((cookie != "") & (cookie != "token=")) {
+    token = cookie.split("=")[1];
+
+    const date = document.getElementById("date").value;
+
+    const data = {
+      attractionId: attractionId,
+      date: date,
+      time: selectedday_time,
+      price: selectedday_cost,
+    };
+    fetch(`/api/booking`, {
+      method: "POST",
+      body: JSON.stringify(data),
+      headers: {
+        "Content-type": "application/json",
+      },
+    }).then(function (response) {
+      response.json().then(function (data) {
+        if (data["ok"] == true) {
+          console.log(data["ok"]);
+          document.location.href = `/booking`;
+        } else {
+          console.log(data);
+        }
+      });
+    });
+
+    // document.location.href = `/booking`;
+  } else {
+    token = "";
+    signinblock();
+  }
 }
