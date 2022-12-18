@@ -32,27 +32,31 @@ if (token != "") {
 
   parseJwt(token);
 
-  fetch(`/api/user/auth`, {
-    method: "GET",
-    headers: {
-      "Content-type": "application/json",
-    },
-  }).then(function (response) {
-    response.json().then(function (data) {
-      console.log(data);
-      message = data["message"];
-      if (data["login"] == true) {
-        console.log("已登入");
-        const loginitemtext = document.querySelector(".loginitemtext");
-        loginitemtext.innerHTML = "登出系統";
-        const loginitem = document.querySelector("#loginitem");
-        loginitem.onclick = function () {
-          logout();
-        };
+  getData("/api/user/auth");
+  function getData(url) {
+    const xhr = new XMLHttpRequest();
+    xhr.open("GET", url, true);
+    xhr.onload = function () {
+      if (xhr.status === 200) {
+        // console.log(JSON.parse(this.response));
+        login_response = JSON.parse(this.response);
+        // console.log(login_response["data"]);
+        user = login_response["data"];
+        if (login_response["data"] != null) {
+          console.log("已登入");
+          const loginitemtext = document.querySelector(".loginitemtext");
+          loginitemtext.innerHTML = "登出系統";
+          const loginitem = document.querySelector("#loginitem");
+          loginitem.onclick = function () {
+            logout();
+          };
+        }
       }
-    });
-  });
+    };
+    xhr.send(null);
+  }
 } else {
+  console.log("未登入");
   const loginitem = document.querySelector("#loginitem");
   loginitem.onclick = function () {
     signinblock();
@@ -119,106 +123,100 @@ function gobooking() {
   document.location.href = `/booking`;
 }
 
-console.log(user);
+getbookingData("/api/booking");
+function getbookingData(url) {
+  const xhr = new XMLHttpRequest();
+  xhr.open("GET", url, true);
+  xhr.onload = function () {
+    if (xhr.status === 200) {
+      // console.log(JSON.parse(this.response));
+      booking_response = JSON.parse(this.response);
+      // console.log(booking_response["data"]);
+      if (booking_response["data"] == undefined) {
+        const username = document.querySelector(".username");
+        username.innerHTML = user["name"];
 
-$.ajax({
-  type: "GET",
-  url: "/api/booking",
-  data: {
-    user: user,
-  },
-  dataType: "json",
-  headers: {
-    "Content-type": "application/json",
-  },
-  success: function (data) {
-    console.log(data);
-    if (data["data"] == undefined) {
+        const slogan = document.querySelector(".slogan");
+        slogan.style.display = "none";
+
+        const listblock = document.querySelector(".listblock");
+        listblock.style.display = "none";
+
+        const headlinetext = document.querySelector(".headlinetext");
+        let nonetext_div = document.createElement("text");
+        nonetext_div.classList.add("nonetext");
+        nonetext_div.innerHTML = "目前沒有任何待預定的行程";
+        headlinetext.appendChild(nonetext_div);
+        // console.log("新增文字囉");
+
+        const footer = document.querySelector(".footer");
+        footer.style.cssText =
+          "justify-content: flex-start; height:865px; bottom: 180px;";
+        const text = document.querySelector(".text");
+        text.style.cssText = "position: absolute; top: 45px;";
+
+        if (window.innerWidth < 600) {
+          const headline = document.querySelector(".headline");
+          headline.style.cssText =
+            "padding-top: 0px; padding-bottom: 0px; height: 205px;";
+
+          const headlinetext = document.querySelector(".headlinetext");
+          headlinetext.style.cssText = "margin-bottom:0px; margin-top:0px;";
+
+          const hrline = document.querySelector(".hrline");
+          hrline.style.cssText = "display:none;";
+
+          const footer = document.querySelector(".footer");
+          footer.style.cssText = "bottom:0px; height: 425px;";
+        }
+
+        return;
+      }
       const username = document.querySelector(".username");
       username.innerHTML = user["name"];
 
-      const slogan = document.querySelector(".slogan");
-      slogan.style.display = "none";
+      _booking_image = booking_response["data"]["attraction"]["image"];
+      const contentphoto = document.querySelector(".left-content");
+      contentphoto.style.cssText =
+        "background-image: url(" + _booking_image + ")";
 
-      const listblock = document.querySelector(".listblock");
-      listblock.style.display = "none";
+      _title_name = booking_response["data"]["attraction"]["name"];
+      console.log(_title_name);
+      const contenttitle = document.querySelector(".contenttitle");
+      contenttitle.innerHTML = "台北一日遊：" + _title_name;
 
-      const headlinetext = document.querySelector(".headlinetext");
-      let nonetext_div = document.createElement("text");
-      nonetext_div.classList.add("nonetext");
-      nonetext_div.innerHTML = "目前沒有任何待預定的行程";
-      headlinetext.appendChild(nonetext_div);
-      console.log("新增文字囉");
+      _booking_date = booking_response["data"]["date"];
+      console.log(_booking_date);
+      const contentdatetext = document.querySelector(".contentdatetext");
+      contentdatetext.innerHTML = _booking_date;
 
-      const footer = document.querySelector(".footer");
-      footer.style.cssText =
-        "justify-content: flex-start; height:865px; bottom: 180px;";
-      const text = document.querySelector(".text");
-      text.style.cssText = "position: absolute; top: 45px;";
-
-      if (window.innerWidth < 600) {
-        const headline = document.querySelector(".headline");
-        headline.style.cssText =
-          "padding-top: 0px; padding-bottom: 0px; height: 205px;";
-
-        const headlinetext = document.querySelector(".headlinetext");
-        headlinetext.style.cssText = "margin-bottom:0px; margin-top:0px;";
-
-        const hrline = document.querySelector(".hrline");
-        hrline.style.cssText = "display:none;";
-
-        const footer = document.querySelector(".footer");
-        footer.style.cssText = "bottom:0px; height: 425px;";
+      _booking_time = booking_response["data"]["time"];
+      if (_booking_time == "morning") {
+        _booking_time_text = "早上9點";
+      } else if (_booking_time == "afernoon") {
+        _booking_time_text = "下午4點";
       }
+      const contenttimetext = document.querySelector(".contenttimetext");
+      contenttimetext.innerHTML = _booking_time_text;
 
-      return;
+      _booking_price = booking_response["data"]["price"];
+      console.log(_booking_price);
+      const contentcosttext = document.querySelector(".contentcosttext");
+      contentcosttext.innerHTML = "新台幣 " + _booking_price + " 元";
+
+      const totaltext = document.querySelector(".totaltext");
+      totaltext.innerHTML = "總價：新台幣 " + _booking_price + " 元";
+
+      _booking_address = booking_response["data"]["attraction"]["address"];
+      console.log(_booking_address);
+      const contentaddresstext = document.querySelector(".contentaddresstext");
+      contentaddresstext.innerHTML = _booking_address;
+    } else {
+      console.log(JSON.parse(this.response));
     }
-
-    const username = document.querySelector(".username");
-    username.innerHTML = user["name"];
-
-    _booking_image = data["data"]["attraction"]["image"];
-    const contentphoto = document.querySelector(".left-content");
-    contentphoto.style.cssText =
-      "background-image: url(" + _booking_image + ")";
-
-    _title_name = data["data"]["attraction"]["name"];
-    console.log(_title_name);
-    const contenttitle = document.querySelector(".contenttitle");
-    contenttitle.innerHTML = "台北一日遊：" + _title_name;
-
-    _booking_date = data["data"]["date"];
-    console.log(_booking_date);
-    const contentdatetext = document.querySelector(".contentdatetext");
-    contentdatetext.innerHTML = _booking_date;
-
-    _booking_time = data["data"]["time"];
-    if (_booking_time == "morning") {
-      _booking_time_text = "早上9點";
-    } else if (_booking_time == "afernoon") {
-      _booking_time_text = "下午4點";
-    }
-    const contenttimetext = document.querySelector(".contenttimetext");
-    contenttimetext.innerHTML = _booking_time_text;
-
-    _booking_price = data["data"]["price"];
-    console.log(_booking_price);
-    const contentcosttext = document.querySelector(".contentcosttext");
-    contentcosttext.innerHTML = "新台幣 " + _booking_price + " 元";
-
-    const totaltext = document.querySelector(".totaltext");
-    totaltext.innerHTML = "總價：新台幣 " + _booking_price + " 元";
-
-    _booking_address = data["data"]["attraction"]["address"];
-    console.log(_booking_address);
-    const contentaddresstext = document.querySelector(".contentaddresstext");
-    contentaddresstext.innerHTML = _booking_address;
-
-    if (data["error"] == true) {
-      console.log(data);
-    }
-  },
-});
+  };
+  xhr.send(null);
+}
 
 function cardnumberinputtext() {
   const cardnumberinput = document.querySelector(".cardnumberinput");

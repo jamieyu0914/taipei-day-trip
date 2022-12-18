@@ -314,7 +314,7 @@ def signinget():
             return (jsonify({
                 "login": None,
                 "message": "未登入，伺服器內部錯誤"
-                }))
+                })),500
     finally:
         # closing database connection.    
         cursor.close()
@@ -322,16 +322,19 @@ def signinget():
         print("MySQL connection is closed") 
     if (x == ""):#驗證失敗
         return (jsonify({
-                "login": None,
-                "message": "未登入，驗證失敗"
-                }))
+                "data": None,
+                })),200
     else: #驗證成功
         print("帳號登入")
         id=x[0] #使用者編號
         name=x[1] #姓名
         email=x[2] #電子郵件
         return (jsonify({
-                    "login": True
+                    "data": {
+                    "id": id,
+                    "name": name,
+                    "email": email
+                    }
                     }))    
 
 @app.route("/api/user/auth", methods=["PUT"])
@@ -450,9 +453,13 @@ def signout():
 @app.route("/api/booking", methods=["GET"])
 def bookingget():
 
-    userid = request.args.get("user[id]","")
-    username = request.args.get("user[name]","")
-    useremail = request.args.get("user[email]","")
+    JWT_cookie=request.cookies.get("token")
+    decode=jwt.decode(JWT_cookie, "secret", algorithms=['HS256'])
+    print(decode)
+
+    userid = decode['id']
+    username = decode['name']
+    useremail = decode['email']
     print(userid, username,useremail)
 
     if(userid =="" or username =="" or useremail == ""): #驗證失敗
@@ -647,10 +654,13 @@ def bookingpost():
 @app.route("/api/booking", methods=["DELETE"])
 def bookingdelete():
 
-    post = request.get_json()
-    userid = post["user"]["id"]
-    username = post["user"]["name"]
-    useremail = post["user"]["email"]
+    JWT_cookie=request.cookies.get("token")
+    decode=jwt.decode(JWT_cookie, "secret", algorithms=['HS256'])
+    print(decode)
+
+    userid = decode['id']
+    username = decode['name']
+    useremail = decode['email']
     print(userid, username,useremail)
 
     if(userid =="" or username =="" or useremail == ""): #驗證失敗

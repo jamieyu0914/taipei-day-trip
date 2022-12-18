@@ -32,27 +32,30 @@ if (token != "") {
 
   parseJwt(token);
 
-  fetch(`/api/user/auth`, {
-    method: "GET",
-    headers: {
-      "Content-type": "application/json",
-    },
-  }).then(function (response) {
-    response.json().then(function (data) {
-      console.log(data);
-      message = data["message"];
-      if (data["login"] == true) {
-        console.log("已登入");
-        const loginitemtext = document.querySelector(".loginitemtext");
-        loginitemtext.innerHTML = "登出系統";
-        const loginitem = document.querySelector("#loginitem");
-        loginitem.onclick = function () {
-          logout();
-        };
+  getData("/api/user/auth");
+  function getData(url) {
+    const xhr = new XMLHttpRequest();
+    xhr.open("GET", url, true);
+    xhr.onload = function () {
+      if (xhr.status === 200) {
+        // console.log(JSON.parse(this.response));
+        login_response = JSON.parse(this.response);
+        console.log(login_response["data"]);
+        if (login_response["data"] != null) {
+          console.log("已登入");
+          const loginitemtext = document.querySelector(".loginitemtext");
+          loginitemtext.innerHTML = "登出系統";
+          const loginitem = document.querySelector("#loginitem");
+          loginitem.onclick = function () {
+            logout();
+          };
+        }
       }
-    });
-  });
+    };
+    xhr.send(null);
+  }
 } else {
+  console.log("未登入");
   const loginitem = document.querySelector("#loginitem");
   loginitem.onclick = function () {
     signinblock();
