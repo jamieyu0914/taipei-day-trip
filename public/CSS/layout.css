@@ -70,7 +70,7 @@ html {
   padding: 0px;
   position: relative;
   height: 320px;
-  background-image: url(welcome.png);
+  background-image: url(/PNG/welcome.png);
   background-position: top;
   background-size: cover;
   top: 54px;
@@ -118,7 +118,7 @@ html {
   height: 16px;
   right: 0px;
   bottom: 7px;
-  background-image: url(icon_close.png);
+  background-image: url(/PNG/icon_close.png);
   background-color: #ffffff;
   border: 0px;
 }
@@ -266,7 +266,7 @@ html {
   height: 16px;
   right: 0px;
   bottom: 7px;
-  background-image: url(icon_close.png);
+  background-image: url(/PNG/icon_close.png);
   background-color: #ffffff;
   border: 0px;
 }
@@ -530,7 +530,7 @@ html {
   display: none;
 }
 .search-button {
-  background-image: url(icon_search.png);
+  background-image: url(/PNG/icon_search.png);
   height: 30px;
   width: 30px;
   background-color: #489;

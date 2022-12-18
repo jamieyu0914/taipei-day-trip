@@ -3,8 +3,8 @@ var isLoading = false;
 var nextPage;
 
 var cookie = document.cookie;
-
-if (cookie != "token=") {
+//判斷是否為登入狀態
+if ((cookie != "") & (cookie != "token=")) {
   token = cookie.split("=")[1];
 } else {
   token = "";
@@ -32,17 +32,15 @@ if (token != "") {
 
   parseJwt(token);
 
-  $.ajax({
-    type: "GET",
-    url: "/api/user/auth",
-    data: {
-      data: parseJwt(token),
-    },
-    dataType: "json",
+  fetch(`/api/user/auth`, {
+    method: "GET",
     headers: {
       "Content-type": "application/json",
     },
-    success: function (data) {
+  }).then(function (response) {
+    response.json().then(function (data) {
+      console.log(data);
+      message = data["message"];
       if (data["login"] == true) {
         console.log("已登入");
         const loginitemtext = document.querySelector(".loginitemtext");
@@ -52,7 +50,7 @@ if (token != "") {
           logout();
         };
       }
-    },
+    });
   });
 } else {
   const loginitem = document.querySelector("#loginitem");
@@ -216,6 +214,8 @@ function categoryview() {
 function hideview() {
   const view = document.querySelector(".categoryview");
   view.style.display = "none";
+  const _view = document.querySelector(".signinblock");
+  _view.style.display = "none";
   const blocker = document.querySelector(".blocker");
   blocker.style.display = "none";
 }
@@ -637,12 +637,12 @@ function logout() {
 
 function gobooking() {
   //判斷是否為登入狀態
-  if (cookie != "token=") {
-    token = cookie.split("=")[1];
-    document.location.href = `/booking`;
-  } else {
+  if ((cookie == "") | (cookie == "token=")) {
     token = "";
     signinblock();
+  } else {
+    token = cookie.split("=")[1];
+    document.location.href = `/booking`;
   }
 }
 

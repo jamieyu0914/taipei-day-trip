@@ -17,7 +17,6 @@ html {
   position: fixed;
   width: 1200px;
   margin: auto;
-  border-bottom: solid #e8e8e8;
 }
 .desktop-menu-left {
   display: flex;
@@ -57,33 +56,7 @@ html {
 .headline {
   display: flex;
   justify-content: center;
-  height: 391px;
-}
-.headlinetext {
-  width: 1000px;
-  height: 16px;
-  margin-top: 100px;
-  font-family: "Noto Sans TC";
-  font-style: normal;
-  font-weight: 700;
-  font-size: 19px;
-  line-height: 16px;
-  display: flex;
-  align-items: center;
-  color: #666666;
-  position: relative;
-}
-.nonetext {
-  position: absolute;
-  top: 51px;
-  font-family: "Noto Sans TC";
-  font-style: normal;
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 13px;
-  display: flex;
-  align-items: center;
-  color: #666666;
+  height: 534px;
 }
 .blocker {
   position: fixed;
@@ -138,7 +111,7 @@ html {
   height: 16px;
   right: 0px;
   bottom: 7px;
-  background-image: url(icon_close.png);
+  background-image: url(/PNG/icon_close.png);
   background-color: #ffffff;
   border: 0px;
 }
@@ -286,7 +259,7 @@ html {
   height: 16px;
   right: 0px;
   bottom: 7px;
-  background-image: url(icon_close.png);
+  background-image: url(/PNG/icon_close.png);
   background-color: #ffffff;
   border: 0px;
 }
@@ -456,7 +429,7 @@ html {
 .slogan {
   display: flex;
   position: absolute;
-  width: 1000px;
+  width: 1200px;
   top: 54px;
   color: #f8f8f8;
   flex-direction: row;
@@ -467,8 +440,8 @@ html {
 }
 .left-content {
   position: absolute;
-  width: 246px;
-  height: 200px;
+  width: 540px;
+  height: 406px;
   font-family: "Noto Sans TC";
   font-style: normal;
   font-size: 30px;
@@ -476,16 +449,49 @@ html {
   display: flex;
   align-items: center;
   color: #f8f8f8;
-  top: 100px;
+  left: 15px;
+  border-radius: 5px;
   background-size: cover;
-  background-color: #000000;
-  border-left: 10px solid #ffffff;
-  border-right: 10px solid #ffffff;
+}
+.imgbutton {
+  height: 36px;
+  width: 540px;
+}
+.imgleftarrowbutton {
+  position: absolute;
+  width: 36px;
+  height: 36px;
+  left: 10px;
+  background-image: url(/PNG/btn_leftArrow.png);
+  border-radius: 20px;
+  border: 0px;
+}
+.imgrightarrowbutton {
+  position: absolute;
+  width: 36px;
+  height: 36px;
+  right: 10px;
+  background-image: url(/PNG/btn_rightArrow.png);
+  border-radius: 20px;
+  border: 0px;
+}
+.imgpointlist {
+  margin-top: 190px;
+  display: flex;
+  justify-content: center;
+}
+.imgpointbutton {
+  height: 12px;
+  width: 12px;
+  margin-left: 6px;
+  margin-right: 6px;
+  border: 0px;
+  border-radius: 20px;
 }
 .right-content {
   position: absolute;
   width: 600px;
-  height: 200px;
+  height: 406px;
   font-family: "Noto Sans TC";
   font-style: normal;
   font-size: 16px;
@@ -493,38 +499,29 @@ html {
   display: flex;
   align-items: center;
   color: #f8f8f8;
-  left: 288px;
-  top: 100px;
+  right: 15px;
 }
 .contenttitle {
   position: absolute;
-  height: 14px;
+  width: 600px;
+  height: 33px;
   left: 0px;
-  top: 5px;
+  top: 0px;
   font-family: "Noto Sans TC";
   font-style: normal;
   font-weight: 700;
-  font-size: 16px;
-  line-height: 13px;
-  display: flex;
-  align-items: center;
-  color: #448899;
-}
-.contentdate {
-  position: absolute;
-  height: 14px;
-  left: 0px;
-  top: 49px;
-  font-family: "Noto Sans TC";
-  font-style: normal;
-  font-weight: 700;
-  font-size: 16px;
-  line-height: 13.3px;
+  font-size: 24px;
+  line-height: 24px;
   display: flex;
   align-items: center;
   color: #666666;
 }
-.contentdatetext {
+.categoryandmrt {
+  position: absolute;
+  width: 600px;
+  height: 22px;
+  left: 0px;
+  top: 48px;
   font-family: "Noto Sans TC";
   font-style: normal;
   font-weight: 500;
@@ -534,21 +531,36 @@ html {
   align-items: center;
   color: #666666;
 }
-.contenttime {
+.bookingblock {
   position: absolute;
-  height: 14px;
+  width: 600px;
+  height: 302px;
   left: 0px;
-  top: 83px;
+  top: 90px;
+  background: #e8e8e8;
+  border-radius: 5px;
+}
+.bookingtitle {
+  position: absolute;
+  width: 560px;
+  height: 22px;
+  left: 20px;
+  top: 15px;
   font-family: "Noto Sans TC";
   font-style: normal;
   font-weight: 700;
   font-size: 16px;
-  line-height: 13.3px;
+  line-height: 13px;
   display: flex;
   align-items: center;
   color: #666666;
 }
-.contenttimetext {
+.bookingdirections {
+  position: absolute;
+  width: 560px;
+  height: 24px;
+  left: 20px;
+  top: 52px;
   font-family: "Noto Sans TC";
   font-style: normal;
   font-weight: 500;
@@ -558,95 +570,71 @@ html {
   align-items: center;
   color: #666666;
 }
-.contentcost {
+.bookingdate {
   position: absolute;
-  height: 14px;
-  left: 0px;
-  top: 117px;
+  width: 81px;
+  height: 17px;
+  left: 20px;
+  top: 100px;
   font-family: "Noto Sans TC";
   font-style: normal;
   font-weight: 700;
-  font-size: 16px;
-  line-height: 13.3px;
-  display: flex;
-  align-items: center;
-  color: #666666;
-}
-.contentcosttext {
-  font-family: "Noto Sans TC";
-  font-style: normal;
-  font-weight: 500;
   font-size: 16px;
   line-height: 13px;
   display: flex;
   align-items: center;
   color: #666666;
 }
-.contentaddress {
+.bookingcalendar {
   position: absolute;
-  height: 14px;
-  left: 0px;
-  top: 151px;
+  width: 193px;
+  height: 35px;
+  left: 106px;
+  top: 91px;
+  background: #ffffff;
+}
+.bookingtime {
+  position: absolute;
+  width: 81px;
+  height: 22px;
+  left: 20px;
+  top: 141px;
   font-family: "Noto Sans TC";
   font-style: normal;
   font-weight: 700;
-  font-size: 16px;
-  line-height: 13.3px;
-  display: flex;
-  align-items: center;
-  color: #666666;
-}
-.contentaddresstext {
-  font-family: "Noto Sans TC";
-  font-style: normal;
-  font-weight: 500;
   font-size: 16px;
   line-height: 13px;
   display: flex;
   align-items: center;
   color: #666666;
 }
-.delete-content {
+.firsthalfdaybutton {
   position: absolute;
-  right: 10px;
-}
-.deletebutton {
-  background-image: url(icon_delete.png);
-  background-color: #ffffff;
-  width: 30px;
-  height: 30px;
+  width: 22px;
+  height: 22px;
+  left: 111px;
+  top: 141px;
+  background: #ffffff;
+  border-radius: 20px;
   border: 0px;
 }
-.hrline {
-  max-width: 1200px;
-  margin: 0px auto;
-  height: 0px;
-  border: 1px solid #e8e8e8;
+.firsthalfdaybuttonselected {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  left: 113px;
+  top: 143px;
+  background: #448899;
+  border-radius: 20px;
+  border: 0px;
+  display: none;
 }
-.list {
-  display: flex;
-  justify-content: center;
-  height: auto;
-}
-.mylist {
-  justify-content: center;
-  justify-items: center;
-  width: 1000px;
-  height: auto; /* 留白用 */
-}
-.listtitletext {
-  font-family: "Noto Sans TC";
-  font-style: normal;
-  font-weight: 700;
-  font-size: 19px;
-  line-height: 16px;
-  display: flex;
-  align-items: center;
-  color: #666666;
-  padding-top: 44px;
-  padding-bottom: 24px;
-}
-.contectname {
+.firsthalfdaytext {
+  position: absolute;
+  width: 48px;
+  height: 14px;
+  left: 137px;
+  top: 145px;
   font-family: "Noto Sans TC";
   font-style: normal;
   font-weight: 500;
@@ -655,21 +643,34 @@ html {
   display: flex;
   align-items: center;
   color: #666666;
-  margin-bottom: 15px;
 }
-.contectnametext {
-  padding-top: 7px;
-  padding-bottom: 7px;
-}
-.contectnameinput {
-  width: 180px;
-  height: 18px;
-  padding: 10px;
+.secondhalfdaybutton {
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  left: 203px;
+  top: 141px;
   background: #ffffff;
-  border: 1px solid #e8e8e8;
-  border-radius: 5px;
+  border-radius: 20px;
+  border: 0px;
 }
-.contectemail {
+.secondhalfdaybuttonselected {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  left: 205px;
+  top: 143px;
+  background: #448899;
+  border-radius: 20px;
+  border: 0px;
+  display: none;
+}
+.secondhalfdaytext {
+  position: absolute;
+  width: 48px;
+  height: 14px;
+  left: 229px;
+  top: 145px;
   font-family: "Noto Sans TC";
   font-style: normal;
   font-weight: 500;
@@ -678,44 +679,13 @@ html {
   display: flex;
   align-items: center;
   color: #666666;
-  margin-bottom: 15px;
 }
-.contectemailtext {
-  padding-top: 7px;
-  padding-bottom: 7px;
-}
-.contectemailinput {
-  width: 180px;
-  height: 18px;
-  padding: 10px;
-  background: #ffffff;
-  border: 1px solid #e8e8e8;
-  border-radius: 5px;
-}
-.contectphone {
-  font-family: "Noto Sans TC";
-  font-style: normal;
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 13px;
-  display: flex;
-  align-items: center;
-  color: #666666;
-  margin-bottom: 20px;
-}
-.contectphonetext {
-  padding-top: 7px;
-  padding-bottom: 7px;
-}
-.contectphoneinput {
-  width: 180px;
-  height: 18px;
-  padding: 10px;
-  background: #ffffff;
-  border: 1px solid #e8e8e8;
-  border-radius: 5px;
-}
-.attentiontext {
+.bookingcost {
+  position: absolute;
+  width: 81px;
+  height: 22px;
+  left: 20px;
+  top: 178px;
   font-family: "Noto Sans TC";
   font-style: normal;
   font-weight: 700;
@@ -724,17 +694,13 @@ html {
   display: flex;
   align-items: center;
   color: #666666;
-  margin-top: 5px;
-  margin-bottom: 45px;
 }
-.mytotallist {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  width: 990px;
-  height: auto;
-}
-.cardnumber {
+.costtext {
+  position: absolute;
+  width: 114px;
+  height: 14px;
+  left: 106px;
+  top: 182px;
   font-family: "Noto Sans TC";
   font-style: normal;
   font-weight: 500;
@@ -743,92 +709,24 @@ html {
   display: flex;
   align-items: center;
   color: #666666;
-  margin-bottom: 15px;
-}
-.cardnumbertext {
-  padding-top: 7px;
-  padding-bottom: 7px;
-}
-.cardnumberinput {
-  width: 180px;
-  height: 18px;
-  padding: 10px;
-  background: #ffffff;
-  border: 1px solid #e8e8e8;
-  border-radius: 5px;
-}
-.cardtime {
-  font-family: "Noto Sans TC";
-  font-style: normal;
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 13px;
-  display: flex;
-  align-items: center;
-  color: #666666;
-  margin-bottom: 15px;
-}
-.cardtimetext {
-  padding-top: 7px;
-  padding-bottom: 7px;
-}
-.cardtimeinput {
-  width: 180px;
-  height: 18px;
-  padding: 10px;
-  background: #ffffff;
-  border: 1px solid #e8e8e8;
-  border-radius: 5px;
-}
-.cardpassword {
-  font-family: "Noto Sans TC";
-  font-style: normal;
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 13px;
-  display: flex;
-  align-items: center;
-  color: #666666;
-  margin-bottom: 40px;
-}
-.cardpassword {
-  padding-top: 7px;
-  padding-bottom: 7px;
-}
-.cardpasswordinput {
-  width: 180px;
-  height: 18px;
-  padding: 10px;
-  background: #ffffff;
-  border: 1px solid #e8e8e8;
-  border-radius: 5px;
-}
-.totaltext {
-  font-family: "Noto Sans TC";
-  font-style: normal;
-  font-weight: 700;
-  font-size: 16px;
-  line-height: 13px;
-  display: flex;
-  align-items: center;
-  text-align: right;
-  color: #666666;
-  margin-top: 40px;
-  margin-bottom: 25px;
 }
 .startbookingbutton {
   display: flex;
   flex-direction: row;
   align-items: flex-start;
   padding: 10px 20px;
-  width: 173px;
+  position: absolute;
+  width: 154px;
   height: 36px;
+  left: 20px;
+  top: 225px;
   background: #448899;
   border-radius: 5px;
   border: 0px;
-  margin-bottom: 62px;
 }
 .startbookingtext {
+  width: 114px;
+  height: 16px;
   font-family: "Noto Sans TC";
   font-style: normal;
   font-weight: 400;
@@ -841,6 +739,94 @@ html {
   flex: none;
   order: 0;
   flex-grow: 0;
+}
+.hrline {
+  max-width: 1200px;
+  margin: 0px auto;
+  height: 0px;
+  border: 1px solid #e8e8e8;
+}
+.list {
+  display: flex;
+  justify-content: center;
+  height: auto;
+  padding-bottom: 120px;
+}
+.mylist {
+  justify-content: center;
+  justify-items: center;
+  width: 1200px;
+  height: auto; /* 留白用 */
+}
+.descriptiontext {
+  width: 1180px;
+  font-family: "Noto Sans TC";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 23px;
+  color: #666666;
+  padding: 10px;
+  margin-top: 40px;
+  text-align: left;
+}
+.addresstitle {
+  width: 1180px;
+  height: 32px;
+  font-family: "Noto Sans TC";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 13px;
+  color: #666666;
+  padding: 10px;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  padding-bottom: 0px;
+}
+.addresstext {
+  width: 1180px;
+  font-family: "Noto Sans TC";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 23px;
+  color: #666666;
+  padding: 10px;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  padding-top: 0px;
+}
+.transporttitle {
+  width: 1180px;
+  height: 32px;
+  font-family: "Noto Sans TC";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 13px;
+  color: #666666;
+  padding: 10px;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  padding-bottom: 0px;
+}
+.transporttext {
+  width: 1180px;
+  font-family: "Noto Sans TC";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 23px;
+  color: #666666;
+  padding: 10px;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  padding-top: 0px;
 }
 .footer {
   display: flex;
@@ -884,21 +870,14 @@ html {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 360px;
+    height: 486px;
     padding-bottom: 37px;
-  }
-  .headlinetext {
-    position: relative;
-    margin-bottom: 250px;
-    margin-left: 95px;
   }
   .slogan {
     display: flex;
-    justify-content: flex-start;
-    width: 90vw;
-    height: 260px;
-    margin-left: 95px;
-    top: 120px;
+    justify-content: space-evenly;
+    width: 100vw;
+    height: 360px;
   }
   .left-content {
     position: unset;
@@ -906,10 +885,19 @@ html {
     justify-content: flex-start;
     align-items: center;
     flex: auto;
+    max-width: 600px;
     align-items: center;
-    height: 200px;
+    max-width: 40.6vw;
+    height: 360px;
     background-position: center;
-    max-width: 246px;
+  }
+  .imgbutton {
+    position: relative;
+    height: 36px;
+    max-width: 600px;
+  }
+  .imgpointlist {
+    margin-top: 170px;
   }
   .right-content {
     position: relative;
@@ -917,22 +905,282 @@ html {
     justify-content: flex-start;
     flex: auto;
     align-items: center;
-    max-width: 35vw;
-    left: 12px;
-    top: 0px;
-  }
-  .deletebutton {
-    margin-right: 2vw;
+    max-width: 40.6vw;
+    height: 360px;
   }
   .contenttitle {
-    margin-top: 5px;
-    line-height: 20px;
+    position: absolute;
+    width: auto;
+    height: 33px;
+    left: 0px;
+    top: 0px;
+    font-family: "Noto Sans TC";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 24px;
+    display: flex;
+    align-items: center;
+    color: #666666;
   }
-  .contentaddresstitle {
-    min-width: 50px;
+  .categoryandmrt {
+    position: absolute;
+    width: auto;
+    height: 22px;
+    left: 0px;
+    top: 37px;
+    font-family: "Noto Sans TC";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 13px;
+    display: flex;
+    align-items: center;
+    color: #666666;
   }
-  .contentaddresstext {
+  .bookingblock {
+    position: unset;
+    max-width: 40.6vw;
+    max-height: 290px;
+    left: 0px;
+    top: 90px;
+    background: #e8e8e8;
+    border-radius: 5px;
+    margin-top: 70px;
+  }
+  .bookingtitle {
+    position: unset;
+    width: auto;
+    height: 22px;
+    left: 20px;
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-bottom: 5px;
+    font-family: "Noto Sans TC";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 13px;
+    display: flex;
+    align-items: center;
+    color: #666666;
+  }
+  .bookingdirections {
+    position: unset;
+    width: auto;
+    height: 24px;
+    left: 20px;
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-bottom: 10px;
+    font-family: "Noto Sans TC";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
     line-height: 20px;
+    display: flex;
+    align-items: center;
+    color: #666666;
+  }
+  .divdate {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
+  .bookingdate {
+    position: unset;
+    width: 80px;
+    height: 17px;
+    left: 20px;
+    margin-left: 10px;
+    font-family: "Noto Sans TC";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 13px;
+    display: flex;
+    align-items: center;
+    color: #666666;
+  }
+  .bookingcalendar {
+    position: unset;
+    width: auto;
+    height: 35px;
+    top: 91px;
+    background: #ffffff;
+  }
+  .divtime {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
+  .bookingtime {
+    position: unset;
+    width: auto;
+    height: 22px;
+    left: 20px;
+    margin-left: 10px;
+    font-family: "Noto Sans TC";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 13px;
+    display: flex;
+    align-items: center;
+    color: #666666;
+  }
+  .firsthalfdaybutton {
+    position: unset;
+    width: 22px;
+    height: 22px;
+    margin-left: 0px;
+    top: 141px;
+    background: #ffffff;
+    border-radius: 20px;
+    border: 0px;
+    z-index: 995;
+  }
+  .firsthalfdaybuttonselected {
+    position: unset;
+    width: 18px;
+    height: 18px;
+    top: 143px;
+    background: #448899;
+    border-radius: 20px;
+    border: 0px;
+    z-index: 998;
+    margin-left: -20px;
+  }
+  .firsthalfdaytext {
+    position: unset;
+    width: auto;
+    height: 14px;
+    margin-left: 3px;
+    top: 145px;
+    font-family: "Noto Sans TC";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 13px;
+    display: flex;
+    align-items: center;
+    color: #666666;
+  }
+  .secondhalfdaybutton {
+    position: unset;
+    width: 22px;
+    height: 22px;
+    margin-left: 5px;
+    top: 141px;
+    background: #ffffff;
+    border-radius: 20px;
+    border: 0px;
+    z-index: 995;
+  }
+  .secondhalfdaybuttonselected {
+    position: unset;
+    width: 18px;
+    height: 18px;
+    top: 143px;
+    background: #448899;
+    border-radius: 20px;
+    border: 0px;
+    margin-left: -20px;
+    z-index: 998;
+  }
+  .secondhalfdaytext {
+    position: unset;
+    width: auto;
+    height: 14px;
+    margin-left: 3px;
+    top: 145px;
+    font-family: "Noto Sans TC";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 13px;
+    display: flex;
+    align-items: center;
+    color: #666666;
+  }
+  .divcost {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
+  .bookingcost {
+    position: unset;
+    width: auto;
+    height: 22px;
+    margin-left: 10px;
+    top: 178px;
+    font-family: "Noto Sans TC";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 13px;
+    display: flex;
+    align-items: center;
+    color: #666666;
+  }
+  .costtext {
+    position: unset;
+    width: auto;
+    height: 14px;
+    left: 106px;
+    top: 182px;
+    font-family: "Noto Sans TC";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 13px;
+    display: flex;
+    align-items: center;
+    color: #666666;
+  }
+  .divstartbooking {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: -10px;
+    margin-bottom: 10px;
+  }
+  .startbookingbutton {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    position: unset;
+    width: auto;
+    height: 36px;
+    margin-left: 15px;
+    margin-top: 25px;
+    top: 225px;
+    background: #448899;
+    border-radius: 5px;
+    border: 0px;
+  }
+  .startbookingtext {
+    width: auto;
+    height: 16px;
+    font-family: "Noto Sans TC";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 19px;
+    line-height: 16px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #ffffff;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+    justify-content: center;
   }
   .hrline {
     width: 81vw;
@@ -949,19 +1197,34 @@ html {
     flex-direction: column;
     align-content: center;
     display: flex;
+    padding-bottom: 70px;
     top: 570px;
     height: auto;
     height: auto;
     position: unset;
     width: 960px;
-    margin-left: 95px;
-    margin-right: 10px;
+    margin-left: 20px;
+    margin-right: 11px;
   }
-  .attentiontext {
-    line-height: 23.17px;
+  .descriptiontext {
+    width: auto;
+    height: auto;
   }
-  .mytotallist {
-    margin-right: 80px;
+  .addresstitle {
+    width: auto;
+    height: auto;
+  }
+  .addresstext {
+    width: auto;
+    height: auto;
+  }
+  .transporttitle {
+    width: auto;
+    height: auto;
+  }
+  .transporttext {
+    width: auto;
+    height: auto;
   }
 }
 
@@ -983,14 +1246,9 @@ html {
   }
   .headline {
     padding-bottom: 382px;
-    height: 305px;
-  }
-  .headlinetext {
-    position: relative;
-    margin-bottom: 189px;
-    margin-left: 10px;
   }
   .slogan {
+    width: 100vw;
     height: auto;
     display: flex;
     flex-direction: column;
@@ -998,22 +1256,47 @@ html {
     justify-content: center;
     padding: 0px;
     top: -340px;
-    margin: 0px;
   }
   .left-content {
-    min-width: 90vw;
-    margin-top: 490px;
-    height: 419px;
+    width: 466px;
+    margin-top: 404px;
+    height: 350px;
     display: flex;
     justify-content: center;
     align-items: center;
+    left: 0px;
     background-size: cover;
-    padding: 10px;
-    height: 256px;
-    margin-bottom: 10px;
+    max-width: max-content;
+  }
+  .imgbutton {
+    display: flex;
+    flex-direction: row;
+    width: 100vw;
+  }
+  .imgleftarrowbutton {
+    position: unset;
+    left: 0px;
+    padding: 0px;
+    margin-left: 10px;
+  }
+  .imgrightarrowbutton {
+    right: 0px;
+    padding: 0px;
+    margin-right: 10px;
+  }
+  .imgpointlist {
+    margin-top: 174px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 374px;
+    padding: 0px;
+    min-width: 268px;
+    width: 74vw;
   }
   .right-content {
     width: 340px;
+    height: 390px;
     right: 0px;
     display: unset;
     justify-content: center;
@@ -1024,10 +1307,6 @@ html {
     padding-left: 10px;
     padding-right: 10px;
   }
-  .deletebutton {
-    margin-top: 1000px;
-    margin-right: -20px;
-  }
   .contenttitle {
     position: unset;
     position: unset;
@@ -1036,40 +1315,134 @@ html {
     left: 0px;
     top: 0px;
   }
-  .contentdate {
+  .categoryandmrt {
     position: unset;
     width: 340px;
     height: 22px;
     left: 0px;
     padding-top: 15px;
   }
-  .contenttime {
-    position: unset;
+  .bookingblock {
     width: 340px;
-    height: 22px;
-    left: 0px;
-    padding-top: 15px;
+    height: auto;
+    max-width: unset;
+    max-height: fit-content;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
   }
-  .contentcost {
-    position: unset;
-    width: 340px;
+  .bookingtitle {
+    width: 300px;
     height: 22px;
-    left: 0px;
+    margin: 0px;
     padding-top: 15px;
+    padding-left: 20px;
+    padding-right: 20px;
+    left: 0px;
+    position: static;
   }
-  .contentaddress {
-    position: unset;
-    width: 340px;
-    height: 22px;
-    left: 0px;
+  .bookingdirections {
+    width: 300px;
+    height: 48px;
+    margin: 0px;
     padding-top: 15px;
+    padding-left: 20px;
+    padding-right: 20px;
+    left: 0px;
+    position: static;
+    align-items: normal;
+    line-height: 23px;
+  }
+  .divdate {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    padding-top: 15px;
+    padding-left: 20px;
+    padding-right: 41px;
+  }
+  .bookingdate {
+    width: 81px;
+    height: 17px;
+    padding-right: 5px;
+    margin: 0px;
+  }
+  .bookingcalendar {
+    width: 193px;
+    height: 35px;
+    padding: 0px;
+    border: 0px;
+  }
+  .bookingtime {
+    width: 81px;
+    height: 22px;
+    padding-right: 10px;
+    padding-left: 20px;
+    margin: 0px;
+  }
+  .firsthalfdaybutton {
+    padding-right: 4px;
+  }
+  .firsthalfdaytext {
+    padding-right: 18px;
+  }
+  .secondhalfdaybutton {
+    margin: 0px;
+    padding-right: 4px;
+  }
+  .secondhalfdaytext {
+    padding-right: 63px;
+  }
+  .divcost {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 0px;
+    margin-bottom: 25px;
+  }
+  .bookingcost {
+    position: unset;
+    width: 81px;
+    height: 22px;
+    margin-left: 20px;
+    top: 178px;
+    font-family: "Noto Sans TC";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 13px;
+    display: flex;
+    align-items: center;
+    color: #666666;
+    margin-right: 5px;
+  }
+  .costtext {
+    width: 108px;
+    height: 14px;
+    letter-spacing: -1px;
+  }
+  .divstartbooking {
+    margin-bottom: 15px;
+    margin-left: 20px;
+    margin-top: 0px;
+  }
+  .startbookingbutton {
+    margin-left: 0px;
+    margin-top: 0px;
+  }
+  .startbookingtext {
+    width: 114px;
+    height: 16px;
   }
   .hrline {
+    width: 338px;
     display: flex;
     justify-content: center;
     align-items: center;
     justify-items: center;
-    width: 94vw;
   }
   .list {
     height: auto;
@@ -1078,20 +1451,32 @@ html {
   .mylist {
     height: auto;
     position: unset;
-    width: 340px;
-    margin-left: 10px;
-    margin-right: 10px;
+    width: 330px;
+    margin-left: 20px;
+    margin-right: 11px;
   }
-  .attentiontext {
-    margin-bottom: 25px;
+  .descriptiontext {
+    margin-top: 50px;
+    padding: 0px;
+    line-height: 23.17px;
   }
-  .cardpassword {
-    margin-bottom: 25px;
+  .addresstitle {
+    padding: 0px;
+    margin-top: 20px;
+    height: 32px;
   }
-  .mytotallist {
-    margin-right: 10px;
+  .addresstext {
+    padding: 0px;
+    height: 24px;
   }
-  .startbookingbutton {
-    margin-bottom: 72px;
+  .transporttitle {
+    height: 32px;
+    padding: 0px;
+    margin-top: 20px;
+  }
+  .transporttext {
+    padding: 0px;
+    min-height: 144px;
+    align-items: normal;
   }
 }

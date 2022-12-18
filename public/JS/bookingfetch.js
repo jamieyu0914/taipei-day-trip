@@ -3,7 +3,7 @@ var cookie = document.cookie;
 var user;
 
 //判斷是否為登入狀態
-if (cookie != "token=") {
+if ((cookie != "") & (cookie != "token=")) {
   token = cookie.split("=")[1];
 } else {
   token = "";
@@ -31,20 +31,16 @@ if (token != "") {
   }
 
   parseJwt(token);
-  user = parseJwt(token);
-  console.log(parseJwt(token));
 
-  $.ajax({
-    type: "GET",
-    url: "/api/user/auth",
-    data: {
-      data: parseJwt(token),
-    },
-    dataType: "json",
+  fetch(`/api/user/auth`, {
+    method: "GET",
     headers: {
       "Content-type": "application/json",
     },
-    success: function (data) {
+  }).then(function (response) {
+    response.json().then(function (data) {
+      console.log(data);
+      message = data["message"];
       if (data["login"] == true) {
         console.log("已登入");
         const loginitemtext = document.querySelector(".loginitemtext");
@@ -54,7 +50,7 @@ if (token != "") {
           logout();
         };
       }
-    },
+    });
   });
 } else {
   const loginitem = document.querySelector("#loginitem");
@@ -241,7 +237,7 @@ function cardpasswordinputtext() {
 
 function deletebooking() {
   //判斷是否為登入狀態
-  if (cookie != "token=") {
+  if ((cookie != "") & (cookie != "token=")) {
     token = cookie.split("=")[1];
 
     const data = {

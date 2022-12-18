@@ -285,13 +285,16 @@ def signup():
                     "ok": True
                     })),200
 
-
 @app.route("/api/user/auth", methods=["GET"])
 def signinget():
 
-    id = request.args.get("data[id]","")
-    name = request.args.get("data[name]","")
-    email = request.args.get("data[email]","")
+    get_token = request.cookies.get("token")
+    decoded_token = jwt.decode(get_token, "secret", algorithms=['HS256'])
+    print(decoded_token)
+
+    id = decoded_token["id"]
+    name = decoded_token["name"]
+    email = decoded_token["email"]
     print(id, name,email)
 
     sql = "SELECT * FROM member_list WHERE id=%s and name=%s and email=%s" #SQL指令 是否有對應的帳號、密碼
@@ -394,7 +397,6 @@ def signinput():
 
         return response
   
-
 @app.route("/api/user/auth", methods=["DELETE"])
 def signout():
 
