@@ -724,8 +724,8 @@ html {
   display: flex;
   align-items: center;
   color: #666666;
-  margin-top: 5px;
-  margin-bottom: 45px;
+  margin-top: 40px;
+  margin-bottom: 0px;
 }
 .mytotallist {
   display: flex;
@@ -733,6 +733,7 @@ html {
   align-items: flex-end;
   width: 990px;
   height: auto;
+  min-height: 176px;
 }
 .cardnumber {
   font-family: "Noto Sans TC";
@@ -968,9 +969,9 @@ html {
     height: auto;
     height: auto;
     position: unset;
-    width: 960px;
+    width: 865px;
     margin-left: 95px;
-    margin-right: 10px;
+    margin-right: 95px;
   }
   .attentiontext {
     line-height: 23.17px;
@@ -1096,9 +1097,6 @@ html {
     width: 340px;
     margin-left: 10px;
     margin-right: 10px;
-  }
-  .attentiontext {
-    margin-bottom: 25px;
   }
   .cardpassword {
     margin-bottom: 25px;

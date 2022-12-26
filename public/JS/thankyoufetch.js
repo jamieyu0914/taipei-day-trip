@@ -2,8 +2,6 @@ var cookie = document.cookie;
 
 var user;
 
-var orderNumber;
-
 //判斷是否為登入狀態
 if ((cookie != "") & (cookie != "token=")) {
   token = cookie.split("=")[1];
@@ -45,11 +43,8 @@ if (token != "") {
         login_response = JSON.parse(this.response);
         // console.log(login_response["data"]);
         user = login_response["data"];
-        console.log(user);
-        document.getElementById("contactnameinput").value = user["name"];
-        document.getElementById("contactemailinput").value = user["email"];
         if (login_response["data"] != null) {
-          getbookingData("/api/booking");
+          getordersData("/api/booking");
           console.log("已登入");
           const loginitemtext = document.querySelector(".loginitemtext");
           loginitemtext.innerHTML = "登出系統";
@@ -71,69 +66,16 @@ if (token != "") {
   };
 }
 
-var fields = {
-  number: {
-    // css selector
-    element: "#card-number",
-    placeholder: "**** **** **** ****",
-  },
-  expirationDate: {
-    // DOM object
-    element: document.getElementById("card-expiration-date"),
-    placeholder: "MM / YY",
-  },
-  ccv: {
-    element: "#card-ccv",
-    placeholder: "後三碼",
-  },
-};
+var path = location.href;
+console.log(path);
+var index = path.split("thankyou?number=");
+number = index[1];
+console.log(number);
 
-TPDirect.card.setup({
-  fields: fields,
-  styles: {
-    // Style all elements
-    input: {
-      color: "gray",
-    },
-    // Styling ccv field
-    "input.ccv": {
-      // 'font-size': '16px'
-    },
-    // Styling expiration-date field
-    "input.expiration-date": {
-      // 'font-size': '16px'
-    },
-    // Styling card-number field
-    "input.card-number": {
-      // 'font-size': '16px'
-    },
-    // style focus state
-    ":focus": {
-      // 'color': 'black'
-    },
-    // style valid state
-    ".valid": {
-      color: "green",
-    },
-    // style invalid state
-    ".invalid": {
-      color: "red",
-    },
-    // Media queries
-    // Note that these apply to the iframe, not the root window.
-    "@media screen and (max-width: 400px)": {
-      input: {
-        color: "orange",
-      },
-    },
-  },
-  // 此設定會顯示卡號輸入正確後，會顯示前六後四碼信用卡卡號
-  isMaskCreditCardNumber: true,
-  maskCreditCardNumberRange: {
-    beginIndex: 6,
-    endIndex: 11,
-  },
-});
+const attentiontextordersnumber = document.getElementById(
+  "attentiontextordersnumber"
+);
+attentiontextordersnumber.innerHTML = "訂單編號：" + number;
 
 function gohome() {
   document.location.href = "/";
@@ -195,15 +137,15 @@ function gobooking() {
   document.location.href = `/booking`;
 }
 
-function getbookingData(url) {
+function getordersData(url) {
   const xhr = new XMLHttpRequest();
   xhr.open("GET", url, true);
   xhr.onload = function () {
     if (xhr.status === 200) {
       // console.log(JSON.parse(this.response));
-      booking_response = JSON.parse(this.response);
+      orders_response = JSON.parse(this.response);
       // console.log(booking_response["data"]);
-      if (booking_response["data"] == undefined) {
+      if (orders_response["data"] == undefined) {
         const username = document.querySelector(".username");
         username.innerHTML = user["name"];
 
@@ -246,42 +188,42 @@ function getbookingData(url) {
       const username = document.querySelector(".username");
       username.innerHTML = user["name"];
 
-      _booking_image = booking_response["data"]["attraction"]["image"];
+      _orders_image = orders_response["data"]["attraction"]["image"];
       const contentphoto = document.querySelector(".left-content");
       contentphoto.style.cssText =
-        "background-image: url(" + _booking_image + ")";
+        "background-image: url(" + _orders_image + ")";
 
-      _title_name = booking_response["data"]["attraction"]["name"];
+      _title_name = orders_response["data"]["attraction"]["name"];
       console.log(_title_name);
       const contenttitle = document.querySelector(".contenttitle");
       contenttitle.innerHTML = "台北一日遊：" + _title_name;
 
-      _booking_date = booking_response["data"]["date"];
-      console.log(_booking_date);
+      _orders_date = orders_response["data"]["date"];
+      console.log(_orders_date);
       const contentdatetext = document.querySelector(".contentdatetext");
-      contentdatetext.innerHTML = _booking_date;
+      contentdatetext.innerHTML = _orders_date;
 
-      _booking_time = booking_response["data"]["time"];
-      if (_booking_time == "morning") {
-        _booking_time_text = "早上9點";
-      } else if (_booking_time == "afernoon") {
-        _booking_time_text = "下午4點";
+      _orders_time = orders_response["data"]["time"];
+      if (_orders_time == "morning") {
+        _orders_time_text = "早上9點";
+      } else if (_orders_time == "afernoon") {
+        _orders_time_text = "下午4點";
       }
       const contenttimetext = document.querySelector(".contenttimetext");
-      contenttimetext.innerHTML = _booking_time_text;
+      contenttimetext.innerHTML = _orders_time_text;
 
-      _booking_price = booking_response["data"]["price"];
-      console.log(_booking_price);
+      _orders_price = orders_response["data"]["price"];
+      console.log(_orders_price);
       const contentcosttext = document.querySelector(".contentcosttext");
-      contentcosttext.innerHTML = "新台幣 " + _booking_price + " 元";
+      contentcosttext.innerHTML = "新台幣 " + _orders_price + " 元";
 
-      const totaltext = document.querySelector(".totaltext");
-      totaltext.innerHTML = "總價：新台幣 " + _booking_price + " 元";
+      // const totaltext = document.querySelector(".totaltext");
+      // totaltext.innerHTML = "總價：新台幣 " + _booking_price + " 元";
 
-      _booking_address = booking_response["data"]["attraction"]["address"];
-      console.log(_booking_address);
+      _orders_address = orders_response["data"]["attraction"]["address"];
+      console.log(_orders_address);
       const contentaddresstext = document.querySelector(".contentaddresstext");
-      contentaddresstext.innerHTML = _booking_address;
+      contentaddresstext.innerHTML = _orders_address;
     } else {
       console.log(JSON.parse(this.response));
     }
@@ -302,122 +244,4 @@ function cardtimeinputtext() {
 function cardpasswordinputtext() {
   const cardpasswordinput = document.querySelector(".cardpasswordinput");
   cardpasswordinput.placeholder = "";
-}
-
-function deletebooking() {
-  //判斷是否為登入狀態
-  if ((cookie != "") & (cookie != "token=")) {
-    token = cookie.split("=")[1];
-
-    const data = {
-      user: user,
-    };
-    fetch(`/api/booking`, {
-      method: "DELETE",
-      body: JSON.stringify(data),
-      headers: {
-        "Content-type": "application/json",
-      },
-    }).then(function (response) {
-      response.json().then(function (data) {
-        if (data["ok"] == true) {
-          console.log(data["ok"]);
-          console.log("已刪除一筆訂單");
-          document.location.href = `/booking`;
-        } else {
-          console.log(data);
-        }
-      });
-    });
-
-    // document.location.href = `/booking`;
-  } else {
-    token = "";
-    signinblock();
-  }
-}
-
-function confirmandpayment() {
-  let name,
-    element_name = document.getElementById("contactnameinput");
-  if (element_name != null) {
-    name = element_name.value;
-  } else {
-    name = null;
-  }
-
-  let email,
-    element_email = document.getElementById("contactemailinput");
-  if (element_email != null) {
-    email = element_email.value;
-  } else {
-    email = null;
-  }
-
-  let phone,
-    element_phone = document.getElementById("contactphoneinput");
-  if (element_phone != null) {
-    phone = element_phone.value;
-  } else {
-    phone = null;
-  }
-
-  console.log(name, email, phone);
-  console.log("確認訂單與付款");
-
-  // Get prime
-  TPDirect.card.getPrime((result) => {
-    if (result.status !== 0) {
-      alert("get prime error " + result.msg);
-      return;
-    }
-
-    var primeCode = result.card.prime;
-    console.log(booking_response["data"]["attraction"]["id"]);
-    console.log(primeCode);
-    const data = {
-      prime: primeCode,
-      order: {
-        price: _booking_price,
-        trip: booking_response["data"],
-      },
-      contact: {
-        name: name,
-        email: email,
-        phone: phone,
-      },
-    };
-    fetch(`/api/orders`, {
-      method: "POST",
-      body: JSON.stringify(data),
-      headers: {
-        "Content-Type": "application/json",
-        "X-CSRF-TOKEN":
-          "partner_Fq50uDShbqf8YWInMnLzCHBBLVKxD4wSehFJIhYWXgHgoG7SQuy2RBFs",
-      },
-    }).then(function (response) {
-      response.json().then(function (data) {
-        // console.log(data);
-        if (data["error"] == true) {
-          console.log(data["message"]);
-          if (data["message"] == "先前已付款") {
-            console.log(data["ordersid"]);
-            const orderNumber = data["ordersid"];
-            document.location.href = `/thankyou?number=${orderNumber}`;
-          }
-        } else if (data["data"]["payment"]["status"] == 0) {
-          console.log(data["data"]["payment"]["message"]);
-          console.log(data["data"]["number"]);
-          const orderNumber = data["data"]["number"];
-          document.location.href = `/thankyou?number=${orderNumber}`;
-          console.log("已付款");
-        }
-      });
-    });
-
-    console.log(result);
-
-    // send prime to your server, to pay with Pay by Prime API .
-    // Pay By Prime Docs: https://docs.tappaysdk.com/tutorial/zh/back.html#pay-by-prime-api
-  });
 }
