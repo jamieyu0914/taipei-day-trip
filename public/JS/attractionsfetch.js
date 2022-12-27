@@ -576,6 +576,7 @@ function startbooking() {
           console.log(data["ok"]);
           document.location.href = `/booking`;
         } else {
+          alert(data["message"]);
           console.log(data);
         }
       });

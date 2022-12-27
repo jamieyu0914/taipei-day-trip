@@ -470,7 +470,7 @@ def bookingget():
                 "message": "未登入系統，拒絕存取"
                 })),403
 
-    sql = "SELECT * FROM booking_list WHERE member_id=%s;" #SQL指令 
+    sql = "SELECT * FROM booking_list where member_id=%s AND payment is NULL;" #SQL指令 
     val = (str(userid),)
     try:
         # Get connection object from a pool
@@ -629,8 +629,8 @@ def bookingpost():
                 "message": "建立失敗，重複的行程"
                 })),400
     else:#預定成功
-        sql = "SELECT * FROM booking_list WHERE member_id=%s ;" #SQL指令 檢查使用者訂單資料
-        val = (str(userid),)
+        sql = "SELECT * FROM booking_list WHERE member_id=%s AND attraction_id=%s AND booking_date=%s AND booking_time=%s;" #SQL指令 檢查使用者訂單資料
+        val = (str(userid), str(attractionId), str(date), str(time))
         try:
             # Get connection object from a pool
             connection_object = connection_pool.get_connection() #連線物件 commit時 需要使用
@@ -801,7 +801,7 @@ def orderpost():
                 "message": "未登入系統，拒絕存取"
                 })),403
 
-    sql = "SELECT id, member_id FROM booking_list WHERE member_id=%s;" #SQL指令 核對訂單編號
+    sql = "SELECT id, member_id FROM booking_list WHERE member_id=%s AND payment is NULL;" #SQL指令 核對訂單編號
     val = (str(userid),)
     try:
         # Get connection object from a pool
@@ -851,7 +851,7 @@ def orderpost():
         print("已經付款")
         today = datetime.date.today()
         print(today)
-        ordersid = str(today)+"-TPEM-"+str(userid)+str(contact_phone)[7:10]+str(order_trip)
+        ordersid = str(today)+"-TPEM-"+str(userid)+str(contact_phone)[7:10]+str(order_trip)+str(bookingid)
         print(contact_phone)
         print(ordersid)
         return (jsonify({
@@ -887,7 +887,7 @@ def orderpost():
             print("已付款")
             today = datetime.date.today()
             print(today)
-            ordersid = str(today)+"-TPEM-"+str(userid)+str(contact_phone)[7:10]+str(order_trip)
+            ordersid = str(today)+"-TPEM-"+str(userid)+str(contact_phone)[7:10]+str(order_trip)+str(bookingid)
             print(contact_phone)
             print(ordersid)
             sql = "INSERT INTO orders_list (orders_id, booking_id, member_id,  price, contactname, contactemail, contactphone) VALUES (%s, %s, %s, %s, %s, %s, %s);" #SQL指令 新增資料
@@ -911,6 +911,29 @@ def orderpost():
                 connection_object.close()
                 print("MySQL connection is closed")            
                 print("完成訂購")
+
+            payment = "checked"    
+            sql = "UPDATE booking_list SET payment = %s WHERE id = %s;" #SQL指令 新增資料
+            val = (str(payment), str(bookingid))
+            try:
+                # Get connection object from a pool
+                connection_object = connection_pool.get_connection() #連線物件 commit時 需要使用
+                cursor = connection_object.cursor()
+                print("MySQL connection is opened")
+                cursor.execute(sql, val)
+                connection_object.commit()
+            except Error as e:
+                print("Error while connecting to MySQL using Connection pool ", e)
+                return (jsonify({
+                    "error": True,
+                    "message": "伺服器內部錯誤"
+                    })),500
+            finally:
+                # closing database connection.    
+                cursor.close()
+                connection_object.close()
+                print("MySQL connection is closed")            
+                print("完成訂購")    
         else:
             message="付款失敗"
         result={

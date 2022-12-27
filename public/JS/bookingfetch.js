@@ -337,6 +337,39 @@ function deletebooking() {
   }
 }
 
+function finishedpaymentanddeletebooking(orderNumber) {
+  //判斷是否為登入狀態
+  if ((cookie != "") & (cookie != "token=")) {
+    token = cookie.split("=")[1];
+
+    const data = {
+      user: user,
+    };
+    fetch(`/api/booking`, {
+      method: "DELETE",
+      body: JSON.stringify(data),
+      headers: {
+        "Content-type": "application/json",
+      },
+    }).then(function (response) {
+      response.json().then(function (data) {
+        if (data["ok"] == true) {
+          console.log(data["ok"]);
+          console.log("已刪除一筆訂單");
+          document.location.href = `/thankyou?number=${orderNumber}`;
+        } else {
+          console.log(data);
+        }
+      });
+    });
+
+    // document.location.href = `/booking`;
+  } else {
+    token = "";
+    signinblock();
+  }
+}
+
 function confirmandpayment() {
   let name,
     element_name = document.getElementById("contactnameinput");
@@ -409,8 +442,8 @@ function confirmandpayment() {
           console.log(data["data"]["payment"]["message"]);
           console.log(data["data"]["number"]);
           const orderNumber = data["data"]["number"];
-          document.location.href = `/thankyou?number=${orderNumber}`;
           console.log("已付款");
+          finishedpaymentanddeletebooking(orderNumber);
         }
       });
     });

@@ -33,6 +33,17 @@ if (token != "") {
   parseJwt(token);
   // console.log(parseJwt(token));
 
+  var path = location.href;
+  console.log(path);
+  var index = path.split("thankyou?number=");
+  number = index[1];
+  console.log(number);
+
+  const attentiontextordersnumber = document.getElementById(
+    "attentiontextordersnumber"
+  );
+  attentiontextordersnumber.innerHTML = "訂單編號：" + number;
+
   getData("/api/user/auth");
   function getData(url) {
     const xhr = new XMLHttpRequest();
@@ -44,7 +55,7 @@ if (token != "") {
         // console.log(login_response["data"]);
         user = login_response["data"];
         if (login_response["data"] != null) {
-          getordersData("/api/booking");
+          getordersData(`/api/orders/${number}`);
           console.log("已登入");
           const loginitemtext = document.querySelector(".loginitemtext");
           loginitemtext.innerHTML = "登出系統";
@@ -58,24 +69,13 @@ if (token != "") {
     xhr.send(null);
   }
 } else {
-  getbookingData("/api/booking");
+  getordersData(`/api/orders/${number}`);
   console.log("未登入");
   const loginitem = document.querySelector("#loginitem");
   loginitem.onclick = function () {
     signinblock();
   };
 }
-
-var path = location.href;
-console.log(path);
-var index = path.split("thankyou?number=");
-number = index[1];
-console.log(number);
-
-const attentiontextordersnumber = document.getElementById(
-  "attentiontextordersnumber"
-);
-attentiontextordersnumber.innerHTML = "訂單編號：" + number;
 
 function gohome() {
   document.location.href = "/";
@@ -144,7 +144,7 @@ function getordersData(url) {
     if (xhr.status === 200) {
       // console.log(JSON.parse(this.response));
       orders_response = JSON.parse(this.response);
-      // console.log(booking_response["data"]);
+      console.log(orders_response["data"]);
       if (orders_response["data"] == undefined) {
         const username = document.querySelector(".username");
         username.innerHTML = user["name"];
@@ -188,22 +188,22 @@ function getordersData(url) {
       const username = document.querySelector(".username");
       username.innerHTML = user["name"];
 
-      _orders_image = orders_response["data"]["attraction"]["image"];
+      _orders_image = orders_response["data"]["trip"]["attraction"]["image"];
       const contentphoto = document.querySelector(".left-content");
       contentphoto.style.cssText =
         "background-image: url(" + _orders_image + ")";
 
-      _title_name = orders_response["data"]["attraction"]["name"];
+      _title_name = orders_response["data"]["trip"]["attraction"]["name"];
       console.log(_title_name);
       const contenttitle = document.querySelector(".contenttitle");
       contenttitle.innerHTML = "台北一日遊：" + _title_name;
 
-      _orders_date = orders_response["data"]["date"];
+      _orders_date = orders_response["data"]["trip"]["date"];
       console.log(_orders_date);
       const contentdatetext = document.querySelector(".contentdatetext");
       contentdatetext.innerHTML = _orders_date;
 
-      _orders_time = orders_response["data"]["time"];
+      _orders_time = orders_response["data"]["trip"]["time"];
       if (_orders_time == "morning") {
         _orders_time_text = "早上9點";
       } else if (_orders_time == "afernoon") {
@@ -220,7 +220,8 @@ function getordersData(url) {
       // const totaltext = document.querySelector(".totaltext");
       // totaltext.innerHTML = "總價：新台幣 " + _booking_price + " 元";
 
-      _orders_address = orders_response["data"]["attraction"]["address"];
+      _orders_address =
+        orders_response["data"]["trip"]["attraction"]["address"];
       console.log(_orders_address);
       const contentaddresstext = document.querySelector(".contentaddresstext");
       contentaddresstext.innerHTML = _orders_address;
