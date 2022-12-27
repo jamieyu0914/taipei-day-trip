@@ -430,6 +430,7 @@ function confirmandpayment() {
       },
     }).then(function (response) {
       response.json().then(function (data) {
+        alert("加載中，請稍候...");
         // console.log(data);
         if (data["error"] == true) {
           console.log(data["message"]);
