@@ -169,31 +169,37 @@
         <div class="list">
           <div class="mylist">
             <div class="listtitletext">您的聯絡資訊</div>
-            <div class="contectname">
-              <text class="contectnametext">聯絡姓名:</text>
+            <div class="contactname">
+              <text class="contactnametext">聯絡姓名:</text>
               <input
                 type="text"
-                name="contectname"
-                class="contectnameinput"
-                id="contectnameinput"
+                name="contactname"
+                autocomplete="name"
+                class="contactnameinput"
+                id="contactnameinput"
               />
             </div>
-            <div class="contectemail">
-              <text class="contectemailtext">聯絡信箱:</text>
+            <div class="contactemail">
+              <text class="contactemailtext">聯絡信箱:</text>
               <input
-                type="text"
-                name="contectemail"
-                class="contectemailinput"
-                id="contectemailinput"
+                type="email"
+                name="contactemail"
+                placeholder="abc@example.com"
+                autocomplete="email"
+                class="contactemailinput"
+                id="contactemailinput"
               />
             </div>
-            <div class="contectphone">
-              <text class="contectphoneinputtext">手機號碼:</text>
+            <div class="contactphone">
+              <text class="contactphoneinputtext">手機號碼:</text>
               <input
-                type="text"
-                name="contectphone"
-                class="contectphoneinput"
-                id="contectphoneinput"
+                type="tel"
+                name="contactphone"
+                placeholder="09XXXXXXXXXX"
+                autocomplete="tel"
+                maxlength="10"
+                class="contactphoneinput"
+                id="contactphoneinput"
               />
             </div>
             <div class="attentiontext">
@@ -207,36 +213,18 @@
             <div class="listtitletext">信用卡付款資訊</div>
             <div class="cardnumber">
               <text class="cardnumbertext">卡片號碼：</text>
-              <input
-                type="password"
-                name="cardnumber"
-                class="cardnumberinput"
-                id="cardnumberinput"
-                placeholder="**** **** **** ****"
-                onfocus="cardnumberinputtext()"
-              />
+              <!-- TapPay Fields -->
+              <div class="tpfield" id="card-number"></div>
             </div>
             <div class="cardtime">
               <text class="cardtimetext">過期時間：</text>
-              <input
-                type="month"
-                name="cardtime"
-                class="cardtimeinput"
-                id="cardtimeinput"
-                placeholder="MM / YY"
-                onfocus="cardtimeinputtext()"
-              />
+              <!-- TapPay Fields -->
+              <div class="tpfield" id="card-expiration-date"></div>
             </div>
             <div class="cardpassword">
               <text class="cardpasswordtext">驗證密碼：</text>
-              <input
-                type="text"
-                name="cardpassword"
-                class="cardpasswordinput"
-                id="cardpasswordinput"
-                placeholder="CVV"
-                onfocus="cardpasswordinputtext()"
-              />
+              <!-- TapPay Fields -->
+              <div class="tpfield" id="card-ccv"></div>
             </div>
           </div>
         </div>
@@ -244,7 +232,7 @@
         <div class="list">
           <div class="mytotallist">
             <div class="totaltext"></div>
-            <button class="startbookingbutton" onclick="startbooking()">
+            <button class="startbookingbutton" onclick="confirmandpayment()">
               <text class="startbookingtext">確認訂購並付款</text>
             </button>
           </div>
@@ -255,5 +243,13 @@
   <footer class="footer">
     <footer class="text">COPYRIGHT © 2022 台北一日遊</footer>
   </footer>
+  <script src="https://js.tappaysdk.com/sdk/tpdirect/v5.14.0"></script>
+  <script>
+    TPDirect.setupSDK(
+      126991,
+      "app_4iYxpcBs5jJ9B5ZQ90Wqh3jGViEZ7lrAiUS7sF9wmrsCjJwOAKePC7KqFq6O",
+      "sandbox"
+    );
+  </script>
   <script src="/JS/bookingfetch.js" charset="utf-8"></script>
 </html>

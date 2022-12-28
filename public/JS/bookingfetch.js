@@ -2,6 +2,8 @@ var cookie = document.cookie;
 
 var user;
 
+var orderNumber;
+
 //判斷是否為登入狀態
 if ((cookie != "") & (cookie != "token=")) {
   token = cookie.split("=")[1];
@@ -43,6 +45,9 @@ if (token != "") {
         login_response = JSON.parse(this.response);
         // console.log(login_response["data"]);
         user = login_response["data"];
+        console.log(user);
+        document.getElementById("contactnameinput").value = user["name"];
+        document.getElementById("contactemailinput").value = user["email"];
         if (login_response["data"] != null) {
           getbookingData("/api/booking");
           console.log("已登入");
@@ -65,6 +70,70 @@ if (token != "") {
     signinblock();
   };
 }
+
+var fields = {
+  number: {
+    // css selector
+    element: "#card-number",
+    placeholder: "**** **** **** ****",
+  },
+  expirationDate: {
+    // DOM object
+    element: document.getElementById("card-expiration-date"),
+    placeholder: "MM / YY",
+  },
+  ccv: {
+    element: "#card-ccv",
+    placeholder: "後三碼",
+  },
+};
+
+TPDirect.card.setup({
+  fields: fields,
+  styles: {
+    // Style all elements
+    input: {
+      color: "gray",
+    },
+    // Styling ccv field
+    "input.ccv": {
+      // 'font-size': '16px'
+    },
+    // Styling expiration-date field
+    "input.expiration-date": {
+      // 'font-size': '16px'
+    },
+    // Styling card-number field
+    "input.card-number": {
+      // 'font-size': '16px'
+    },
+    // style focus state
+    ":focus": {
+      // 'color': 'black'
+    },
+    // style valid state
+    ".valid": {
+      color: "green",
+    },
+    // style invalid state
+    ".invalid": {
+      color: "red",
+    },
+    // Media queries
+    // Note that these apply to the iframe, not the root window.
+    "@media screen and (max-width: 400px)": {
+      input: {
+        color: "orange",
+      },
+    },
+  },
+  // 此設定會顯示卡號輸入正確後，會顯示前六後四碼信用卡卡號
+  isMaskCreditCardNumber: true,
+  maskCreditCardNumberRange: {
+    beginIndex: 6,
+    endIndex: 11,
+  },
+});
 
 function gohome() {
   document.location.href = "/";
@@ -266,4 +335,123 @@ function deletebooking() {
     token = "";
     signinblock();
   }
+}
+
+function finishedpaymentanddeletebooking(orderNumber) {
+  //判斷是否為登入狀態
+  if ((cookie != "") & (cookie != "token=")) {
+    token = cookie.split("=")[1];
+
+    const data = {
+      user: user,
+    };
+    fetch(`/api/booking`, {
+      method: "DELETE",
+      body: JSON.stringify(data),
+      headers: {
+        "Content-type": "application/json",
+      },
+    }).then(function (response) {
+      response.json().then(function (data) {
+        if (data["ok"] == true) {
+          console.log(data["ok"]);
+          console.log("已刪除一筆訂單");
+          document.location.href = `/thankyou?number=${orderNumber}`;
+        } else {
+          console.log(data);
+        }
+      });
+    });
+
+    // document.location.href = `/booking`;
+  } else {
+    token = "";
+    signinblock();
+  }
+}
+
+function confirmandpayment() {
+  let name,
+    element_name = document.getElementById("contactnameinput");
+  if (element_name != null) {
+    name = element_name.value;
+  } else {
+    name = null;
+  }
+
+  let email,
+    element_email = document.getElementById("contactemailinput");
+  if (element_email != null) {
+    email = element_email.value;
+  } else {
+    email = null;
+  }
+
+  let phone,
+    element_phone = document.getElementById("contactphoneinput");
+  if (element_phone != null) {
+    phone = element_phone.value;
+  } else {
+    phone = null;
+  }
+
+  console.log(name, email, phone);
+  console.log("確認訂單與付款");
+
+  // Get prime
+  TPDirect.card.getPrime((result) => {
+    if (result.status !== 0) {
+      alert("get prime error " + result.msg);
+      return;
+    }
+
+    var primeCode = result.card.prime;
+    console.log(booking_response["data"]["attraction"]["id"]);
+    console.log(primeCode);
+    const data = {
+      prime: primeCode,
+      order: {
+        price: _booking_price,
+        trip: booking_response["data"],
+      },
+      contact: {
+        name: name,
+        email: email,
+        phone: phone,
+      },
+    };
+    fetch(`/api/orders`, {
+      method: "POST",
+      body: JSON.stringify(data),
+      headers: {
+        "Content-Type": "application/json",
+        "X-CSRF-TOKEN":
+          "partner_Fq50uDShbqf8YWInMnLzCHBBLVKxD4wSehFJIhYWXgHgoG7SQuy2RBFs",
+      },
+    }).then(function (response) {
+      response.json().then(function (data) {
+        alert("加載中，請稍候...");
+        // console.log(data);
+        if (data["error"] == true) {
+          console.log(data["message"]);
+          if (data["message"] == "先前已付款") {
+            console.log(data["ordersid"]);
+            const orderNumber = data["ordersid"];
+            document.location.href = `/thankyou?number=${orderNumber}`;
+          }
+        } else if (data["data"]["payment"]["status"] == 0) {
+          console.log(data["data"]["payment"]["message"]);
+          console.log(data["data"]["number"]);
+          const orderNumber = data["data"]["number"];
+          console.log("已付款");
+          finishedpaymentanddeletebooking(orderNumber);
+        }
+      });
+    });
+
+    console.log(result);
+
+    // send prime to your server, to pay with Pay by Prime API .
+    // Pay By Prime Docs: https://docs.tappaysdk.com/tutorial/zh/back.html#pay-by-prime-api
+  });
 }
