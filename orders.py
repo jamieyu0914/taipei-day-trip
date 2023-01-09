@@ -14,8 +14,14 @@ import requests
 import jwt
 import time
 import datetime
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
 
 orders_bp = Blueprint('orders',__name__)
+
+PARTNER_KEY = os.getenv("PARTNER_KEY")
 
 @orders_bp.route("/api/orders", methods=["POST"])
 def orderpost():
@@ -24,7 +30,7 @@ def orderpost():
     decode=jwt.decode(JWT_cookie, "secret", algorithms=['HS256'])
     print(decode)
 
-    Partner_Key = "partner_Fq50uDShbqf8YWInMnLzCHBBLVKxD4wSehFJIhYWXgHgoG7SQuy2RBFs"
+    Partner_Key = PARTNER_KEY
 
     userid = decode['id']
     username = decode['name']
