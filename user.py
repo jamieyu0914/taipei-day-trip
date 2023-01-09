@@ -14,8 +14,17 @@ import requests
 import jwt
 import time
 import datetime
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
 
 user_bp = Blueprint('user',__name__)
+
+DATABASE_NAME = os.getenv("DATABASE_NAME")
+DATABASE_USER = os.getenv("DATABASE_USER")
+DATABASE_PASSWORD = os.getenv("DATABASE_PASSWORD")
+PARTNER_KEY = os.getenv("PARTNER_KEY")
 
 @user_bp.route("/api/user", methods=["POST"])
 def signup():

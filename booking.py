@@ -14,8 +14,18 @@ import requests
 import jwt
 import time
 import datetime
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
 
 booking_bp = Blueprint('booking',__name__)
+
+DATABASE_NAME = os.getenv("DATABASE_NAME")
+DATABASE_USER = os.getenv("DATABASE_USER")
+DATABASE_PASSWORD = os.getenv("DATABASE_PASSWORD")
+PARTNER_KEY = os.getenv("PARTNER_KEY")
+
 
 @booking_bp.route("/api/booking", methods=["GET"])
 def bookingget():
