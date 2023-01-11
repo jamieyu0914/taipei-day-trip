@@ -14,6 +14,17 @@ import requests
 import jwt
 import time
 import datetime
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
+
+DATABASE_NAME = os.getenv("DATABASE_NAME")
+DATABASE_USER = os.getenv("DATABASE_USER")
+DATABASE_PASSWORD = os.getenv("DATABASE_PASSWORD")
+PARTNER_KEY = os.getenv("PARTNER_KEY")
+
+
 
 
 
@@ -21,9 +32,9 @@ connection_pool = pooling.MySQLConnectionPool(pool_name="my_connection_pool",
                                                 pool_size=5,
                                                 pool_reset_session=True,
                                                 host='localhost',
-                                                database='taipei_trip',
-                                                user='root',
-                                                password='m6ao3ao3')
+                                                database=DATABASE_NAME,
+                                                user=DATABASE_USER,
+                                                password=DATABASE_PASSWORD)
 app = FastAPI()
 
 app=Flask(__name__,
