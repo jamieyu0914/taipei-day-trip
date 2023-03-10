@@ -1,4 +1,4 @@
-# taipei-day-trip
+# 台北一日遊
 This is the taipei-day-trip project which for WeHelp-Bootcamp's stage 2.
 
 ![image](https://user-images.githubusercontent.com/43780809/224297064-4a45124f-013c-45d1-98cf-4d2648ddf320.png)
